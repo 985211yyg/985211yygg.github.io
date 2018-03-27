@@ -259,6 +259,344 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/27/2018-Android面试分享/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yyg">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yyg的小黑屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/27/2018-Android面试分享/" itemprop="url">2018 Android面试分享</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-27T22:40:54+08:00">
+                2018-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>原文链接：<a href="https://link.juejin.im/?target=http%3A%2F%2Fblog.csdn.net%2Fqian520ao%2Farticle%2Fdetails%2F79601179" target="_blank" rel="noopener">blog.csdn.net</a></p>
+<ul>
+<li><a href="https://juejin.im/entry/5ab059d46fb9a028ba1f4ba0#%E6%A6%82%E8%BF%B0" target="_blank" rel="noopener">概述</a></li>
+<li><a href="https://juejin.im/entry/5ab059d46fb9a028ba1f4ba0#%E6%88%90%E6%9E%9C%E5%92%8C%E6%94%B6%E8%8E%B7" target="_blank" rel="noopener">成果和收获</a></li>
+<li><a href="https://juejin.im/entry/5ab059d46fb9a028ba1f4ba0#%E9%9D%A2%E8%AF%95%E5%88%86%E4%BA%AB" target="_blank" rel="noopener">面试分享</a><ul>
+<li><a href="https://juejin.im/entry/5ab059d46fb9a028ba1f4ba0#android" target="_blank" rel="noopener">Android</a></li>
+<li><a href="https://juejin.im/entry/5ab059d46fb9a028ba1f4ba0#jvm" target="_blank" rel="noopener">JVM</a></li>
+<li><a href="https://juejin.im/entry/5ab059d46fb9a028ba1f4ba0#java-%E7%BA%BF%E7%A8%8B" target="_blank" rel="noopener">Java 线程</a></li>
+<li><a href="https://juejin.im/entry/5ab059d46fb9a028ba1f4ba0#java-%E9%9B%86%E5%90%88" target="_blank" rel="noopener">Java 集合</a></li>
+<li><a href="https://juejin.im/entry/5ab059d46fb9a028ba1f4ba0#%E7%BD%91%E7%BB%9C" target="_blank" rel="noopener">网络</a></li>
+<li><a href="https://juejin.im/entry/5ab059d46fb9a028ba1f4ba0#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">数据结构和算法</a></li>
+</ul>
+</li>
+<li><a href="https://juejin.im/entry/5ab059d46fb9a028ba1f4ba0#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E" target="_blank" rel="noopener">写在最后</a></li>
+</ul>
+<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>回顾历史不忘初心 展望未来继续前行。</p>
+<p>17年零零碎碎也捣鼓了好一阵子，从Android 自定义View开始，到源码分析，设计模式，再到JVM的了解以及最近看完的Java线程和并发以及集合。对Android体系有了一个大概了认识和了解。</p>
+<h1 id="成果和收获"><a href="#成果和收获" class="headerlink" title="成果和收获"></a>成果和收获</h1><p>可以说博客和github对于面试有一定的加分项，原本一开始写博客的目的是因为公众号，博客平台等一些大V的建议，不过到后来发现写技术博客的过程中，不仅能够对知识的深入认识和掌握，还能够提升对该知识的记忆和印象。因为虽然写博客会比较耗时，不过对知识的梳理笔记能够让日后重温复习变得更简单快速。</p>
+<p>17年初给自己定的目标是进入一家”大”公司，虽然没有对这个”大”字作出严格的定义。不过很幸运，18年3月的时候（也就是前两天）完成了这个目标。</p>
+<p>我个人觉得以下两个观点可以说是比较营养滋补的心灵鸡汤 ：</p>
+<ul>
+<li><p>工作后的努力，往往回报率会很高。<br>可以这么说 ： 初中升高中，高中升大学。也就是在我们的学生时代，努力的回报率可能不尽人意。高考想考个名牌大学，大多都是天资聪颖或是毅力顽强。<br>但是，读了大学之后考研，考进名牌大学的难度会比高考时期小蛮多的（考上研的同学分享的心得）。<br>最后说到工作，工作的努力往往带着很大的目的性，通过自身的不断学习积累，回报率会比考研还高。<br>也就是 高考&lt;考研&lt;工作飞升。</p>
+</li>
+<li><p>好环境能让人跑的更快。<br>PS ： <u>在绿皮车上跑步，很难追上在快车或者动车走路的人。</u></p>
+</li>
+</ul>
+<h1 id="面试分享"><a href="#面试分享" class="headerlink" title="面试分享"></a>面试分享</h1><hr>
+<h2 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h2><ol>
+<li><p>四大组件是什么与它们的生命周期（及Fragment）。</p>
+</li>
+<li><p>Acitivty的四种启动模式与特点。</p>
+</li>
+<li><p>Activity状态保存与恢复。</p>
+</li>
+<li><p>Service的生命周期，启动方法，有什么区别。</p>
+</li>
+<li><p>service和activity怎么进行数据交互。</p>
+</li>
+<li><p>怎么保证service不被杀死。</p>
+</li>
+<li><p>广播使用的方式和场景以及广播的几种分类。</p>
+</li>
+<li><p>Intent的使用方法，可以传递哪些数据类型。</p>
+</li>
+<li><p>ContentProvider使用方法。</p>
+</li>
+<li><p>ContentProvider、ContentResolver、ContentObserver 之间的关系。</p>
+</li>
+<li><p>Thread、AsycTask、IntentService的使用场景与特点。</p>
+</li>
+<li><p>FrameLayout 、 LinearLayout 、 RelativeLayout 各自特点及绘制效率对比。</p>
+</li>
+<li><p>Android的数据存储形式。</p>
+</li>
+<li><p>Android两种序列化的区别和作用。</p>
+</li>
+<li><p>Sqlite的基本操作。</p>
+</li>
+<li><p>Android中的MVC、MVP模式。</p>
+</li>
+<li><p>Merge、ViewStub的作用。</p>
+</li>
+<li><p>动画有哪几类，各有什么特点？</p>
+</li>
+<li><p>Handler、Loop消息队列模型，各部分的作用。</p>
+</li>
+<li><p>Android的消息机制，子线程更新UI的方法和原理。</p>
+</li>
+<li><p>Android怎么加速启动Activity。</p>
+</li>
+<li><p>App的启动过程。</p>
+</li>
+<li><p>Android优化方法。</p>
+</li>
+<li><p>如何防止内存泄漏？</p>
+</li>
+<li><p>Android中弱引用与软引用的应用场景。</p>
+</li>
+<li><p>Bitmap的四种属性，如何加载大图（inJustDecodeBounds）。</p>
+</li>
+<li><p>View与View Group分类。自定义View过程：onMeasure()、onLayout()、onDraw()。</p>
+</li>
+<li><p>View刷新机制和绘制流程。</p>
+</li>
+<li><p>Activity、Window、View的联系和理解。</p>
+</li>
+<li><p>invalidate和requestLayout的区别及使用。</p>
+</li>
+<li><p>Touch事件分发机制和冲突处理。</p>
+</li>
+<li><p>Android IPC:Binder原理。</p>
+</li>
+<li><p>Android5.0（UI库）、6.0（权限）、7.0特性。</p>
+</li>
+</ol>
+<blockquote>
+<p>Android 这块比较注重项目经验和平时学习的积累。 《Android开发艺术探索》《深入理解ANDROID 卷3》这两本书可以对Android有比较全面的认识和理解。</p>
+</blockquote>
+<hr>
+<h2 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h2><ol>
+<li><p>Java运行时数据区域，导致内存溢出的原因。</p>
+</li>
+<li><p>对象创建、内存布局，访问定位等。</p>
+</li>
+<li><p>GC的判定方法。</p>
+</li>
+<li><p>垃圾收集算法和运作原理。</p>
+</li>
+<li><p>内存分配与回收策略（Eden，survival from to，老年代）。</p>
+</li>
+<li><p>Class文件结构（常量池）。</p>
+</li>
+<li><p>类加载过程。</p>
+</li>
+<li><p>类加载器（双亲委派模型）。</p>
+</li>
+<li><p>运行时栈帧结构（主要是局部变量表，理解栈堆）。</p>
+</li>
+<li><p>Java泛型，自动拆箱，条件编译等多种语法糖。</p>
+</li>
+<li><p>Java内存模型结构（主内存和工作内存）及操作，原子性可见性和有序性等。</p>
+</li>
+<li><p>Java线程安全涉及的概念和分类。</p>
+</li>
+</ol>
+<blockquote>
+<p>《深入理解Java虚拟机 第二版》基本涵盖目前市场主流的 jvm 面试问题。</p>
+</blockquote>
+<hr>
+<h2 id="Java-线程"><a href="#Java-线程" class="headerlink" title="Java 线程"></a>Java 线程</h2><ol>
+<li><p>volatile的内存语义和应用。</p>
+</li>
+<li><p>Java重排序和顺序一致性。（as-if-serial和happens-before）</p>
+</li>
+<li><p>线程的状态和优先级。</p>
+</li>
+<li><p>启动线程和安全的终止线程。（interrupt）</p>
+</li>
+<li><p>ThreadLocal的使用</p>
+</li>
+<li><p>Java中的锁（偏向锁，轻量锁，重量级锁）</p>
+</li>
+<li><p>Java重入锁ReentrantLock和Condition。</p>
+</li>
+<li><p>Synchronized和锁的等级（方法锁、对象锁、类锁）。</p>
+</li>
+<li><p>Synchronized的wait（sleep的区别）和notify运行过程。</p>
+</li>
+<li><p>CAS介绍。（compare and swap）</p>
+</li>
+<li><p>Java中的并发工具（CountDownLatch，CyclicBarrier等）</p>
+</li>
+<li><p>Java线程池的使用和原理（模型）。</p>
+</li>
+<li><p>Java生产者和消费者模型。</p>
+</li>
+</ol>
+<blockquote>
+<p>关于线程和并发这块方面的知识，我个人还是推荐先阅读《Java并发编程的艺术》，这本书比较好上手。 再通过《Java高并发程序设计》和《Java并发编程实战》深入理解。</p>
+</blockquote>
+<hr>
+<h2 id="Java-集合"><a href="#Java-集合" class="headerlink" title="Java 集合"></a>Java 集合</h2><ol>
+<li><p>List、Set、Map的区别</p>
+</li>
+<li><p>ArrayList、LinkedList、Vector的区别。</p>
+</li>
+<li><p>CopyOnWriteArrayList的了解。</p>
+</li>
+<li><p>HashMap和HashTable的区别。</p>
+</li>
+<li><p>HashMap和ConcurrentHashMap的区别，HashMap的底层源码。</p>
+</li>
+<li><p>TreeMap、HashMap、LindedHashMap的区别。</p>
+</li>
+<li><p>Collection包结构，与Collections的区别。</p>
+</li>
+</ol>
+<blockquote>
+<p>Java集合主要考验对集合的使用和认识，一般都是以HashMap下手，问增删改查方法及内部原理。 集合这块暂时没有好的书本推荐。只能在网上了解。后面我也会写关于集合系列的文章。</p>
+</blockquote>
+<hr>
+<h2 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h2><ol>
+<li><p>TCP与UDP的区别。</p>
+</li>
+<li><p>TCP和UDP报文结构。</p>
+</li>
+<li><p>TCP的三次握手与四次挥手过程。</p>
+</li>
+<li><p>TCP可靠传输原理实现（滑动窗口）。</p>
+</li>
+<li><p>TCP拥塞控制。</p>
+</li>
+<li><p>TCP流量控制。</p>
+</li>
+<li><p>Http的报文结构。</p>
+</li>
+<li><p>Http的状态码。</p>
+</li>
+<li><p>Http的请求方法。</p>
+</li>
+<li><p>Http1.1和Http1.0及2.0的区别</p>
+</li>
+<li><p>Http长连接。</p>
+</li>
+<li><p>Cookie与Session的作用和原理。</p>
+</li>
+<li><p>Https加密原理。</p>
+</li>
+</ol>
+<blockquote>
+<p>网络这方面关于tcp/udp的可以阅读《计算机网络 第七版》的第五章运输层部分。 Http推荐《图解 HTTP》</p>
+</blockquote>
+<hr>
+<h2 id="数据结构和算法"><a href="#数据结构和算法" class="headerlink" title="数据结构和算法"></a>数据结构和算法</h2><blockquote>
+<p>目前算法还处于蓝海状态，算法和数据结构是需要日积月累慢慢修炼的内功心法，已经入手《算法 第4版》准备慢慢啃。 如果已经有算法基础的同学可以买《剑指offer》《编程之美》刷刷题。</p>
+</blockquote>
+<hr>
+<h1 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h1><p>书籍是进步的阶梯。我之所以比较推荐用看书的方法来学习主要的原因是 ： 书籍能够比较系统全面的了解某个知识。也就是可以建立知识体系。</p>
+<p>不积跬步无以至千里，机会是留给有准备的人。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/27/2018-Android-面试题整理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -517,7 +855,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
