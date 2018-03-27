@@ -809,6 +809,772 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/27/Android系统框架/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yyg">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yyg的小黑屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/27/Android系统框架/" itemprop="url">Android系统框架</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-27T21:17:54+08:00">
+                2018-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-Android系统架构"><a href="#1-Android系统架构" class="headerlink" title="1.Android系统架构"></a><strong>1.Android系统架构</strong></h3><p>Android系统架构分为五层，从上到下依次是应用层、应用框架层、系统运行库层、硬件抽象层和Linux内核层。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1159344-deef68bbc3846c7f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Android 系统框架.png"></p>
+<h4 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a><strong>应用层</strong></h4><p>系统内置的应用程序以及非系统级的应用程序都是属于应用层。负责与用户进行直接交互，通常都是用Java进行开发的。</p>
+<h4 id="应用框架层（Java-Framework"><a href="#应用框架层（Java-Framework" class="headerlink" title="应用框架层（Java Framework)"></a><strong>应用框架层（Java Framework)</strong></h4><p>应用框架层为开发人员提供了可以开发应用程序所需要的API，我们平常开发应用程序都是调用的这一层所提供的API，当然也包括系统的应用。这一层的是由Java代码编写的，可以称为Java Framework。下面来看这一层所提供的主要的组件。</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Activity Manager(活动管理器)</td>
+<td>管理各个应用程序生命周期以及通常的导航回退功能</td>
+</tr>
+<tr>
+<td>Location Manager(位置管理器)</td>
+<td>提供地理位置以及定位功能服务</td>
+</tr>
+<tr>
+<td>Package Manager(包管理器)</td>
+<td>管理所有安装在Android系统中的应用程序</td>
+</tr>
+<tr>
+<td>Notification Manager(通知管理器)</td>
+<td>使得应用程序可以在状态栏中显示自定义的提示信息</td>
+</tr>
+<tr>
+<td>Resource Manager（资源管理器）</td>
+<td>提供应用程序使用的各种非代码资源，如本地化字符串、图片、布局文件、颜色文件等</td>
+</tr>
+<tr>
+<td>Telephony Manager(电话管理器)</td>
+<td>管理所有的移动设备功能</td>
+</tr>
+<tr>
+<td>Package Manager(包管理器)</td>
+<td>管理所有安装在Android系统中的应用程序</td>
+</tr>
+<tr>
+<td>Window Manager（窗口管理器）</td>
+<td>管理所有开启的窗口程序</td>
+</tr>
+<tr>
+<td>Content Providers（内容提供器）</td>
+<td>使得不同应用程序之间可以共享数据</td>
+</tr>
+<tr>
+<td>View System（视图系统）</td>
+<td>构建应用程序的基本组件</td>
+</tr>
+</tbody>
+</table>
+<p>表1</p>
+<h4 id="系统运行库层（Native"><a href="#系统运行库层（Native" class="headerlink" title="系统运行库层（Native)"></a><strong>系统运行库层（Native)</strong></h4><p>系统运行库层分为两部分，分别是C/C++程序库和Android运行时库。下面分别来介绍它们。</p>
+<h5 id="1-C-C-程序库"><a href="#1-C-C-程序库" class="headerlink" title="1.C/C++程序库"></a><strong>1.C/C++程序库</strong></h5><p>C/C++程序库能被Android系统中的不同组件所使用，并通过应用程序框架为开发者提供服务，主要的C/C++程序库如下表2所示。</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OpenGL ES</td>
+<td>3D绘图函数库</td>
+</tr>
+<tr>
+<td>Libc</td>
+<td>从BSD继承来的标准C系统函数库，专门为基于嵌入式Linux的设备定制</td>
+</tr>
+<tr>
+<td>Media Framework</td>
+<td>多媒体库，支持多种常用的音频、视频格式录制和回放。</td>
+</tr>
+<tr>
+<td>SQLite</td>
+<td>轻型的关系型数据库引擎</td>
+</tr>
+<tr>
+<td>SGL</td>
+<td>底层的2D图形渲染引擎</td>
+</tr>
+<tr>
+<td>SSL</td>
+<td>安全套接层，是为网络通信提供安全及数据完整性的一种安全协议</td>
+</tr>
+<tr>
+<td>FreeType</td>
+<td>可移植的字体引擎，它提供统一的接口来访问多种字体格式文件</td>
+</tr>
+</tbody>
+</table>
+<p>表2</p>
+<h5 id="2-Android运行时库"><a href="#2-Android运行时库" class="headerlink" title="2.Android运行时库"></a><strong>2.Android运行时库</strong></h5><p>运行时库又分为核心库和ART(5.0系统之后，Dalvik虚拟机被ART取代)。核心库提供了Java语言核心库的大多数功能，这样开发者可以使用Java语言来编写Android应用。相较于JVM，Dalvik虚拟机是专门为移动设备定制的，允许在有限的内存中同时运行多个虚拟机的实例，并且每一个Dalvik 应用作为一个独立的Linux 进程执行。独立的进程可以防止在虚拟机崩溃的时候所有程序都被关闭。而替代Dalvik虚拟机的ART 的机制与Dalvik 不同。在Dalvik下，应用每次运行的时候，字节码都需要通过即时编译器转换为机器码，这会拖慢应用的运行效率，而在ART 环境中，应用在第一次安装的时候，字节码就会预先编译成机器码，使其成为真正的本地应用。</p>
+<h4 id="硬件抽象层（HAL"><a href="#硬件抽象层（HAL" class="headerlink" title="硬件抽象层（HAL)"></a><strong>硬件抽象层（HAL)</strong></h4><p>硬件抽象层是位于操作系统内核与硬件电路之间的接口层，其目的在于将硬件抽象化，为了保护硬件厂商的知识产权，它隐藏了特定平台的硬件接口细节，为操作系统提供虚拟硬件平台，使其具有硬件无关性，可在多种平台上进行移植。 从软硬件测试的角度来看，软硬件的测试工作都可分别基于硬件抽象层来完成，使得软硬件测试工作的并行进行成为可能。通俗来讲，就是将控制硬件的动作放在硬件抽象层中。</p>
+<h4 id="Linux内核层"><a href="#Linux内核层" class="headerlink" title="Linux内核层"></a><strong>Linux内核层</strong></h4><p>Android 的核心系统服务基于Linux 内核，在此基础上添加了部分Android专用的驱动。系统的安全性、内存管理、进程管理、网络协议栈和驱动模型等都依赖于该内核。<br>Android系统的五层架构就讲到这，了解以上的知识对以后分析系统源码有很大的帮助。</p>
+<h3 id="2-Android系统源码目录"><a href="#2-Android系统源码目录" class="headerlink" title="2.Android系统源码目录"></a><strong>2.Android系统源码目录</strong></h3><p>我们要先了解Android系统源码目录，为后期源码学习打下基础。关于源码的阅读，你可以访问<a href="https://link.jianshu.com?t=http://androidxref.com/" target="_blank" rel="noopener">http://androidxref.com/</a>来阅读系统源码。当然，最好是将源码下载下来。下载源码可以使用清华大学开源软件镜像站提供的Android 镜像：<a href="https://link.jianshu.com?t=https://mirrors.tuna.tsinghua.edu.cn/help/AOSP/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/help/AOSP/</a> 。如果觉得麻烦也可以查找国内的网盘进行下载，推荐使用该百度网盘地址下载：<a href="https://link.jianshu.com?t=http://pan.baidu.com/s/1ngsZs" target="_blank" rel="noopener">http://pan.baidu.com/s/1ngsZs</a>，它提供了多个Android版本的的源码下载。</p>
+<h4 id="整体结构"><a href="#整体结构" class="headerlink" title="整体结构"></a><strong>整体结构</strong></h4><p>各个版本的源码目录基本是类似，如果是编译后的源码目录会多增加一个out文件夹，用来存储编译产生的文件。Android7.0的根目录结构说明如下表所示。</p>
+<table>
+<thead>
+<tr>
+<th>Android源码根目录</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>abi</td>
+<td>应用程序二进制接口</td>
+</tr>
+<tr>
+<td>art</td>
+<td>全新的ART运行环境</td>
+</tr>
+<tr>
+<td>bionic</td>
+<td>系统C库</td>
+</tr>
+<tr>
+<td>bootable</td>
+<td>启动引导相关代码</td>
+</tr>
+<tr>
+<td>build</td>
+<td>存放系统编译规则及generic等基础开发包配置</td>
+</tr>
+<tr>
+<td>cts</td>
+<td>Android兼容性测试套件标准</td>
+</tr>
+<tr>
+<td>dalvik</td>
+<td>dalvik虚拟机</td>
+</tr>
+<tr>
+<td>developers</td>
+<td>开发者目录</td>
+</tr>
+<tr>
+<td>development</td>
+<td>应用程序开发相关</td>
+</tr>
+<tr>
+<td>device</td>
+<td>设备相关配置</td>
+</tr>
+<tr>
+<td>docs</td>
+<td>参考文档目录</td>
+</tr>
+<tr>
+<td>external</td>
+<td>开源模组相关文件</td>
+</tr>
+<tr>
+<td>frameworks</td>
+<td>应用程序框架，Android系统核心部分，由Java和C++编写</td>
+</tr>
+<tr>
+<td>hardware</td>
+<td>主要是硬件抽象层的代码</td>
+</tr>
+<tr>
+<td>libcore</td>
+<td>核心库相关文件</td>
+</tr>
+<tr>
+<td>libnativehelper</td>
+<td>动态库，实现JNI库的基础</td>
+</tr>
+<tr>
+<td>ndk</td>
+<td>NDK相关代码，帮助开发人员在应用程序中嵌入C/C++代码</td>
+</tr>
+<tr>
+<td>out</td>
+<td>编译完成后代码输出在此目录</td>
+</tr>
+<tr>
+<td>packages</td>
+<td>应用程序包</td>
+</tr>
+<tr>
+<td>pdk</td>
+<td>Plug Development Kit 的缩写，本地开发套件</td>
+</tr>
+<tr>
+<td>platform_testing</td>
+<td>平台测试</td>
+</tr>
+<tr>
+<td>prebuilts</td>
+<td>x86和arm架构下预编译的一些资源</td>
+</tr>
+<tr>
+<td>sdk</td>
+<td>应用程序包</td>
+</tr>
+<tr>
+<td>packages</td>
+<td>sdk和模拟器</td>
+</tr>
+<tr>
+<td>system</td>
+<td>底层文件系统库、应用和组件</td>
+</tr>
+<tr>
+<td>toolchain</td>
+<td>工具链文件</td>
+</tr>
+<tr>
+<td>tools</td>
+<td>工具文件</td>
+</tr>
+<tr>
+<td>Makefile</td>
+<td>全局Makefile文件，用来定义编译规则</td>
+</tr>
+</tbody>
+</table>
+<p>表3<br>从表3可以看出，系统源码分类清晰，并且内容庞大且复杂。接下来分析packages中的内容，也就是应用层部分。</p>
+<h4 id="应用层部分"><a href="#应用层部分" class="headerlink" title="应用层部分"></a><strong>应用层部分</strong></h4><p>应用层位于整个Android系统的最上层，开发者开发的应用程序以及系统内置的应用程序都是在应用层。源码根目录中的packages目录对应着系统应用层。它的目录结构如表4所示。</p>
+<table>
+<thead>
+<tr>
+<th>packages目录</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>apps</td>
+<td>核心应用程序</td>
+</tr>
+<tr>
+<td>experimental</td>
+<td>第三方应用程序</td>
+</tr>
+<tr>
+<td>inputmethods</td>
+<td>输入法目录</td>
+</tr>
+<tr>
+<td>providers</td>
+<td>内容提供者目录</td>
+</tr>
+<tr>
+<td>screensavers</td>
+<td>屏幕保护</td>
+</tr>
+<tr>
+<td>services</td>
+<td>通信服务</td>
+</tr>
+<tr>
+<td>wallpapers</td>
+<td>墙纸</td>
+</tr>
+</tbody>
+</table>
+<p>表4</p>
+<p>从目录结构可以发现，packages目录存放着系统核心应用程序、第三方的应用程序和输入法等等，这些应用都是运行在系统应用层的，因此packages目录对应着系统的应用层。</p>
+<h4 id="应用框架层部分"><a href="#应用框架层部分" class="headerlink" title="应用框架层部分"></a><strong>应用框架层部分</strong></h4><p>应用框架层是系统的核心部分，一方面向上提供接口给应用层调用，另一方面向下与C/C++程序库以及硬件抽象层等进行衔接。 应用框架层的主要实现代码在/frameworks/base和/frameworks/av目录下，其中/frameworks/base目录结构如表5所示。</p>
+<table>
+<thead>
+<tr>
+<th>/frameworks/base目录</th>
+<th>描述</th>
+<th>/frameworks/base目录</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>api</td>
+<td>定义API</td>
+<td>cmds</td>
+<td>重要命令：am、app_proce等</td>
+</tr>
+<tr>
+<td>core</td>
+<td>核心库</td>
+<td>data</td>
+<td>字体和声音等数据文件</td>
+</tr>
+<tr>
+<td>docs</td>
+<td>文档</td>
+<td>graphics</td>
+<td>图形图像相关</td>
+</tr>
+<tr>
+<td>include</td>
+<td>头文件</td>
+<td>keystore</td>
+<td>和数据签名证书相关</td>
+</tr>
+<tr>
+<td>libs</td>
+<td>库</td>
+<td>location</td>
+<td>地理位置相关库</td>
+</tr>
+<tr>
+<td>media</td>
+<td>多媒体相关库</td>
+<td>native</td>
+<td>本地库</td>
+</tr>
+<tr>
+<td>nfc-extras</td>
+<td>NFC相关</td>
+<td>obex</td>
+<td>蓝牙传输</td>
+</tr>
+<tr>
+<td>opengl</td>
+<td>2D/3D 图形API</td>
+<td>packages</td>
+<td>设置、TTS、VPN程序</td>
+</tr>
+<tr>
+<td>sax</td>
+<td>XML解析器</td>
+<td>services</td>
+<td>系统服务</td>
+</tr>
+<tr>
+<td>telephony</td>
+<td>电话通讯管理</td>
+<td>test-runner</td>
+<td>测试工具相关</td>
+</tr>
+<tr>
+<td>tests</td>
+<td>测试相关</td>
+<td>tools</td>
+<td>工具</td>
+</tr>
+<tr>
+<td>wifi</td>
+<td>wifi无线网络</td>
+</tr>
+</tbody>
+</table>
+<p>表5</p>
+<h4 id="C-C-程序库部分"><a href="#C-C-程序库部分" class="headerlink" title="C/C++程序库部分"></a><strong>C/C++程序库部分</strong></h4><p>系统运行库层（Native)中的 C/C++程序库的类型繁多，功能强大，C/C++程序库并不完全在一个目录中，这里给出几个常用且比较重要的C/C++程序库所在的目录位置。</p>
+<table>
+<thead>
+<tr>
+<th>目录位置</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bionic/</td>
+<td>Google开发的系统C库，以BSD许可形式开源。</td>
+</tr>
+<tr>
+<td>/frameworks/av/media</td>
+<td>系统媒体库</td>
+</tr>
+<tr>
+<td>/frameworks/native/opengl</td>
+<td>第三方图形渲染库</td>
+</tr>
+<tr>
+<td>/frameworks/native/services/surfaceflinger</td>
+<td>图形显示库，主要负责图形的渲染、叠加和绘制等功能</td>
+</tr>
+<tr>
+<td>external/sqlite</td>
+<td>轻量型关系数据库SQLite的C++实现</td>
+</tr>
+</tbody>
+</table>
+<p>表6<br>讲完 C/C++程序库部分，剩下的部分我们在表3已经给出：Android运行时库的代码放在art/目录中。硬件抽象层的代码在hardware/目录中，这一部分是手机厂商改动最大的一部分，根据手机终端所采用的硬件平台会有不同的实现。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/27/app-崩溃之后自动重启/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yyg">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yyg的小黑屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/27/app-崩溃之后自动重启/" itemprop="url">APP崩溃后重启</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-27T21:17:54+08:00">
+                2018-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在安卓应用中，如果是偶发性bug导致APP崩溃，APP可能会直接闪退或者白屏，用户体验不太好，我们可以在application中捕获到全局异常，然后再进行处理。</p>
+<p>首先创建一个MainApplication（项目中已有自定义application的不需要再创建）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public class MainApplication extends MultiDexApplication</span><br></pre></td></tr></table></figure></p>
+<p>在minifast中注册：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;application  </span><br><span class="line"> android:name=&quot;.MainApplication&quot;</span><br></pre></td></tr></table></figure></p>
+<p>然后MainApplication中创建一个UncaughtException对象：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">private Thread.UncaughtExceptionHandler restartHandler = new Thread.UncaughtExceptionHandler() &#123;  </span><br><span class="line"> public void uncaughtException(Thread thread, Throwable ex) &#123;  </span><br><span class="line">    restartApp();  </span><br><span class="line">    &#125;  </span><br><span class="line"> &#125;;</span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line"> 定义重启方法：</span><br></pre></td></tr></table></figure>
+<p>public void restartApp() {<br>Intent intent = new Intent(getApplicationContext(), FlashActivity.class);<br> intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);<br> startActivity(intent);<br> RxBus.getDefault().post(RxBusConstant.FINISH);//把你退出APP的代码放在这，我这里使用了rxbus关闭所有Activity<br> android.os.Process.killProcess(android.os.Process.myPid());<br> }<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">最后在application的oncreat中注册这个handler就大功告成了：</span><br></pre></td></tr></table></figure></p>
+<p> Thread.setDefaultUncaughtExceptionHandler(restartHandler);<br><code>`</code></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/27/浅析Android的沙箱模型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yyg">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yyg的小黑屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/27/浅析Android的沙箱模型/" itemprop="url">浅析Android沙箱模型</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-27T21:17:54+08:00">
+                2018-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="一、Android沿用Linux权限模型"><a href="#一、Android沿用Linux权限模型" class="headerlink" title="一、Android沿用Linux权限模型"></a>一、Android沿用Linux权限模型</h3><blockquote>
+<p>沙箱，对使用者来说可以理解为一种安全环境，对恶意访问者来说是一种限制。</p>
+</blockquote>
+<p>在Android系统中，应用（通常）都在一个独立的沙箱中运行，即每一个Android应用程序都在它自己的进程中运行，都拥有一个独立的Dalvik虚拟机实例。Dalvik经过优化，允许在有限的内存中同时高效地运行多个虚拟机的实例，并且每一个Dalvik应用作为一个独立的Linux进程执行。Android这种基于Linux的进程“沙箱”机制，是整个安全设计的基础之一。</p>
+<p> Android从Linux继承了已经深入人心的类Unix进程隔离机制与最小权限原则，同时结合移动终端的具体应用特点，进行了许多有益的改进与提升。具体而言，进程以隔离的用户环境运行，不能相互干扰，比如发送信号或者访问其他进程的内存空间。因此，Android沙箱的核心机制基于以下几个概念：标准的Linux进程隔离、大多数进程拥有唯一的用户ID（UID），以及严格限制文件系统权限。</p>
+<p> Android系统沿用了Linux的UID/GID权限模型，即用户ID和用户组ID，但并没有使用传统的passwd和group文件来存储用户与用户组的认证凭据，作为替代，Android定义了从名称到独特标识符Android ID（AID）的映射表。初始的AID映射表包含了一些与特权用户及系统关键用户（如system用户/用户组）对应的静态保留条目。</p>
+<p> 除了AID，Android还使用了辅助用户组机制，以允许进程访问共享或受保护的资源。例如，sdcard_rw用户组中的成员允许进程读写/sdcard目录，因为它的加载项规定了哪些用户组可以读写该目录。这与许多Linux发行版中对辅助用户组机制的使用是类似的。除了用来实施文件系统访问，辅助用户组还会被用于向进程授予额外的权限。权限是关于允许或限制应用程序（而不是用户）访问设备资源。</p>
+<p>  Android扩展了Linux内核安全模型的用户与权限机制，将多用户操作系统的用户隔离机制巧妙地移植为应用程序隔离。在linux中，一个用户标识（UID）识别一个给定用户；在Android上，一个UID则识别一个应用程序。在安装应用程序时向其分配UID。应用程序在设备上存续期间内，其UID保持不变。仅限用于允许或限制应用程序（而非用户）对设备资源的访问。如此，Android的安全机制与Linux内核的安全模型完美衔接！不同的应用程序分别属于不同的用户，因此，应用程序运行于自己独立的进程空间，与UID不同的应用程序自然形成资源隔离，如此便形成了一个操作系统级别的应用程序“沙箱”。</p>
+<h3 id="二、Android沙箱模型"><a href="#二、Android沙箱模型" class="headerlink" title="二、Android沙箱模型"></a>二、Android沙箱模型</h3><h4 id="1、应用程序在独立的进程"><a href="#1、应用程序在独立的进程" class="headerlink" title="1、应用程序在独立的进程"></a>1、应用程序在独立的进程</h4><p> 应用程序进程之间，应用程序与操作系统之间的安全性由Linux操作系统的标准进程级安全机制实现。在默认状态下，应用程序之间无法交互，运行在进程沙箱内的应用程序没有被分配权限，无法访问系统或资源。因此，无论是直接运行于操作系统之上的应用程序，还是运行于Dalvik虚拟机的应用程序都得到同样的安全隔离与保护，被限制在各自“沙箱”内的应用程序互不干扰，对系统与其他应用程序的损害可降至最低。Android应用程序的“沙箱”机制如下图 1，互相不具备信任关系的应用程序相互隔离，独自运行，箭头访问是禁止的：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1159344-9f2e8e4f0fbc439f?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>图 1.应用程序在独立的进程<br> Android 是一个多用户系统，每个应用是一个独立的用户。系统为每个应用分配一个唯一的用户标识（UID），并为应用中所有文件设置该用户才能访问的权限。每个进程中有一个独立的VM。每个应用在自己的进程中运行，应用的组件需要执行时，系统创建该进程；当系统内存不存时，系统会销毁该进程。</p>
+<h4 id="2、应用程序在同一个进程（共享UID）"><a href="#2、应用程序在同一个进程（共享UID）" class="headerlink" title="2、应用程序在同一个进程（共享UID）"></a>2、应用程序在同一个进程（共享UID）</h4><p> Android 应用程序运行在它们自己的 Linux 进程上，并被分配一个惟一的用户 ID。默认情况下，运行在基本沙箱进程中的应用程序没有被分配权限，因而防止了此类应用程序访问系统或资源。但是 Android 应用程序可以通过应用程序的 manifest 文件请求权限。</p>
+<p> 通过做到以下两点，Android 应用程序可以允许其他应用程序访问它们的资源：</p>
+<ul>
+<li>声明适当的 manifest 权限；</li>
+<li>与其他受信任的应用程序运行在同一进程中，从而共享对其数据和代码的访问。</li>
+</ul>
+<p>在很多情况下，源自同一开发者或同一开发机构的应用程序，相互间存在信任关系。Android系统提供一种所谓共享UID（SharedUserID）机制，使具备信任关系的应用程序可以运行于同一进程空间。通常 ，这种信任关系由应用程序的数字签名确定，并且需要应用程序在manifest文件中使用相同的UID。共享UID的应用程序进程空间如下图：</p>
+<p> <img src="http://upload-images.jianshu.io/upload_images/1159344-6d31f23e4754400a?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>图 2.应用程序共享UID</p>
+<p> 不同的应用程序可以运行在相同的进程中。对于此方法，首先必须使用相同的私钥签署这些应用程序，然后必须使用 manifest 文件给它们分配相同的 Linux 用户 ID，这可以通过用相同的值/名定义 manifest 属性 android:sharedUserId 来做到。通过sharedUserId，拥有同一个User id的多个APK安装包可以配置成运行在同一个进程中.所以默认就是可以互相访问任意数据. 也可以配置成运行成不同的进程, 同时可以访问其他APK的数据目录下的数据库和文件.就像访问本程序的数据一样。这样就为同一个机构发开的不同App之间的数据共享，提供了便利。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -855,7 +1621,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
