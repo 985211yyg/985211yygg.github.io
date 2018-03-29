@@ -1,0 +1,2072 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Dalvik虚拟机（DVM）  Android系统可以简单地完成进程隔离和线程管理，每一个Android应用都在底层会对应一个独立的Dalvik虚拟机实例，其代码在虚拟机的解释下得以执行。  Java虚拟机运行的是Java字节码，而Dalvik虚拟机运行的则是专有的文件格式为dex的文件。   在JavaSE程序中的Java类会被编译成一个或者多个字节码文件（.class），然后打包到jar文件，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="“android总结">
+<meta property="og:url" content="http://www.yyglike.com/2018/03/29/android总结/index.html">
+<meta property="og:site_name" content="yyg的小黑屋">
+<meta property="og:description" content="Dalvik虚拟机（DVM）  Android系统可以简单地完成进程隔离和线程管理，每一个Android应用都在底层会对应一个独立的Dalvik虚拟机实例，其代码在虚拟机的解释下得以执行。  Java虚拟机运行的是Java字节码，而Dalvik虚拟机运行的则是专有的文件格式为dex的文件。   在JavaSE程序中的Java类会被编译成一个或者多个字节码文件（.class），然后打包到jar文件，">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://www.yyglike.com/2018/03/29/android总结/media/137321acac57e423a147998d61fcc6d7.png">
+<meta property="og:image" content="http://www.yyglike.com/2018/03/29/android总结/media/c4af7d4ceaebd93a41d24d35b8162053.png">
+<meta property="og:image" content="http://www.yyglike.com/2018/03/29/android总结/media/0ba8dfe7cd64adf0c60aca93d6844ee7.png">
+<meta property="og:image" content="http://www.yyglike.com/2018/03/29/android总结/media/f6ce110437fcbd988214d42f82f30d83.png">
+<meta property="og:image" content="http://www.yyglike.com/2018/03/29/android总结/media/649527c3a8e0f36acb12f1abec8cdc43.png">
+<meta property="og:image" content="http://www.yyglike.com/2018/03/29/android总结/media/12730863761914f1eb53e37266b34433.png">
+<meta property="og:image" content="http://www.yyglike.com/2018/03/29/android总结/media/170e6ebee8e46584956e25478d7e8087.png">
+<meta property="og:image" content="http://www.yyglike.com/2018/03/29/android总结/media/d9a345c30568d855be6db4a4a46e6ea0.png">
+<meta property="og:image" content="http://www.yyglike.com/2018/03/29/android总结/media/b62dc6c7b08e54304a75522e5730ba34.png">
+<meta property="og:image" content="http://www.yyglike.com/2018/03/29/android总结/media/954ae13fa2eccca5bd4bc17bf5357440.png">
+<meta property="og:image" content="http://www.yyglike.com/2018/03/29/android总结/media/4f1fb26e78876c23559961eca7115881.png">
+<meta property="og:image" content="http://www.yyglike.com/2018/03/29/android总结/media/d2f3d20b478edfdc298ffd30a5ab94ef.png">
+<meta property="og:image" content="http://www.yyglike.com/2018/03/29/android总结/media/338c3a5b7fe6f9db4cb31de915db0e3f.png">
+<meta property="og:image" content="http://www.yyglike.com/2018/03/29/android总结/media/0797ca64cb0ee6e27ec9b51b7202d6ed.png">
+<meta property="og:image" content="http://www.yyglike.com/2018/03/29/android总结/media/21af341a6c76a381a28a609bef03da26.png">
+<meta property="og:image" content="http://www.yyglike.com/2018/03/29/android总结/media/879de2b2ac35e1943f3c5c9cfa43bee9.png">
+<meta property="og:image" content="http://www.yyglike.com/2018/03/29/android总结/media/60a36477030b8f3284436bc1802bce6d.png">
+<meta property="og:image" content="http://www.yyglike.com/2018/03/29/android总结/media/0dd621751694525dbbdbe6e61d10adb2.png">
+<meta property="og:image" content="http://www.yyglike.com/2018/03/29/android总结/media/676c790ac4abc7388d990fc459357935.png">
+<meta property="og:image" content="http://www.yyglike.com/2018/03/29/android总结/media/e514d3b06b7d8afb03c2148062aadf43.png">
+<meta property="og:image" content="http://www.yyglike.com/2018/03/29/android总结/media/1353e22ec370387ab20a64d27792e2c7.png">
+<meta property="og:image" content="http://www.yyglike.com/2018/03/29/android总结/media/cb6d65d0f583285a389cdc15c9e2d4d4.png">
+<meta property="og:image" content="http://www.yyglike.com/2018/03/29/android总结/media/bb23f8cb656f438790412838a5a54360.png">
+<meta property="og:updated_time" content="2018-03-29T15:13:16.428Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="“android总结">
+<meta name="twitter:description" content="Dalvik虚拟机（DVM）  Android系统可以简单地完成进程隔离和线程管理，每一个Android应用都在底层会对应一个独立的Dalvik虚拟机实例，其代码在虚拟机的解释下得以执行。  Java虚拟机运行的是Java字节码，而Dalvik虚拟机运行的则是专有的文件格式为dex的文件。   在JavaSE程序中的Java类会被编译成一个或者多个字节码文件（.class），然后打包到jar文件，">
+<meta name="twitter:image" content="http://www.yyglike.com/2018/03/29/android总结/media/137321acac57e423a147998d61fcc6d7.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.yyglike.com/2018/03/29/android总结/"/>
+
+
+
+
+
+  <title>“android总结 | yyg的小黑屋</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">yyg的小黑屋</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.yyglike.com/2018/03/29/android总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yyg">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yyg的小黑屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">“android总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-29T23:12:34+08:00">
+                2018-03-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>Dalvik虚拟机（DVM）</strong></p>
+<ol>
+<li><p>Android系统可以简单地完成进程隔离和线程管理，每一个Android应用都在底层会对应一个独立的Dalvik虚拟机实例，其代码在虚拟机的解释下得以执行。</p>
+</li>
+<li><p>Java虚拟机运行的是Java字节码，而Dalvik虚拟机运行的则是专有的文件格式为dex的文件。</p>
+</li>
+</ol>
+<p>在Java<br>SE程序中的Java类会被编译成一个或者多个字节码文件（.class），然后打包到jar文件，而后虚拟机会从相应的class文件和jar文件中获取相应的字节码。</p>
+<p>Android应用虽然也是使用Java语言编程，但是在编译成class文件之后，还会通过一个工具将应用所有的class文件转换成dex文件，而后Dalvik虚拟机会从其中读取指令和数据。</p>
+<ol>
+<li><p>Dalvik虚拟机主要具有以下特征：</p>
+</li>
+<li><p>专有的dex文件格式。每个应用中会有很多类，编译完成后即会有很多的class文件，class文件中会有大量的冗余信息，而dex文件格式会把所有的class文件内容整合到一个文件中。这样除了减小尺寸，也提高了类的查找速度；增加了对新的操作码的支持；文件结构尽量简洁，使用等长的指令，借以提高解析速度；尽量扩大只读结构的大小，借以提高跨进程的数据共享。</p>
+</li>
+<li><p>dex的优化。</p>
+</li>
+<li><p>基于寄存器。相对于基于堆栈实现的虚拟机，基于寄存器实现的虚拟机虽然在硬件、通用性上要差一些，但是它在代码的执行效率上更胜一筹。</p>
+</li>
+<li><p>一个应用，一个虚拟机实例，一个进程。每一个Android应用都运行在一个Dalvik虚拟机实例中，而每一个虚拟机实例都是一个独立的进程空间。虚拟机的线程机制，内存分配和管理，Mutex等的实现都以来底层操作系统。所有Android应用的线程都对应一个Linux线程，虚拟机因而可以更多地依赖操作系统的线程调度和管理机制。</p>
+</li>
+</ol>
+<p>不同的应用在不同的进程空间里运行，对不同来源的应用都使用不同的Linux用户来运行，可以更大程度地保护应用的安全和独立运行。</p>
+<p><strong>Android基本架构</strong></p>
+<p><img src="media/137321acac57e423a147998d61fcc6d7.png" alt=""></p>
+<ol>
+<li><p>Android其本质就是在标准的linux系统上增加了Java虚拟机Dalvik，并在Dalvik虚拟机上搭建了一个Java的application<br>framework，所有的应用都是基于Java的application framework之上。</p>
+</li>
+<li><p>Android分为四层，从高到低为别是application，application<br>framework，libraries和linux<br>kernal。蓝色的代表java程序，黄色的代码为运行java程序而实现的虚拟机，绿色部分为C/C++语言编写而成的程序库，红色的为linux内核代码。在application<br>franmwork之下，有C/C++的程序库组成，<strong>通过JNI完成由Java到C的调用</strong>。</p>
+</li>
+</ol>
+<p><strong>Application</strong></p>
+<p>所有的应用程序都是使用java语言编写的，每一个应用程序由一个或多个activity组成，activity类似于操作系统上的进程，但是活动比操作系统的进程要更为灵活，与进程类似的是，活动在多种状态之间切换。</p>
+<p>利用java的跨平台性质，基于android框架开发的应用程序可以不用编译而运行于任何一台安装有Android系统的平台。</p>
+<p><strong>Application framework</strong></p>
+<p>通过提供开放的开发平台，android使开发者能够编制极其丰富和新颖的应用程序。开发者可以自由地利用设备硬件优势、访问位置信息、运行后台服务、向状态栏添加通知。</p>
+<p><strong>开发者完全可以利用核心应用程序所使用的框架APIs</strong>。应用程序的体系结构旨在<strong>简化组件的重用</strong>，任何应用程序都能发布它的功能且任何其它应用程序可以使用这些功能（需要从框架执行的安全限制）。这一机制允许用户替换组件。所有的应用程序其实是一组服务和系统：</p>
+<ol>
+<li><p>View：丰富的、可扩展的视图集合，可用于构建一个应用程序。包括列表，网格、文本框、按钮，甚至内嵌的网络浏览器。</p>
+</li>
+<li><p>Content<br>Provider：是应用程序能访问其他应用程序（如通讯录）的数据，或共享自己的数据。</p>
+</li>
+<li><p>Resource Manager：提供访问非代码资源，如本地化字符串、图形和布局文件。</p>
+</li>
+<li><p>Notification Manager：使所有的应用程序能够在状态栏显示自定义警告。</p>
+</li>
+<li><p>Activity Manager：管理应用程序生命周期，提供通用的导航回退功能。</p>
+</li>
+</ol>
+<p><strong>Libraries</strong></p>
+<p>Android包含一个C/C++库的集合，<strong>供Android系统的各个组件使用</strong>。这些功能通过android<br>framework暴露够开发者，下面列出一些核心库：</p>
+<ol>
+<li><p>系统C库：表示C系统库的BSD衍生，调整为基于嵌入式linux设备。</p>
+</li>
+<li><p>媒体库：基于PacketVideo的OpenCORE。这些库支持播放和录制许多流行的音频和视频格式，以及静态文件图像。</p>
+</li>
+<li><p>界面管理：管理访问显示子系统和无缝组合多个应用程序的二维和三维图形层。</p>
+</li>
+<li><p>LibWebCore：新式的web浏览器引用，驱动android浏览器和内嵌的web视图。</p>
+</li>
+<li><p>SGL：基本的2D图形引擎。</p>
+</li>
+<li><p>3D库：基于OpenGL ES 1.0<br>APIs的实现。库使用硬件3D加速或包含高度优化的3D软件光栅。</p>
+</li>
+<li><p>FreeType：位图和矢量字体渲染。</p>
+</li>
+</ol>
+<p>SQLite：所有应用程序都可以使用的强大而轻量级的关系数据库引擎。</p>
+<p><strong>Android的启动过程</strong></p>
+<p><strong>（一、开机加电）</strong></p>
+<p>BootLoader进行底层初始化，并加载内核代码，最终调转到内核的boot程序。</p>
+<ol>
+<li><p><strong>Linux内核引导）</strong></p>
+</li>
+<li><p>kernel核心初始化（内存初始化，打开中断，初始化进程表等等）</p>
+</li>
+<li><p>驱动初始化</p>
+</li>
+<li><p>启动内核后台线程</p>
+</li>
+<li><p>安装根文件系统</p>
+</li>
+<li><p>启动第一个用户级进程init</p>
+</li>
+<li><p><strong>init进程启动）</strong></p>
+</li>
+</ol>
+<p>init进程的程序在system/core/init/init.c里，它是Android系统特有的初始化程序，最终它会以后台进程（daemon）的形式一直存在。该进程主要有以下功能：</p>
+<ol>
+<li><p>创建/安装设备文件/进程文件/系统文件节点。</p>
+</li>
+<li><p>解析启动/init.rc和/init.\&lt;machine_name>.rc。</p>
+</li>
+<li><p>显示Logo画面。</p>
+</li>
+<li><p>打开Device Socket，Property Socket，child进程通信Socket。</p>
+</li>
+<li><p>执行脚本中指定的命令或动作，启动指定服务，监听特定事件。</p>
+</li>
+<li><p>进入死循环：检查是否有action需要执行，是否需要restart某服务</p>
+</li>
+<li><p><strong>Native服务启动）</strong></p>
+</li>
+<li><p>Service Manager：Binder服务管理器，管理所有Android系统服务。</p>
+</li>
+<li><p>Zygote：启动Android Dalvik Runtime并负责孵化进程。</p>
+</li>
+<li><p><strong>Android Runtime启动）</strong></p>
+</li>
+</ol>
+<p>zygote创建并启动Android Runtime（Dalvik属于Runtime的一部分），然后启动System<br>Server进程进行系统初始化。</p>
+<ol>
+<li><strong>Android系统初始化）</strong></li>
+</ol>
+<p>System Server作为Zygote的第一个子进程，是Android<br>Framework的核心，它主要负责Android系统初始化并启动其它服务。其它的Android服务都由System<br>Server启动并允许在该进程空间。</p>
+<ol>
+<li><strong>Home启动）</strong></li>
+</ol>
+<p><strong>Android种常见的mvc模式</strong></p>
+<ol>
+<li><p>mvc是三个单词的缩写：模型（model），视图（view）和控制（controller）。mvc的目的就是实现web系统的职能分工，model层负责实现系统中的业务逻辑，view层用于与用户的交互，controller层是model与view层之间的桥梁，它可以分派用户的请求并选择恰当的视图用于显示，同时它也可以解释用户的输入并将它们映射为模型层可执行的操作。</p>
+</li>
+<li><p>例1：Andorid中的Launcher：</p>
+</li>
+<li><p>Workspace作为一个抽象的桌面，将应用显示在用户面前，与用户进行交互（view）。</p>
+</li>
+<li><p>Launcher是主要的Activity，里面有很多对用户的操作进行处理，并且将结果反馈在Workspace中（controller）。</p>
+</li>
+<li><p>LauncherModel为辅助文件封装了许多对数据库的操作（model）。</p>
+</li>
+<li><p>例2：Android中的GridView（ListView，Gallery）：</p>
+</li>
+<li><p>在.xml中定义GridView。（view）</p>
+</li>
+<li><p>Adapter，就是model和view中的桥梁（controller）。</p>
+</li>
+<li><p>获取设备上安装的应用信息所有对应的方法（model）。</p>
+</li>
+</ol>
+<p><strong>Android引入广播机制的用意</strong></p>
+<ol>
+<li><p>从mvc的角度来说，Android的四大组件本质上就是为了实现移动设备上的mvc架构，它们之间有时候是一种相互依存的关系，有时候又是一种补充关系，引入广播机制可以方便几大组件的信息交互。</p>
+</li>
+<li><p>程序间互通消息。（contentProvider）</p>
+</li>
+<li><p>效率上。（UDP的广播协议在局域网的方便些）</p>
+</li>
+<li><p>设计模式。（反转控制的一种应用，类似监听者模式）</p>
+</li>
+</ol>
+<p><strong>Looper和Handler</strong></p>
+<ol>
+<li><p>Looper：每一个线程都可以产生一个Looper，用来管理线程的message，Looper对象会建立一个MessageQueue数据结构来存放message。</p>
+</li>
+<li><p>Handler：与Looper沟通的对象，可以push消息或runnable对象到MessageQueue，<br>也可以从MessageQueue得到消息（即Handler扮演监听者的角色）。</p>
+</li>
+</ol>
+<p>Handler()：默认使用当前的Looper创建。</p>
+<p>Handler(Looper looper)：使用指定的Lopper对象创建Handler。</p>
+<ol>
+<li><p>线程A的Handler对象引用（Looper.getMainLooper()）可以传递给别的线程（新的Thread），让别的线程B或C等能送来消息给线程A。</p>
+</li>
+<li><p>线程A的MessageQueue里的消息，只有线程A所属的对象可以处理。</p>
+</li>
+<li><p>Handler通过Message通信的基本方式</p>
+</li>
+<li><p>获得Looper对象。</p>
+</li>
+</ol>
+<blockquote>
+<p>  new EVHandler(Looper.myLooper())，取得当前线程的Handlerr对象。</p>
+</blockquote>
+<blockquote>
+<p>  new EVHandler(Looper.getMainLoop())，用来处理main线程的Handler对象。</p>
+</blockquote>
+<p>C）mHandler.removeMessage(0); //清空消息队列里的内容。</p>
+<p>D）Message m = mHandler.obtainMessage(1,1,1,obj); //产生消息</p>
+<p>E）mHandler.sendMessage(m); //发送消息</p>
+<p>F）继承Handler类，并覆写它的<strong>handleMessage</strong>函数，在里面更新UI。</p>
+<ol>
+<li><p>新诞生一个线程，或执行Thread时，并不会自动建立Message Looper。</p>
+</li>
+<li><p>在Android中，这里的线程分为有消息循环和没有消息循环的线程，有消息循环的线程一般都会有一个Looper（例如主线程），当我们有消息循环，就要往消息循环里发送相应的消息，自定义消息一般都会有自己对应的处理，消息的发送、清除和处理都封装在Handler里面。</p>
+</li>
+<li><p>只要是关于UI的东西，都不能放在子线程中。</p>
+</li>
+</ol>
+<p><strong>Activity 的生命周期</strong></p>
+<p><img src="media/c4af7d4ceaebd93a41d24d35b8162053.png" alt=""></p>
+<ol>
+<li><p>覆写这些回调函数时，首先要记得一定要调用基类的构造函数。</p>
+</li>
+<li><p>通过onCreatet()关联出最后的UI，<strong>一般做一些初始化的工作</strong>。</p>
+</li>
+<li><p>onStart()<strong>只能被父类调用</strong>，如果手动调用会出现异常。</p>
+</li>
+<li><p>onResume()和onPause()中的动作应该互逆，为了保证程序的正确性，在onPause()里应该写上持久层操作的代码，将<strong>用户编辑的内容</strong>都保存到存储介质上（一般是数据库），同时这个方法里<strong>做的事情时间要短</strong>，因为下个Activity不会等到这个方法完才启动。</p>
+</li>
+</ol>
+<p>onResume()方法在activity要前台运行的时候执行，比如第一次初始启动后，或者当一个对话框被清除，<strong>这是刷新UI的最佳位置</strong>，可以在此方法中刷新试图，调用后台线程更新UI。（<strong>surfaceCreated()</strong>和<strong>surfaceChanged()</strong>在该方法之后调用）</p>
+<p>在onPause()方法中，应该<strong>取消任何在onResume()方法中所做的事</strong>。比如关闭后台线程，释放任何独占方位的资源（如摄像头）。（<strong>surfaceDestroy()</strong>在该方法后被调用）</p>
+<ol>
+<li><p><strong>onStop()中需要释放某些资源</strong>，因为有时系统会kill掉处于onStop()状态的进程，如果资源没有释放，那么可能造成内存泄露。</p>
+</li>
+<li><p>onStop()中还应该包括一些关闭操作，比如向数据库写信息。</p>
+</li>
+<li><p>当从onStop()状态回到前景时，首先要调用onRestart()，<strong>这个函数做一些恢复工作</strong>，恢复停止但是并没有销毁的activity，然后系统会接着调用onStart()，因为activity每次变得可见时都会调用onStart()。</p>
+</li>
+<li><p>onDestroy()一般会在onPause()和onStop()之后调用，但有一个例外的情况，onCreate()中调用finish()方法，系统会直接调用onDestroy()。</p>
+</li>
+</ol>
+<p><strong>Activity的销毁和重建</strong></p>
+<ol>
+<li><p>Activity的销毁分为两种：</p>
+</li>
+<li><p>正常的销毁，比如用户按下back按钮或activity自动调用了finish()方法。</p>
+</li>
+<li><p>由于Activity处于onStop()状态，并且长期未被使用，或者前台的Activity需要更多的资源，这些情况下系统就会关闭后台的Activity，以恢复一些内存。</p>
+</li>
+<li><p><strong>第二种情况下</strong>，尽管实际的Activity实例已经被销毁，但是系统仍记得它的存在，因此返回它的时候，系统会创建出一个新的实例来代替它，这里需要用旧的实例被销毁时存下来的数据。</p>
+</li>
+<li><p>缺省状态下，系统会把每一个View对象保存起来，如果Activity实例被销毁和重建，那么不需要你编码，layout会自动恢复到以前的状态。</p>
+</li>
+<li><p>当需要存储额外的信息，必须自己实现onSaveInstanceState(Bundle),要记得调用基类的实现。</p>
+</li>
+</ol>
+<p><img src="media/0ba8dfe7cd64adf0c60aca93d6844ee7.png" alt=""></p>
+<ol>
+<li>由于onCreate()和onRestoreInstanceState()回调函数都会接到这个Bundle，通过在onCreate()中检查savedInstanceState是否为空，可以判断是否有需要恢复的状态，同时也可以覆写onRestoreInstanceState()，这个函数在onCreate()之后调用（并且只有Bundle不为null时才会被调用）。</li>
+</ol>
+<p><img src="media/f6ce110437fcbd988214d42f82f30d83.png" alt=""></p>
+<ol>
+<li><p>onSaveInstanceState方法的执行有下面几种情况：</p>
+</li>
+<li><p>当用户按下home键。</p>
+</li>
+<li><p>长按home键，选择运行其他程序。</p>
+</li>
+<li><p>按下电源按键（关闭屏幕显示时）。</p>
+</li>
+<li><p>从activity中启动一个新的activity。</p>
+</li>
+<li><p>屏幕方向切换时，例如从竖屏切换到横屏。</p>
+</li>
+</ol>
+<p>（7）onRestoreInstance被调用的前提是，activity确实被销毁了，而如果仅仅是停留在有可能这种情况下，则该方法不会被调用。例如，当正在显示界面的情况下，按下home键，然后用户紧接着回到界面，则该方法不会被执行。</p>
+<p><strong>Activity启动模式</strong></p>
+<ol>
+<li><p>standard模式：默认模式，可以不用写配置。在这个模式下，都会默认创建一个新的实例。因此，在这种模式下，可以有多个相同的实例，也允许多个相同Activity叠加。</p>
+</li>
+<li><p>singleTop模式：可以有多个实例，但是不允许多个相同Activity叠加，即如果Activity在栈顶的时候，启动相同的Activity，不会产生新的实例，而会调用其onNewIntent方法。</p>
+</li>
+<li><p>singleTask模式：只有一个实例。在同一个应用程序调用它的时候，若Activity不存在，则会在当前task创建新的实例。若存在，则会把task中在其上的其他Activity<br>destroy掉并调用它的onNewIntent方法。</p>
+</li>
+</ol>
+<p>如果是在别的程序中启动它，则会新建一个task，并在该task中启动这个Activity。</p>
+<ol>
+<li>singleInstance模式：只有一个实例，并且这个实例单独运行在一个task中，这个task只有这个实例，不允许有别的Activity的存在。</li>
+</ol>
+<p><strong>Activity退出</strong></p>
+<ol>
+<li><p>通过单例模式把每个Activity的引用添加到一个全局链表中，每次退出程序时，将List中的所有的Activity一个一个地关闭。</p>
+</li>
+<li><p>在每个Activity创建时给Activity注册一个广播器，当退出时发送该广播即可。</p>
+</li>
+</ol>
+<p><strong>横竖屏切换时候Activity的生命周期</strong></p>
+<ol>
+<li><p>不设置Activity的<strong>anroid:configChanges</strong>时，切屏会重新调用各个生命周期，切横屏时会执行一次，切竖屏时会执行两次。</p>
+</li>
+<li><p>设置Activtiy的android:configChanges=<strong>”orientation”</strong>时，切屏还是会重新调用各个生命周期，切横、竖屏时只会执行一次。</p>
+</li>
+<li><p>设置Activity的android:configChanges=<strong>”orientation|keyboardHidden”</strong>时，切屏不会重新调用各个生命周期，只会执行onConfigurationChanged方法。</p>
+</li>
+</ol>
+<p><strong>让Activity变为一个窗口</strong></p>
+<p>在manifest中设置Activity的theme为Theme.Dialog。</p>
+<p><strong>Service生命周期</strong></p>
+<p><img src="media/649527c3a8e0f36acb12f1abec8cdc43.png" alt=""></p>
+<ol>
+<li><p>主要用于在后台处理一些耗时的操作，或者去执行某些需要长期运行的任务，必要时我们甚至可以在程序退出的时候，让Service在后台继续保持运行。</p>
+</li>
+<li><p>Service一般分为两种：</p>
+</li>
+<li><p>本地服务，用于应用程序内部，调用<strong>startService()</strong>启动，调用<strong>stopService()</strong>结束。</p>
+</li>
+<li><p>远程服务，用于Android系统内部的应用程序之间，可以定义接口并把接口暴露出来，以便其他应用操作。客户端建立到服务对象的连接，并通过那个连接调用服务。调用<strong>bindService()</strong>方法建立连接，以调用<strong>unbindService()</strong>关闭连接。多个客户端可以绑定至同一服务。如果服务此时没有加载，bindService()会先加载它。</p>
+</li>
+</ol>
+<p>（3）首先需要新建一个类继承自Service，并重写父类的<strong>onCreate()</strong>，<strong>onStartCommand()</strong>和<strong>onDestroy()</strong>。</p>
+<ol>
+<li><p>启动Service的方式和启动Activity类似，都需要借助Intent来实现。</p>
+</li>
+<li><p>项目中的每个Service都必须在manifest.xml中注册。</p>
+</li>
+<li><p>onCreate()方法只会在Service第一次被创建的时候调用，如果当前Service已经被创建过了，不管怎样调用startService()方法，onCreate()方法都不会再执行。</p>
+</li>
+<li><p>在onDestroy()的方法里去清理掉那些不再使用的资源。</p>
+</li>
+<li><p>使用绑定的方式：</p>
+</li>
+<li><p>在Service中继承Binder类（并在这里面定义Service可以提供的服务），覆写<strong>onBind()</strong>方法（返回MyBinder类型的mBinder实例）。</p>
+</li>
+</ol>
+<p><img src="media/12730863761914f1eb53e37266b34433.png" alt=""></p>
+<p>B）启动Service时创建一个ServiceConnection匿名类，在里面重写<strong>onServiceConnected()</strong>和<strong>onServiceDisconnected()</strong>方法，这两个方法会在Activity与Service建立关联和解除关联的时候调用。</p>
+<p>C）在<strong>onServiceConnected()</strong>里面对IBinder向下转型得到MyBinder的实例，这时我们在Activity中根据具体的场景调用MyBinder中的任何public方法。</p>
+<p><img src="media/170e6ebee8e46584956e25478d7e8087.png" alt=""></p>
+<p>C）构建Intent对象，然后调用<strong>bindService()</strong>将Activity和Service进行绑定，bindService()接收3个参数（新建的Intent对象，ServiceConnection的实例，标志位），此时onCreat()方法将会执行，但onStartCommend()方法不会执行。</p>
+<ol>
+<li><p>Service其实是运行在主线程中的，如果在Service中做了耗时的工作，那么会出现ANR，我们可以在Service中再创建一个子线程，然后去处理耗时逻辑。</p>
+</li>
+<li><p>为什么不在Activity里直接创建子线程呢？因为Activity很难对Thread进行控制，当Activity被销毁后，就再没有别的办法可以再重新获取到之前创建的子线程的实例，而且在一个Activty中创建的线程，另一个Activity无法对其进行操作，而Service就不同了，所有的Acitivty都可以与Service进行关联，然后可以很方便地操作其中的方法，即使Activity被销毁了，只要重新与Service关联，就又能够获取到原有Service中的MyBinder实例。</p>
+</li>
+<li><p>在onCreate()方法中调用Notification和startForeground()可以创建前台Service。</p>
+</li>
+<li><p>当客户端服务端在同个App中，android:process =<br>“.remote”代表在应用程序里，当需要该Service时，会自动创建新的进程。</p>
+</li>
+</ol>
+<p><strong>Service - AIDL</strong></p>
+<p>（1）Android中的IPC机制：Android中的IPC机制主要是为了让Activity和Service之间可以随时地进行交互，故在Android中该机制，只适用于Activity和Service之间的通信，类似于远程方法调用，C/S之间的访问。通过定义AIDL接口文件来定义IPC接口，Serivce端实现接口，Client端调用IPC本地接口。</p>
+<ol>
+<li><p>在Android平台，每个应用程序App都运行在自己的进程空间。通常一个进程不能访问另一个进程的内存空间，如果想沟通，需要将对象分解成操作系统可以理解的基本单元。</p>
+</li>
+<li><p><em>AIDL（Android Interface Definition<br>Language）</em>是一种IDL语言，用于生成可以在Android设备上两个进程之间进行通信的代码。如果在一个进程中（Activty）要调用另一个进程中(Service)对象的操作，就可以使用AIDL生成可序列化的操作。</p>
+</li>
+<li><p>怎么制作AIDL：</p>
+</li>
+<li><p><strong>创建.aidl文件</strong>。</p>
+</li>
+</ol>
+<p><img src="media/d9a345c30568d855be6db4a4a46e6ea0.png" alt=""></p>
+<ol>
+<li>创建好AIDL文件后，在gen包下，生成和对应的.aidl文件同名的.java文件，该文件包含一个抽象类Stub，其继承了android.os.Binder，实现了IaidData接口，我们要做的是是<strong>在Service当中实现Stub抽象类</strong>。</li>
+</ol>
+<p><img src="media/b62dc6c7b08e54304a75522e5730ba34.png" alt=""></p>
+<ol>
+<li>在Activity中<strong>绑定Service</strong>，并且<strong>获取IaidService对象</strong>。</li>
+</ol>
+<p><img src="media/954ae13fa2eccca5bd4bc17bf5357440.png" alt=""></p>
+<p><strong>调用IaidService的方法：</strong></p>
+<p><img src="media/4f1fb26e78876c23559961eca7115881.png" alt=""></p>
+<ol>
+<li>如果aild文件中需要传递Object对象，需要添加对一个.aidl文件，添加对应的Object类，并且<strong>实现Parcelable接口</strong>。</li>
+</ol>
+<p><strong>Service - IntentService</strong></p>
+<ol>
+<li><p>intentService是继承于Service并处理异步请求的一个类，在intentService内有一个工作线程来处理耗时操作，启动intentService的方式和启动Service相同。当任务执行完后，IntentService会自动停止，而不需要我们手动去控制。另外，可以启动intentService多次，而每一个耗时操作都会以工作队列的方式在intentService的onHandlerIntent回调方式中执行，并且，每次只会执行一个工作线程。</p>
+</li>
+<li><p>所有的请求都在一个线程中，不会阻塞应用程序的主线程，同一时间只处理一个请求。</p>
+</li>
+<li><p>省去了在Service中启动线程的麻烦。</p>
+</li>
+<li><p>当操作完成时，不用手动停止Service。</p>
+</li>
+</ol>
+<p><strong>如何保证Service不被杀死</strong></p>
+<ol>
+<li>onStartCommand有4种返回值</li>
+</ol>
+<p>A）START_STICKY：如果service被kill掉，保留service的状态为开始状态，但不保留递送的Intent对象。随后系统会尝试重新创建service，由于服务状态为开始状态，所以创建服务后一定会调用onStartCommand方法。如果此期间没有任何启动命令传给service，那么参数intent将为null。</p>
+<p>B）START_NOT_STICKY：非粘性的。使用这个返回值时，如果在执行完onStartCommand后，服务被异常kill掉，系统不会重启该服务。</p>
+<p>C）START_REDELIVER_INTENT：重传intent。使用这个返回值，如果在执行完onStartCommand后，服务被异常kill掉，系统会自动重启该服务，并将intent的值传入。</p>
+<p>D）START_STICKY_COMPATIBILITY：START_STICKY的兼容版，但不保证服务被kill后一定会被重启。</p>
+<p>（2）</p>
+<ol>
+<li><p>重写onStartCommand的返回值为START_STICKY。</p>
+</li>
+<li><p>在onStart方法中注册广播。</p>
+</li>
+<li><p>在onDestroy中重启Service。</p>
+</li>
+</ol>
+<p><strong>BroadcastReceiver</strong></p>
+<ol>
+<li><p>BroadcastReceiver用来接收来自系统和应用中的广播。</p>
+</li>
+<li><p>一般步骤：</p>
+</li>
+<li><p>首先要继承BroadcastReceiver，并实现其<strong>onReceiver()</strong>方法。</p>
+</li>
+<li><p>为它注册广播地址，包括静态注册（manifest.xml）和动态注册（给intent-filter添加<strong>action</strong>）两种方式。</p>
+</li>
+<li><p>sendBroadcast(intent)发送广播。</p>
+</li>
+<li><p>unregisterReceiver(receiver)解除注册。</p>
+</li>
+<li><p>普通广播（<strong>sendBrodercast</strong>）：普通广播对于多个接收者来说是完全异步的，通常每个接收者都无需等待即可以接收到广播，接收者之间不会有影响。对于这种广播，接收者无法终止广播，即无法阻止其他接收者的接收动作。</p>
+</li>
+<li><p>有序广播（<strong>sendOrderedBroadcast</strong>），它每次只发送到优先级（在manifest.xml中设置）较高的接收者那里，然后由优先级较高的接收者再传播到优先级较低的接收者那里，优先级高的接收者有能力终止这个广播（<strong>abortBroadcast()</strong>）。</p>
+</li>
+</ol>
+<p>对于有序广播，需要一个权限参数，如果为null，则表示不需要接收者声明指定的权限，如果不为null，则表示接收此广播，需要声明指定权限。</p>
+<p><strong>Broadcast Receiver的生命周期</strong></p>
+<p>Broadcast<br>Receiver的生命周期中仅有一个onReceiver()回调方法，当接收器接收到一条broadcastReceiver消息，Android就会调用onReceiver()，并传递给它一个intent对象，这个对象携带着那条broadcast消息，我们认为仅当执行这个方式时，Broadcast是活动的，这个方法返回时，它就终止了。</p>
+<p>由于broadcasrReceiver的生命周期很短，因此避免在其中做耗时的操作。</p>
+<p><strong>ContentProvider原理</strong></p>
+<ol>
+<li><p>ContentProvider：内容提供者。主要是对Android系统中进行共享的数据进行包装，并提供了一组统一的访问接口供其它程序调用。这些被共享的数据，可以是系统自己的页可以是应用程序中的数据。</p>
+</li>
+<li><p>为什么要有ContentProvider？</p>
+</li>
+</ol>
+<p>在Android中，数据的存储有很多种方式，最常用的就是SQLite和xml文件方式。在不同的应用程序中，其实数据是不能直接被相互访问和操作的。在这种情况下，ContentProvider很好地被用来解决了不同应用程序间数据共享的问题。</p>
+<ol>
+<li>一个ContentProvider类实现了一组标准的方法接口，从而能够让其它的应用保存或读取此ContentProvider的各种数据类型。</li>
+</ol>
+<p><strong>Intent</strong></p>
+<ol>
+<li><p>Android应用中四大组件之间的通讯，主要是由Intent协助完成的。Intent负责对应用中一次操作的动作、动作涉及数据、附加数据进行描述，Android则根据此Intent的描述，负责找到对应的组件，将Intent传递给调用的组件，并完成组件的调用。因此，Intent起着一个中介的作用，专门提供组件相互调用的相关信息，实现调用者与被调用者之间的解耦。</p>
+</li>
+<li><p>一个Intent对象是一个信息包，它包含了要接收此Intent的组件需要的信息（例如需要的动作或动作需要的信息）和Android所需要的信息（要处理此Inten组件的类别及怎样启动它）。</p>
+</li>
+<li><p>Intent的几个重要的属性：</p>
+</li>
+<li><p><strong>action</strong>，一个字符串，代表要执行的动作，在Intent类中定义了许多动作常量。</p>
+</li>
+</ol>
+<p><img src="media/d2f3d20b478edfdc298ffd30a5ab94ef.png" alt=""></p>
+<blockquote>
+<p>  你也可以定义自己的action<br>  strings来激活组件。自定义的action应该包含包名作为前缀，action在很大程度上决定Intent余下部分的结构（data和extras），就好像是一个方法名通常决定了方法的参数和返回值。</p>
+</blockquote>
+<p><img src="media/338c3a5b7fe6f9db4cb31de915db0e3f.png" alt=""></p>
+<ol>
+<li><strong>data</strong>和<strong>extras</strong>，即执行动作要操作的数据和传递到目标的附加信息。</li>
+</ol>
+<p><img src="media/0797ca64cb0ee6e27ec9b51b7202d6ed.png" alt=""></p>
+<p>C）<strong>category</strong>：要执行动作的目标具有的特质或行为的归类，例如在应用主界面Activity通常有如下的设置：</p>
+<p><img src="media/21af341a6c76a381a28a609bef03da26.png" alt=""></p>
+<p>代表该目标Activity是该应用所在task中的初始Activity并且出现在系统的launcher离别当中。</p>
+<p>D）<strong>type</strong>：要执行动作的目标Activity所能处理的MIME数据类型</p>
+<p>E）<strong>componet</strong>：处理Intent的组件的名称，此字段是一个ComponentName<br>object，它是目标的组件的完整限定名（包名+类名），此字段是可选的，如果设置了此字段，那么Intent<br>对象将会被传递到这个组件名所对应的类的实例中。如果没有设置，Andorid会用Intent对象中的其他信息区定位到一个合适的目标组件中。</p>
+<p><img src="media/879de2b2ac35e1943f3c5c9cfa43bee9.png" alt=""></p>
+<ol>
+<li><p>data指定的是要操作的数据，是一个URI的形式，我们可以将一个指定前缀的字符串转换成特定的URI类型（<strong>Uri.parse</strong>）。</p>
+</li>
+<li><p><strong>Bundle</strong>和Intent有着密不可分的关系，主要负责为Intent保存参数信息，它实现了android.os.Paracelable接口，内部维护一个Map类型的属性，用于以键值对的形式存放附加参数信息。在我们使用Intent的putExtra方法放置附加信息时，该方法会检查默认的Bundle实例为不为空，如果为空，则新创建一个Bundle实例，然后将具体的参数信息放到Bundle实例中。另外，在putExtras方法设置Bundle对象之后，系统进行的不是引用操作，而是复制操作，如果设置后再修改bundle实例中的数据，将不会影响intent内部的附加信息。</p>
+</li>
+</ol>
+<p><img src="media/60a36477030b8f3284436bc1802bce6d.png" alt=""></p>
+<p>对应的，我们从Intent中获取到Bundle实例，再从中取出信息：</p>
+<p><img src="media/0dd621751694525dbbdbe6e61d10adb2.png" alt=""></p>
+<ol>
+<li><p>intent的投递主要有2种方式：</p>
+</li>
+<li><p>显示地设定目标组件的<strong>component</strong>名称，不过有时开发者不知道其他应用的component名称，显示方式常用于自己应用内部的消息传递，比如一个activity启动一个相关的service或者启动另一个activity。</p>
+</li>
+<li><p>隐式intent，component名称为空的情况，这种方式往往用于激活其他应用中的组件。隐式的intent需要用到不同的策略，Android需要找到处理这个intent的最合适组件。要通过intent-filter，比较intent对象和组件关联结构。如果组件不包含任何intent-filter，那只能接收显示的intent。</p>
+</li>
+</ol>
+<p>Intent有3个方面可用于intent-filter：<strong>action</strong>，<strong>data</strong>（包括URI和数据部分），<strong>category</strong>。隐式intent将测试这三个部分，要把一个intent投递到一个组件，那么这三个测试都要通过了才行。如果组件有多个intent-filter，可能只通过了其中一个，也可以把intent投递到组件。</p>
+<ol>
+<li><p><strong>action。</strong>一个Intent对象只能命名单一的action，而一个filter可以列出多个action。如果一个filter没有指定任何action，那么则没有任何intent会被匹配。如果一个intent对象没有指定任何acion，那么将自动通过此测试。</p>
+</li>
+<li><p><strong>category。</strong>希望接收隐式意图的activity必须在它们的intent<br>filter中包含.DEFAULT，对于包含.MAIN和.LAUNCHER则是例外。</p>
+</li>
+</ol>
+<p><img src="media/676c790ac4abc7388d990fc459357935.png" alt=""></p>
+<ol>
+<li><p><strong>data。</strong>intent-filter中一个子节点，可以设置多个，也可以一个也不设置。</p>
+</li>
+<li><p>如果一个intent可以通过多个的intent-filter，那么用户将被询问激活哪个组件，如果一个都没有的话，将会抛出异常。</p>
+</li>
+</ol>
+<p><strong>Activity Intent经常使用的FLAG集合</strong></p>
+<table>
+<thead>
+<tr>
+<th><em>FLAG_ACTIVITY_NEW_TASK</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>默认的跳转类型，会重新创建一个新的Activity，如果在Manifest中给D添加了Affinity的值和Task中的不一样的话，则会在新标记的Affinity所存在的Task中压入这个Activity</td>
+</tr>
+<tr>
+<td><em>FLAG_ACTIVITY_SINGLE_TOP</em></td>
+</tr>
+<tr>
+<td>相当于加载模式中的singleTop</td>
+</tr>
+<tr>
+<td><em>FLAG_ACTIVITY_CLEAR_TOP</em></td>
+</tr>
+<tr>
+<td>相当于加载模式中的singleTask</td>
+</tr>
+<tr>
+<td><em>FLAG_ACTIVITY_BROUGHT_TO_FRONT</em></td>
+</tr>
+<tr>
+<td>比如说现在有A，然后在A中启动B（<em>FLAG_ACTIVITY_BROUGHT_TO_FRONT</em>），再在B中启动C和D，如果这个时候在D中再启动B，这时候最后的栈的情况是A,C,D,B。</td>
+</tr>
+<tr>
+<td><em>FLAG_ACTIVITY_REORDER_TO_FRONT</em></td>
+</tr>
+<tr>
+<td>上述的第二个例子的结果是B,C,D,A</td>
+</tr>
+<tr>
+<td><em>FLAG_ACTIVITY_NO_HISTORY</em></td>
+</tr>
+<tr>
+<td>原来是A,B,C，这个时候在C中启动D（<em>FLAG_ACTIVITY_NO_HISTORY</em>），D再启动E，这个时候栈中的情况为A,B,C,E。</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>加入A,B,C,D都是标准加载的，假如在D中启动A（<em>FLAG_ACTIVITY_BROUGHT_TO_FRONT</em>），</li>
+</ol>
+<p>这时候最后的栈的情况时A,B,C,D,A。</p>
+<p><strong>通过Intent传递二进制数据的方法：</strong></p>
+<ol>
+<li><p>使用Serializable接口实现序列化。</p>
+</li>
+<li><p>实现Parcelable接口，这在Andoird的部分类比如Bitmap类中已经实现了，其在Andoird<br>AIDL中交换数据也很常见。</p>
+</li>
+</ol>
+<p><strong>Android有哪些XML解析器</strong></p>
+<ol>
+<li><p>SAX解析器是一种基于事件的解析器，它的核心是事件处理模式，主要是围绕着事件源以及时间处理器来工作的。当事件源产生事件后，调用事件处理器相应的处理方法，一个事件就可以得到处理。在事件源调用事件处理器中特定方法的时候，还要传递给事件处理器相应事件的状态信息，这样事件处理器才能够根据提供的事件信息来决定自己的行为。SAX的特点是解析速度快，占用内存少。</p>
+</li>
+<li><p>DOM是基于树形结构的结点或信息片段的集合，允许开发人员使用DOM<br>API遍历XML树，检索所需数据。分析该结构通常需要加载整个问道和构造树形结构，然后才可以检索和更新结点信息。由于DOM在内存中以树形结构存放，因此检索和更新效率会更高。但是对于特别大的文档，解析和加载整个文档需要较长的时间。</p>
+</li>
+<li><p>PULL解析器的运行方式和SAX类似，都是基于事件的模式。不同的是，在PULL解析过程中，我们需要自己获取产生的事件然后做相应的操作，而不像SAX那样由处理器触发一种事件的方法。PULL解析器小巧轻便，解析速度快，简单易用。</p>
+</li>
+</ol>
+<p><strong>JSON和XML对比</strong></p>
+<ol>
+<li><p>数据的可读性基本相同。</p>
+</li>
+<li><p>同样拥有丰富的解析手段。</p>
+</li>
+<li><p>JSON相对于XML来讲，数据的体积小。</p>
+</li>
+<li><p>JSON与JavaScrip的交互更加方便。</p>
+</li>
+<li><p>JSON对数据的描述性比XML较差。</p>
+</li>
+<li><p>JSON的速度要远远快于XML。</p>
+</li>
+<li><p>轻/重量级的区别：JSON只提供了整体解析的方案，而这种方法只在解析较少的数据时才能起到良好的效果，而XML提供了对大规模数据的逐步解析方案，这种方案很适用于对大量数据的处理。对于应用程序而言，只要可以一次性读取和写入的，都只能算是轻量级应用。</p>
+</li>
+</ol>
+<p><strong>View - 绘制流程机制</strong></p>
+<ol>
+<li><p>整个View树的绘图流程是在<strong>ViewRoot.java</strong>类的performTraversal()函数展开的，该函数做的执行过程可简单概括为：</p>
+</li>
+<li><p>根据之前的状态，判断是否需要重新计算视图大小（measure）。</p>
+</li>
+<li><p>是否需要重新安置视图的位置（layout）。</p>
+</li>
+<li><p>是否需要重绘（draw）。</p>
+</li>
+</ol>
+<p><strong>measure过程</strong></p>
+<ol>
+<li><p>主要作用：为整个View树计算实际的大小，即设置实际的高（对应属性mMeasureHeight和mMeasureWidth），每个View控件的实际宽高都是由父视图和本身视图决定的。</p>
+</li>
+<li><p>具体的调用链如下：</p>
+</li>
+<li><p>ViewRoot根据对象的属性mView（其类型一般为ViewGroup类型）去计算View树的大小，回调View/ViewGroup对象的onMeasure()方法。</p>
+</li>
+<li><p>设置本View视图的最终大小。</p>
+</li>
+<li><p>如果该View对象是个ViewGroup类型，需要重写该onMeasure()方法，对其子视图进行遍历的measure()过程。</p>
+</li>
+<li><p>整个measure()调用过程就是树形的递归过程。</p>
+</li>
+</ol>
+<p><strong>layout布局过程</strong></p>
+<p>（1）主要作用：根据子视图的大小以及布局参数将View树放到合适的位置上。</p>
+<p>（2）具体的调用链：</p>
+<p>A）host.layout()开始View树的布局，继而回调给View/ViewGroup类中的layout方法。</p>
+<p>B）layout()会设置该View视图位于父视图的坐标轴，即mleft,mright等。</p>
+<p>C）如果该View是一个ViewGroup类型，需要遍历每个子视图childView，调用该子视图的方法去设置它的坐标值。</p>
+<p><strong>draw过程</strong></p>
+<ol>
+<li><p>每次发起绘图时，并不会重新绘制每个View树的视图，而只会重新绘制那些需要重绘的视图。</p>
+</li>
+<li><p>调用流程：</p>
+</li>
+<li><p>绘制该View的背景。</p>
+</li>
+<li><p>为显示渐变框做一些准备。</p>
+</li>
+<li><p>调用onDraw()方法绘制视图本身。（每个View都需要重载该方法，ViewGroup不需要实现该方法）</p>
+</li>
+<li><p>调用dispatchDraw()方法绘制子视图。（如果该View类型不为ViewGroup，不需要重载方法）。</p>
+</li>
+<li><p>绘制滚动条。</p>
+</li>
+<li><p>整个调用链就这样递归下去了。</p>
+</li>
+<li><p>在3个流程当中，ViewGroup只需要实现measure()和layout()过程即可。其最终会直接或间接调用到3个函数，接着这3个函数最终会调用到ViewRoot中的schedulTraversale(0方法，该函数然后发起一个异步消息，消息处理中调用performTraverser(0方法对整个View进行遍历。</p>
+</li>
+</ol>
+<p><strong>invalidata()方法</strong></p>
+<ol>
+<li><p>请求重绘树，即draw()过程，假如视图的大小没有发生变化就不会调用layout过程，并且只调用那些需要重绘的视图。</p>
+</li>
+<li><p>一般引起invalidata()的操作如下：</p>
+</li>
+<li><p>直接调用，请求draw，但只会绘制调用者本身。</p>
+</li>
+<li><p>setSelection()方法，请求draw，但只会绘制调用者本身。</p>
+</li>
+<li><p>setVisibility()方法，由INVISIBLE到VISIBLE时，会调用invalidata()方法。</p>
+</li>
+<li><p>setEnable()方法，请求重新draw()，但不会重新绘制任何视图。</p>
+</li>
+</ol>
+<p><strong>requesetLayout()方法</strong></p>
+<ol>
+<li><p>只会调用measure()过程和layout()，不会调用draw()过程。</p>
+</li>
+<li><p>一般引起requesetLayout操作的函数：</p>
+</li>
+<li><p>setVisibility()方法，当View在可视状态下转换为GONE状态，会间接调用requestLayout()和invalidata()方法。</p>
+</li>
+</ol>
+<p><strong>requestFocus()方法</strong></p>
+<ol>
+<li>请求View树的draw过程。</li>
+</ol>
+<p><strong>View - 刷新，多线程和双缓冲</strong></p>
+<ol>
+<li>不使用多线程和双缓冲</li>
+</ol>
+<p>一般只是希望在View发生改变时对UI进行重绘，你只需在Activity中显示地调用View对象中的invalidata()方法即可。</p>
+<ol>
+<li>使用多线程而不使用双缓冲</li>
+</ol>
+<p>使用Handler + Message的方法。</p>
+<ol>
+<li>使用多线程和双缓冲</li>
+</ol>
+<p>当进行复杂的绘制操作的时候会导致呈现的图像闪烁或有其他不可接受的外观，双缓冲使用内存缓冲区来解决由多重绘制操作造成的的闪烁问题。Android中的SurfaceView是View的子类，它同时也实现了双缓冲，你可以定义它的子类并实现SurfaceHolder.Caallback接口，SurfaceHolder中lockCanvas()可以锁定画布，绘制完新的图像后调用unlockCanvasAndPost(canavas)解锁显示。</p>
+<p>surfaceView和View最本质的区别在于，surfaceView是在一个新的单线程当中重新绘制画面，而View必须在UI的主线程中更新画面。因此使用surfaceView不会阻塞你的UI线程，但也带来了另外一个问题，就是事件同步。</p>
+<p><strong>View - SurfaceView</strong></p>
+<p>surfaceView是提供给需要直接<strong>画像素</strong>而<strong>不是使用窗体部件</strong>的应用使用的。Android图形系统中的一个重要概念是<strong>surface</strong>，<strong>view</strong>及其<strong>子类(TextView和Button)</strong>是画在Surface上。每个surface创建一个<strong>canvas对象</strong>，用来<strong>管理view</strong>在surface上的绘图操作。</p>
+<p>在使用surfaceView开发时需要注意的是，使用它绘图时，一般都是出现在最顶层。使用时还需要对其进行创建、销毁，情况改变时进行<strong>监视</strong>，这就要实现<strong>SurfaceHolder.Callback</strong>接口，如果要对被绘制的画布<strong>进行裁剪，控制其大小</strong>时都需要用<strong>SurfaceHolder</strong>来完成处理。在程序中，surfaceHolder对象需要通过getHolder方法来获得，同时还需要addCallback方法来添加回调函数。</p>
+<p>surfaceView和view的明显不同之处在于，surfaceView不需要通过线程来更新视图，但在绘制之前必须使用lockCanvas方法来锁定画布，并得到画布，然后在画布上绘制；当绘制完成后，使用unlockCanvasAndPost来解锁画布。</p>
+<p><strong>View和ViewGroup的关系</strong></p>
+<ol>
+<li><p>ViewGroup是View的子类，所以它也具有View的特性，但它<strong>主要用来充当View的容器</strong>，将其中的View视作自己的孩子，对它的子View进行管理，当然它的孩子也可以是ViewGroup类型。</p>
+</li>
+<li><p>View的成员变量mParent用来管理View上级关系的，ViewGroup构建了焦点管理和子View节点数组，这样通过<strong>View的mParent</strong>和<strong>ViewGroup的mChildrent</strong>构建了Android中View直接的关系网。</p>
+</li>
+<li><p>ViewGroup和它的孩子们以树形结构形成了一个层次结构，View类有<strong>接收和处理消息</strong>的功能，Android系统所产生的消息会在这些ViewGroup和View之间传递。</p>
+</li>
+</ol>
+<p><strong>Android的窗口系统</strong></p>
+<ol>
+<li><p>Android的窗口系统是C/S模式的，我们所提到的概念：View、ViewGroup、DecorView和ViewRoot都是存在于窗口系统的Client端。</p>
+</li>
+<li><p>Window是表示Top Level等顶级窗口的概念。</p>
+</li>
+<li><p>DecorView是Window的Top Level<br>View，这个View可以称之为主View，DecorView会缺省的Attach到Activity的主窗口中。</p>
+</li>
+<li><p>ViewRoot建立和主View（DecorView）与窗口系统Server端的通讯桥梁，ViewRoot是Handler的子类，它<strong>接受窗口系统服务器的消息</strong>并<strong>将消息投递到窗口系统的客户端</strong>，然后消息就从客户端的主View往其下面的子View传递，直到消息被完全处理掉位置。</p>
+</li>
+<li><p>DecorView实际上时一个ViewGroup，从依存关系上来讲，对单个主窗口来说，DecorView是Top<br>Level<br>View。View并不是关注的重点，重要的是我们需要知道消息分发路径是建立在什么关系上的。</p>
+</li>
+</ol>
+<p><strong>View类介绍</strong></p>
+<p><strong>（绘制的流程）</strong></p>
+<p>（1）绘制按照视图树的顺序进行。视图绘制时会先绘制子控件。如果视图的背景可见，绘图会在调用onDraw函数之间绘制背景。</p>
+<p>（2）强制重绘，可以使用invalidate()。</p>
+<p><strong>（事件的基本处理流程）</strong></p>
+<ol>
+<li><p>事件分配给相应视图，视图处理它，并通知相关监听器。</p>
+</li>
+<li><p>操作过程中如果发生视图的尺寸变化，则该视图调用requestLayout()方法，请求再次布局。</p>
+</li>
+<li><p>操作过程中如果发生视图的外观变化，则该视图调用invalidate()方法，请求重绘。</p>
+</li>
+<li><p>如果requestLayout()和invalidate()有一个被调用，框架会对视图树进行相关的测量、布局和绘制。</p>
+</li>
+</ol>
+<p><strong>（焦点处理）</strong></p>
+<p>框架处理焦点的转移，来响应用户输入。</p>
+<p><strong>（成员介绍）</strong></p>
+<table>
+<thead>
+<tr>
+<th><em>（1）protected ViewParent mParent</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>用来记录它的父亲，就是我们前面提到的ViewGroup</td>
+</tr>
+<tr>
+<td><em>（2）protected OnClickListener mOnClickListener</em></td>
+</tr>
+<tr>
+<td>mOnClickListener是Click事件的回调接口</td>
+</tr>
+<tr>
+<td><em>（3）public void draw(Canvas canvas)</em></td>
+</tr>
+<tr>
+<td>这个函数用于渲染View和它的孩子，我们不应该在子类对它进行override。</td>
+</tr>
+<tr>
+<td><em>（4）protected void onDraw(Canvas canvas)</em></td>
+</tr>
+<tr>
+<td>我们一般override此函数来实现自己的绘制操作</td>
+</tr>
+<tr>
+<td><em>（5）public final void layout(int l, int t, int r, int b)</em></td>
+</tr>
+<tr>
+<td>此函数用于确定View和其子View的尺寸和位置，它的调用发生在onMeasure之后</td>
+</tr>
+<tr>
+<td><em>（6）protected void onLayout(boolean changed, int left, int top, int right, int bottom)</em></td>
+</tr>
+<tr>
+<td>此函数在layout调用完成后进行，View的子类一般override此函数，并在函数中对每个孩子调用layout方法。</td>
+</tr>
+<tr>
+<td><em>（7）public View getRootView()</em></td>
+</tr>
+<tr>
+<td>此函数用于得到View层次的Top View，即上文提到的DecorView</td>
+</tr>
+<tr>
+<td><em>（8）public final void measure(int widthMeasureSpec, int heightMeasureSpec)</em></td>
+</tr>
+<tr>
+<td>此函数用户找出View的大小，它的参数widhtMeasureSpec、HeightMeasure是其父类传给它的，这2个参数是View找出其大小时的限制条件，起始真正的精确大小是由onMeasure完成的，onMeasure有measure函数调用</td>
+</tr>
+<tr>
+<td><em>（9）protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)</em></td>
+</tr>
+<tr>
+<td>此函数测量View并根据其内容来决定View的高和宽，它应该被子类override来实现精确的测量。在onMeasure中我们必须调用View.setMeasureDimension(int,.int)来保存测量得到的大小，高和宽分别被保存在View.mMeasureHeight和View.mMeasureWidth中。</td>
+</tr>
+<tr>
+<td><em>（10）public void invalidate()</em></td>
+</tr>
+<tr>
+<td>此函数将调用onDraw()，强制重绘。</td>
+</tr>
+<tr>
+<td><em>（11）public void requestLayout()</em></td>
+</tr>
+<tr>
+<td>当某些东西发送改变后，当前View层次结构无效了，调用此函数对View的层次结构进行重新布局。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ViewGroup类</strong></p>
+<ol>
+<li><p>ViewGroup类继承于View，它可以包含其它的View，就像一个View的容器，我们可以调用其成员函数addView将View当做孩子加入到ViewGroup中。</p>
+</li>
+<li><p>我们经常使用的LinearLayout、RelativeLayout等都是ViewGroup的子类，ViewGroup类中有个内部类ViewGroup.LayoutParams，我们经常使用LayoutParams的子类来构造布局参数。</p>
+</li>
+<li><p>我们也可以定义自己的布局，以方便日后使用和维护，这时我们就需要继承ViewGroup类并重写ViewGroup中的一些方法。</p>
+</li>
+</ol>
+<p><strong>Android的事件分发机制</strong></p>
+<p><strong>（View的事件分发机制）</strong></p>
+<ol>
+<li>只要触摸到了任何一个控件，就一定会调用该控件的<em>dispatchTouchEvent()</em>方法。</li>
+</ol>
+<p><img src="media/e514d3b06b7d8afb03c2148062aadf43.png" alt=""></p>
+<ol>
+<li><p>该方法首先判断3个条件：</p>
+</li>
+<li><p><em>mOnTouchListener</em>是否为空，这个是在<em>setOnTouchListener</em>中被赋值的。</p>
+</li>
+<li><p>判断当前控件是否是<em>enable</em>的。</p>
+</li>
+<li><p>回调控件<em>setOnTouchListener</em>中的<em>onTouch</em>方法，如果返回true，整个方法直接返回true，否则再去执行<em>onTouchEvent()</em>方法。</p>
+</li>
+<li><p>这表明了3点：</p>
+</li>
+<li><p><em>onTouch</em>优先于<em>onClick</em>执行。</p>
+</li>
+<li><p>如果<em>onTouch</em>方法返回了true，那么<em>onClick</em>方法不会执行。</p>
+</li>
+<li><p><em>onClick()</em>方法是在<em>onTouchEvent()</em>中的。</p>
+</li>
+<li><p><em>onTouchEvent</em>方法中的<em>onClick</em>的执行流程：</p>
+</li>
+<li><p>首先当前控件是否可点击。</p>
+</li>
+<li><p><em>mOnClickListener</em>是否为空，这个是在<em>setOnClickListener</em>中被赋值的。</p>
+</li>
+<li><p>每当控件被点击时，就会在<em>performClick()</em>里回调被点击控件的<em>onClick()</em>方法。</p>
+</li>
+<li><p>onTouch和onTouchEvent有什么区别，又该如何使用？</p>
+</li>
+</ol>
+<p>这两个方法都是在View的dispatchTouchEvent中调用的，onTouch要优先于onTouchEvent执行。如果在onTouch中返回true将事件消费掉，那么onTouchEvent将不会执行。</p>
+<p>onTouch的执行需要2个前提条件，第一是<em>mOnTouchListener，</em>第二是该控件是enable的，因此，如果某个控件是非enable的，如果我们要监听它的touch事件，就必须通过在该控件中重写onTouchEvent方法来实现。</p>
+<p><strong>（ViewGroup的事件分发机制）</strong></p>
+<ol>
+<li><p>Android事件分发是先传递到ViewGroup中，再由ViewGroup传递到View。</p>
+</li>
+<li><p>在ViewGroup中可以通过onInterceptTouchEvent方法对事件传递进行拦截，返回true代表不允许事件继续向子View传递，返回false代表不对事件进行拦截，默认返回false。</p>
+</li>
+<li><p>子View中如果将传递的事件消费掉，ViewGroup中将无法接收到任何事件。</p>
+</li>
+</ol>
+<p><img src="media/1353e22ec370387ab20a64d27792e2c7.png" alt=""></p>
+<p><strong>Android自定义组件的实现思路</strong></p>
+<p><strong>（自定义组件的实现方法）</strong></p>
+<ol>
+<li><p>组合现有Android默认提供的组件：继承ViewGroup或者其子Layout等布局类。</p>
+</li>
+<li><p>调整现有Android默认提供的组件：继承View的子类具体类。</p>
+</li>
+<li><p>完全自定义组件：继承View类，里面界面及事件完全由自己控制。</p>
+</li>
+</ol>
+<p><strong>（自定义组件需要重写构造器）</strong></p>
+<ol>
+<li><p>若自定义组件是用xml配置文件的方式创建出的，需要重写<em>（Context context,<br>AttributeSet attrs）</em>构造方法。</p>
+</li>
+<li><p>如果自定义组件使用纯JAVA代码new出来的，则只需要重写<em>（Context<br>context）</em>构造方法。</p>
+</li>
+</ol>
+<p><strong>（自定组件设置自己的属性）</strong></p>
+<ol>
+<li><p>完全由Java程序实现。</p>
+</li>
+<li><p>自己定义一个xml文件来约束使用者怎么设置属性。</p>
+</li>
+</ol>
+<p><strong>ListView - Adapter</strong></p>
+<ol>
+<li>一个Adapter的对象扮演一个桥梁的角色。这个桥梁连接着一个AdapterView和它所包含的数据，Adapter提供了一个通到数据项的途径，还负责为在数据集里的每个数据项生成一个View，它有一个重要的方法：</li>
+</ol>
+<p>Public abstract View getView(int position, View convertView, ViewGroup parent);</p>
+<p>这个方法被setListAdapter(adapter)间接地调用，</p>
+<p>positon：显示的是第几行。</p>
+<p>converView：从布局文件中inflate来的布局，我们用LayuoutInflate的方法将定义好的item.xml文件提取成View实例来调用显示，然后将View的各组件实例化（findViewById）。</p>
+<ol>
+<li>工作原理</li>
+</ol>
+<p>ListView针对每个item，要求adapter返回一个视图（getView），在开始绘制的时候，系统首先调用getCount()得到LisView的长度，然后根据这个长度，绘制ListView的每一项。</p>
+<p>系统显示列表时，首先实例化一个适配器。当手动完成适配时，必须手动映射数据，这需要重写getView()方法。系统在绘制列表的每一行时调用此方法。</p>
+<ol>
+<li><p>几个常见的子类：</p>
+</li>
+<li><p><strong>BaseAdapter</strong>：基础适配器，一个抽象类，继承它需要实现较多的方法。</p>
+</li>
+<li><p><strong>ArrayAdapter</strong>：通常需要实现getView方法，特殊情况（结合数据的rowId）,为了让UI时间响应方面好一点，最好重写getItemId。ArrayAdapter比较简单，最多只能显示一行文本。</p>
+</li>
+<li><p><strong>SimpleAdapter</strong>：简单适配器，可以将静态数据映射到XML文件定义好的布局上，利用SimplerAdapter可以显示比较负责的列表，但它只是单纯的显示，若要在后期对列表进行修改，则不可以，SimpleAdapter具有最后的扩充性。</p>
+</li>
+<li><p><strong>SimpleCursorAdapter</strong>：专门用于将数据库中的数据显示在UI组件当中。在使用中将Cursor的字段与UI的Id对应起来，可以把其理解为对数据库的一种简单结合，然后方便地把数据库中的内容以列表的形式展示出来。</p>
+</li>
+</ol>
+<p><strong>ListView - 优化</strong></p>
+<ol>
+<li>ListView工作原理：</li>
+</ol>
+<p>在Adapter的代码中，在getView()方法里首先判断converView是否为空，若为空则加载相应的布局，若不为空则只使用该布局，这能够很有效地使用Android为ListView提供的缓存机制：只加载一屏的布局，之后滑动出来的item使用的是之间已经加载的布局的缓存。</p>
+<p>而使用静态ViewHolder的目的则是节省了findViewById的时间，如果不使用ViewHolder，每次getView的时候都需要得到一次子布局，这这也是耗时且耗资源的；如果使用了ViewHolder作为子布局的缓存，使用View的setTag将缓存与每个item绑定，则也可以省去了findViewById的时间；而将ViewHolder设置为static的目的是指在初始化Adapter时初始化一次这个内部类，否则将会在每次创建Adapter时都要初始化一次，而这是没有必要的。</p>
+<ol>
+<li><p>适配器在界面主线程中修改。</p>
+</li>
+<li><p>可以在任何地方获取数据，但应该在另一地方请求数据。</p>
+</li>
+<li><p>在主界面的线程中提交适配器的变化，并调用notifyDataSetChanger()。</p>
+</li>
+<li><p>ViewHolder的作用：优化显示效率，即之前显示过的不用再从布局文件中读取，直接从缓存中读取。可以看到它只是一个静态类，它的作用在于减少不必要的调用findViewById。</p>
+</li>
+<li><p>ListView的优化其实就是去找getView()中的耗时操作，要么使用异步的方法为item的布局设置数据，要么就只能在adapter初始化时将数据准备好，然后在getView中只需绑定一些就可以了。</p>
+</li>
+</ol>
+<p>ListView的优化其实也是内存的优化，如果自定义Item中有涉及到图片等，一定要处理，处理图片的方式有以下几种：</p>
+<ol>
+<li><p>不要用路径decodeFile()。</p>
+</li>
+<li><p>拿到的图片进行边界压缩。</p>
+</li>
+<li><p>在ListView中去图片时不要直接用路径，而是使用WeakReference。</p>
+</li>
+<li><p>在getView做图片转换时，产生的中间变量要记得释放：</p>
+</li>
+</ol>
+<p>尽量避免在ListView适配器中使用线程，因为线程产生内存泄露的主要原因在于其生命周期是不可控制的。</p>
+<p><strong>Android中的GC内存泄露问题（OOM）</strong></p>
+<ol>
+<li><p>在一个程序中，如果已经不使用某个对象，但是仍然有引用指向它，垃圾回收器就无法回收它，当然对该对象所占用的内存就无法被使用，这就造成了内存泄露。</p>
+</li>
+<li><p>Android的一个应用程序的内存泄露对别的应用程序影响不大，为了使得每个Andoird程序都得以安全且快速地运行，Android的每个程序都会用一个独立的Dalvik虚拟机实例来运行，也就是说每个应用程序都是在属于自己的进程中运行，Andoird为不同类型的进程分配了不同的内存使用上限，如果程序出现了内存泄露而造成应用进程的内存超过了这个上限，则会被系统视为内存泄露，从而被kill掉，这也是影响自己的进程。</p>
+</li>
+<li><p>引起内存泄露的情况：</p>
+</li>
+</ol>
+<p>A）用static修饰成员变量时，那么该变量就属于该类，而不是该类的实例。所以用static修饰的变量，它的生命周期是很长的。如果将Activity赋值daomContext的话，那么即使这个Activity被onDestroy()，但是由于仍有对象保存它的引用，因此该Activity依然不会被释放。</p>
+<p>避免的方法：应该尽量避免static成员变量引用资源耗费过多的实例（Context），可以使用getApplicationContext()方法；Context尽量使用Application<br>Context，因为Appliction的Context的生命周期比较长，引用它不会出现内存泄露问题；使用WeakReference代替强引用。</p>
+<p>B）线程产生资源泄露的主要原因在于线程的生命周期是不可控的。假设线程的操作时一个很费时的操作，当我们开启线程后，将设备由横屏变为了竖屏，一般屏幕转换时会重新创建Activity，然后由于我们的线程是Activity的内部类，所以MyThread中保存了Activty的一份引用，假如MyThread的run函数没有结束，MyThread是不会被销毁的，因此它所引用的老的Activity也不会被销毁。</p>
+<p>避免的方法：将线程的内部类，改为静态内部类；在线程内部采用若引用保存Context引用；在应用退出时将线程销毁。</p>
+<p>C）Bitmap。</p>
+<p>避免的方法：在用完Bitmap后，即使地recycle()掉；有时候，我们要显示的区域很小，没有必要将整个图片都加载出来，这时候可以设置一定的采样率，那么就可以大大减小占用的内存；运用软引用，可以使在Bitmap在内存快不足时得到有效的释放。</p>
+<p>D）资源型对象（Curso，File等）往往都使用了一些缓冲，我们在不使用它们时，应及时关闭它们，以便它们的缓冲及时回收内存。它们的缓冲不仅存在于虚拟机内，还存在于虚拟机外。如果我们仅仅把它的引用设置为null，而不关闭它们，往往会造成内存泄露。</p>
+<p>E）在构造Adapter时，没有使用缓存的convertView。</p>
+<ol>
+<li>使用DDMS的Heap视图工具可以方便地确认我们的程序是否存在内存泄露的可能性。</li>
+</ol>
+<p><strong>Android内存管理机制</strong></p>
+<ol>
+<li><p>Linux会在进程活动停止后结束该进程，而Android把这些进程都保存在内存中，直到系统需要更多的内存为止。这些保留在内存中的进程通常情况下不会影响整体系统的运行速度，当用户再次激活这些进程时，提升了进程的启动速度。</p>
+</li>
+<li><p>Andoird的LMK机制，当系统内存不足时，杀死Bad进程来释放其内存，Bad进程的选择标准有两个：oom_adj代表进程的优先级，数值越大，优先级最高，越不重要。Andoird<br>Kernal每隔一段时间会检查当前内存是否低于某个阀值，如果是，就会杀死oom_adj最大的Bad进程，如果有两个以上的Bad进程oom_adj相同，则杀死其中占用内存最多的那个。</p>
+</li>
+<li><p>分类：前台程序，用户可见程序（输入法等），次要服务，后台服务（比如说QQ），内容提供者，空程序。</p>
+</li>
+<li><p>Android系统还维护了一张表，每一个警戒阀值对应了一个重要性值，当系统的可用内存低于某个警戒值时，就杀掉大于该警戒值对应的重要性的程序。</p>
+</li>
+<li><p>因此，没有必要特意地去杀掉后台程序，因为系统会自动分配内存。</p>
+</li>
+</ol>
+<p><strong>Android中的动画模式</strong></p>
+<ol>
+<li><p>Tween：这种实现方式可以使组件移动、放大、缩小以及产生透明度的变化。</p>
+</li>
+<li><p>Frame：传统的动画方法，通过顺序的播放排列好的电影。</p>
+</li>
+</ol>
+<p><strong>导入Jar包的方法</strong></p>
+<ol>
+<li><p>右键工程。</p>
+</li>
+<li><p>Build Path，点击Add Library。</p>
+</li>
+<li><p>选择user library，在出现的界面中点击new按钮，随便取一个名字。</p>
+</li>
+<li><p>点击Add jars选择第三方Jar包，这样的话该Har包会被一起打包到apk中。</p>
+</li>
+</ol>
+<p><strong>Service和Activity的交互方式</strong></p>
+<ol>
+<li><p>通过IBinder接口实现。</p>
+</li>
+<li><p>通过AIDL实现。</p>
+</li>
+</ol>
+<p><strong>UI线程和非UI线程的交互方式</strong></p>
+<ol>
+<li><p>Handler</p>
+</li>
+<li><p>Activity.runOnUIThread(Runnable)</p>
+</li>
+<li><p>View.post(Runnable)</p>
+</li>
+<li><p>View.postDelayed(Runnable,long)。</p>
+</li>
+<li><p>AsyncTask。</p>
+</li>
+</ol>
+<p><strong>Android应用之间有几种共享数据的方法</strong></p>
+<ol>
+<li><p>ContentProvider</p>
+</li>
+<li><p>AIDL</p>
+</li>
+<li><p>BroadcastReceiver</p>
+</li>
+</ol>
+<p><strong>如何收集软件崩溃信息</strong></p>
+<ol>
+<li>Android异常捕获接口</li>
+</ol>
+<p>//当线程因未捕获的异常而突然终止时，调用处理程序的接口</p>
+<p><em>static interface UncaughtExceptionHandler</em></p>
+<ol>
+<li>设置线程捕获异常</li>
+</ol>
+<p>//设置当线程由于未捕获到的异常而突然终止，并且没有为该线程定义默认处理程序。</p>
+<p><em>static void setDefaultUncaughtException(Thread.UncaughtExceptionHandler eh)</em></p>
+<p>3）实现<em>UncaughtExceptionHandler</em>，并重写其中的<em>uncaughtException</em>方法。</p>
+<p><strong>下拉刷新和分页加载的实现机制</strong></p>
+<ol>
+<li><p>写好加载到ListView头部的View。</p>
+</li>
+<li><p>重写Listiew，实现onTouchEvent和onScroll方法，监听滑动状态，计算headView全部显示出来即可实行加载动作。</p>
+</li>
+<li><p>加载完成即刷新列表，重新隐藏headView。</p>
+</li>
+</ol>
+<p><strong>Android应用程序的入口点</strong></p>
+<ol>
+<li><p>Android应用程序提供的是入口Activity，而非入口函数。</p>
+</li>
+<li><p>在action结点中的android.intent.action.main表明它所在的Activity是整个应用程序的入口点，而category中的android.intent.category.LAUNCHER意思是把这个Activity归属到加载器类，即把这个Activity标注为自动会加载的和启动的Activity，这样程序启动时候就先加载这个Activity了。</p>
+</li>
+</ol>
+<p><strong>px,dp,sp的区别及应用场景</strong></p>
+<ol>
+<li><p>px（像素）：屏幕上的点，与密度相关，密度大了，单位面积上的px会比较多。</p>
+</li>
+<li><p>dip或dp（与密度无关的像素）：这个和设备硬件有关，一种基于屏幕密度的抽象单位，一般情况下，在不同分辨率下都不会有缩放的感觉，适合于设置View的宽和高。</p>
+</li>
+<li><p>sp(与刻度无关的像素)：放大像素，主要处理字体的大小。</p>
+</li>
+</ol>
+<p><strong>Android多屏幕支持机制</strong></p>
+<ol>
+<li><p>Android的支持多屏幕机制即用来为当前设备屏幕提供一种合适的方式来共同管理并解析应用资源。</p>
+</li>
+<li><p>Android平台中支持一系列你所提供的指定大小，指定密度的合适资源，<strong>其有个自动匹配机制去选择对应的布局和图片资源，系统会根据机器的分辨率分别到这几个文件夹去找对应的图片</strong>，在开发应用程序时为了兼容不同平台不同屏幕，建议各自文件夹按照需求放置不同版本的图片。</p>
+</li>
+<li><p>AndroidManifest.xml配置，google为了方便开发者对于各种分辨率机型的移植添加了自动适配的功能。</p>
+</li>
+<li><p>是否支持不同密度的屏幕</p>
+</li>
+<li><p>是否支持大屏幕</p>
+</li>
+<li><p>是否支持小屏幕</p>
+</li>
+<li><p>Android提供3种方式处理屏幕自适应</p>
+</li>
+</ol>
+<p>A）预缩放的资源（基于尺寸和密度）</p>
+<p>如果找到相应的尺寸和密度，则利用这些图片进行无缩放显示。</p>
+<p>如果没法找到相应的尺寸，而找到密度，则认为该图片尺寸为medium，利用缩放显示这个图片。</p>
+<p>如果都无法匹配，则使用默认图片进行缩放显示。</p>
+<p>B）自动缩放的像素尺寸和坐标</p>
+<p>如果应用程序部支持不同密度(android:anyDensity =<br>false),系统自动缩放图片尺寸和这个图片的坐标。</p>
+<p>对于预缩放的资源，当android:anyDensity = false，也不生效。</p>
+<p>android:anyDensity = false，只对密度兼容起作用，尺寸兼容没效果。</p>
+<p>C）兼容更大的屏幕和尺寸。</p>
+<ol>
+<li><p><strong>Android系统自动适配技巧</strong></p>
+</li>
+<li><p>布局文件中定义长度的时候，最好用wrap_content,fill_parent或者dp进行描述。</p>
+</li>
+<li><p>为不同屏幕密度的手机，提供不同的位图资源。</p>
+</li>
+<li><p>不要使用AbsoluteLayout。</p>
+</li>
+<li><p>像素单位都使用DIP，文本单位使用SP。</p>
+</li>
+</ol>
+<p><strong>Android安全访问机制</strong></p>
+<p><strong>（安全架构）</strong></p>
+<p>Android安全架构中的一个中心思想就是：应用程序在默认的情况下不可以执行任何对其它应用程序、系统或用户带来负面影响的操作。这包括读或写用户的私有数据，读或写另一个应用程序的文件，网络连接等。</p>
+<p><strong>（Android的内核安全机制）</strong></p>
+<p>1）Android的Linux内核包含了<strong>强制访问控制机制</strong>和<strong>自主访问控制机制</strong>。</p>
+<p>2）强制访问控制机制由Linux安全模块来实现，但Google出于某种原因，并没有将LSM编译进Android内核。</p>
+<p>3）自主访问控制机制通常由文件访问控制来实现，Linux文件系统的权限控制是由user、group、other与读(r)<br>、写(w)<br>、执行(x)的不同组合来实现的。这样，每个文件都有三个基本权限集，它们的组合可以容许、限制、拒绝用户、用户组和其他用户的访问。</p>
+<p>4）通常，只有uid是“system”或“root”用户才拥有Android系统文件的访问权限，而应用程序只有通过申请Android权限才能实现对相应文件的访问，也正因为此，Android使用内核层Linux的自主访问控制机制和运行时的Dalvik虚拟机来实现Android的“沙箱”机制。</p>
+<p><strong>（Android的“沙箱”机制）</strong></p>
+<p>1）Android“沙箱”的本质是为了实现不同应用程序和进程之间的互相隔离，即在默认情况下，应用程序没有权限访问系统资源或其它应用程序的资源。</p>
+<p>2）每个APP和系统进程都被分配唯一并且固定的User<br>Id，这个uid与内核层进程的uid对应。</p>
+<p>3）每个APP在各自独立的Dalvik虚拟机中运行，拥有独立的地址空间和资源。</p>
+<p>4）运行于Dalvik虚拟机中的进程必须依托内核层Linux进程而存在，因此Android使用Dalvik虚拟机和Linux的文件访问控制来实现沙箱机制，任何应用程序如果想要访问系统资源或者其它应用程序的资源必须在自己的manifest文件中进行声明权限或者共享uid。</p>
+<p><strong>（Android的权限检查机制）</strong></p>
+<p>Android是一个“权限分离”的系统，任何一个应用程序在使用Android受限资源（网络、电话、短信、蓝牙、通讯录、SdCard等）之前都必须以XML文件的形式事先向Android系统提出申请，等待Android系统批准后应用程序方可使用相应的资源，</p>
+<p><strong>（Android的数字签名机制）</strong></p>
+<p>1）所有安装到Android系统中的应用程序都必须拥有一个数字证书，此数字证书用于标识应用程序的作者和应用程序之间的信任关系。</p>
+<p>2）Android系统不会安装一个没有数字证书的应用程序，如果一个权限的保护级别为signature，只有当应用程序所用数字签名与声明此权限的应用程序所用数字签名相同时，Android系统才会授权。</p>
+<p>3）如果一个权限的保护级别为signatureOrSystem，Android系统会将该权限授予具有相同数字签名的应用程序或Android包类。</p>
+<p><strong>Android中访问网络的方式</strong></p>
+<ol>
+<li><p>HttpURLConnection</p>
+</li>
+<li><p>HttpClient</p>
+</li>
+<li><p>Get和Post。</p>
+</li>
+</ol>
+<p><strong>Android中实现消息推送</strong></p>
+<ol>
+<li><p>如果使客户端能够实时地收到服务器的消息和通知，总体来说有2种方法：</p>
+</li>
+<li><p>客户端使用pull的方式，就是隔一段时间就去服务器上获取一下信息，看是否有新的消息出现。</p>
+</li>
+<li><p>服务器使用push的方法，当服务器端有新信息了，则把最新的消息推送到客户端上。</p>
+</li>
+<li><p>几种常见的解决方案：</p>
+</li>
+<li><p>轮训pull：客户端定时向服务器发送询问消息，一旦服务器有变化立即同步消息。</p>
+</li>
+<li><p>持久push：客户端和服务器之间建立长久连接，这样就可以实现消息的即时性和实时性。</p>
+</li>
+<li><p>xmpp实现消息推送。</p>
+</li>
+</ol>
+<p><strong>AsyncTask理解</strong></p>
+<ol>
+<li><p>AsyncTask的特点是任务在主线程之外运行，而回调方法是在主线程中执行，这就有效避免了Handler带来的麻烦。</p>
+</li>
+<li><p>AsyncTask提供了三种泛型类型Params、Progress和Result：</p>
+</li>
+<li><p>Params：启动任务执行的输入参数，如HTTP请求的URL。</p>
+</li>
+<li><p>Progress：后台任务执行的百分比。</p>
+</li>
+<li><p>Result：后台执行任务返回的最终结果。</p>
+</li>
+<li><p>AsyncTask的执行分为四个步骤，每一步都对应一个回调方法：</p>
+</li>
+<li><p><em>onPreExcute()</em></p>
+</li>
+</ol>
+<p>此方法在主线程执行，当任务执行之前开始调用此方法。</p>
+<p><em>B）doInBackground()</em></p>
+<p>此方法在后台线程执行，完成任务的主要工作，通常需要较长的时间，在此期间可以调用publicProgress来更新任务的进度。</p>
+<p><em>C）onProgressUpdate()</em></p>
+<p>此方法在主线程执行，用于显示任务执行的进度。</p>
+<p><em>D）onPostExcute()</em></p>
+<p>此方法在主线程执行，任务执行的结果作为此方法的参数。</p>
+<p><strong>SQlite的缺点</strong></p>
+<ol>
+<li><p>事务处理并发性：SQlite通过数据库级上的独占锁和共享锁来实现独立事物处理，这意味着多个进程或现场在同一时间可以从数据库读取数据，但是只能有一个可以写入，在写入之前，必须获得独占锁，其它的读操作不允许发生。</p>
+</li>
+<li><p>在创建索引和删除表时比其它数据库慢。</p>
+</li>
+<li><p>用户管理、安全：数据库的访问是基于操作系统对文件的控制来控制的，不能通过用户来区分数据库中的不同数据库。</p>
+</li>
+</ol>
+<p><strong>Bitmapfun分析</strong></p>
+<ol>
+<li><em>ImageCache：</em>缓存管理，包括内存缓存<em>mLruCache</em>和硬盘缓存<em>mDiskCache。</em></li>
+</ol>
+<p>A）<em>findOrCreateCache：</em>用一个<em>RetainFragment</em>来保存<em>ImageCache</em>对象。</p>
+<p>B）<em>init：</em>初始化内存缓存和硬盘缓存。</p>
+<p>C）<em>addBitmapToCache</em>：添加bitmap到内存缓存和硬盘缓存。</p>
+<p>D）<em>getBitmapFromMenCache/getBitmapFromDiskCache</em>：分别从内存和硬盘中获取bitmap对象。</p>
+<p>E）<em>ImageCacheParams</em>：包含了参数的缓存内部类。</p>
+<ol>
+<li><p><em>ImageWork：</em>抽象类，是这三个类的基础。</p>
+</li>
+<li><p><em>loadImage：</em>为外部提供了一个加载图片的统一接口，其中具体的加载过程通过一个异步类来后台执行，异步类又会调用<em>processBitmap()</em>方法。</p>
+</li>
+<li><p><em>processBitmap()</em>：ImageWorker并没有实现该方法，因为图片加载的模式有多种，包括从网络下载，从resource解析和本地文件解析等，因此把它定义为一个抽象放。</p>
+</li>
+<li><p>缓存管理ImageCache的引用。</p>
+</li>
+<li><p><em>CacheAsyncTask：</em>异步调用closeCache等方法管理硬盘缓存。</p>
+</li>
+<li><p><em>ImageResizer：</em>继承自ImageWorker，定义了几种图片解析方法和一个采样参数计算方法。</p>
+</li>
+<li><p><em>resize:</em>根据传入的要求长宽高对图片进行缩放。</p>
+</li>
+<li><p><em>processBitmap方法实现：</em>解析resources下的图片。如果想换其它的解析方式，只需要定义一个子类覆写该方法即可。</p>
+</li>
+<li><p><em>ImageFecher：</em>继承自ImageResizer。</p>
+</li>
+</ol>
+<p>A）添加了一个网络操作和网络图片的硬盘缓存httpDiskCache。</p>
+<p>B）<em>processBitmap方法实现：</em>用来从网络上获取图片。</p>
+<p><strong>universalImageLoader的缓存策略</strong></p>
+<p><strong>（内存缓存）</strong></p>
+<ol>
+<li><p>LruMemoryCache：只使用强引用缓存。</p>
+</li>
+<li><p>UsingFreqLimitedMemoryCache：如果缓存的图片总量超过限定值，先删除使用频率最小的bitmap。</p>
+</li>
+<li><p>LRULimitedMemoryCache：缓存的是Bitmap的软引用。</p>
+</li>
+<li><p>FIFOLimitedMemoryCache：先进先出策略，当超过限定值，先删除最先加入的bitmap。</p>
+</li>
+<li><p>LargestLimitedMemoryCache：当超过缓存限定值，先删除最大的bitmap对象。</p>
+</li>
+<li><p>LimitedAgeMemoryCache：当bitmap加入缓存中的时间超过我们设定的值，将其删除。</p>
+</li>
+</ol>
+<p><strong>（硬盘缓存）</strong></p>
+<ol>
+<li><p>FileCountLimitedDiscCache：先设定缓存图片的个数，当超过设定值，删除最先加入到硬盘的文件。</p>
+</li>
+<li><p>LimitedAgeDiscCache：设定文件最长存活时间，当超过这个值，就删除该文件。</p>
+</li>
+<li><p>TotalSizeLimitedDiscCache：设定缓存bitmap的最大值，当超过这个值，删除最先加入到硬盘的文件。</p>
+</li>
+<li><p>UnlimitedDiscCache：这个缓存类没有任何的限制。</p>
+</li>
+</ol>
+<p><strong>volley</strong></p>
+<p><img src="media/cb6d65d0f583285a389cdc15c9e2d4d4.png" alt=""></p>
+<p>（1）<em>newRequestQueue:</em>newRequestQueue中带有两个参数，如果stack为空，那么会创建一个HttpStack对象，如果版本号大于9，则创建一个HurlStack(HttpURLConnection)的实例，否则就创建一个HttpClientStack(HttpClient)实例，紧接着创建一个<em>Network对象</em>，它是根据传入的HttpStack对象来处理网络请求的，再new出一个<em>RequestQueue对象</em>，并<em>调用它的start()方法</em>启动。</p>
+<p>（3）先创建一个CacheDispatcher的实例，然后调用它的start()方法，紧接着在一个for循环中创建NetworkDispatcher的实例，并分别调用它们的start()方法，默认这5个线程一直在后台运行，不断等待网络请求的到来，<em>CacheDispatcher</em>是缓存线程，<em>NetworkDis</em>是网络请求线程。</p>
+<p>（4）调用<em>RequestQueue的add()</em>方法</p>
+<p>1）判断当前请求是否可以缓存，如果不可以则直接加入网络队列，可以缓存的话则将这条请求加入缓存队列。</p>
+<p>2）尝试从缓存当中取出相应结果，如果为空的话则把这条请求加入到网络请求队列当中，如果不为空的话再判断该缓存是否已经过期，如果过期了则同样把这条请求加入到网络请求队列当中，否则就认为不需要重发网络请求。</p>
+<p>3）调用BasicNetwork的<em>performRequest</em>方法，之后会将服务器返回的数据组装成一个NetworkResponse对象进行返回。</p>
+<p>4）NetworkDispatcher中收到了NetworkResponse这个返回值后又会调用Request的parseNetworkResponse方法来解析NetworkResponse中的数据，以及将数据写入缓存。</p>
+<p>5）在解析完了NetworkResponse中的数据后，又会调用ExeutorDelivery中的postResponse来回调解析出的数据。</p>
+<p>6）在mResponsePoster的execute()方法中传入了一个ResponseDeliveryRunnbale对象，就可以保证该对象中的run()方法是在主线程中运行的了。</p>
+<p>7）调用Request的deliverResponse方法，每条网络请求的响应都是回调到该方法中，最后我们再在这个方法中将响应的数据回调到Response.Listener的onResponse()方法中就可以了。</p>
+<p><strong>JNI(一)</strong></p>
+<ol>
+<li>创建一个类（HelloWorld.java）或者在原来的类<em>com.example.hellojni.HelloJNI</em>中声明本地方法。</li>
+</ol>
+<blockquote>
+<p>  （1）使用关键字native声明本地方法，表明这两个函数需要通过本地代码C/C++实现。</p>
+</blockquote>
+<blockquote>
+<p>  <em>public native String stringFromJNI();</em></p>
+</blockquote>
+<blockquote>
+<p>  （2）加载动态库libHelloJNI.so</p>
+</blockquote>
+<blockquote>
+<p>  <em>static{</em></p>
+</blockquote>
+<blockquote>
+<p>  <em>System.loadLibrary(“HelloJNI”)；</em></p>
+</blockquote>
+<blockquote>
+<p>  <em>}</em></p>
+</blockquote>
+<ol>
+<li>使用<em>javac</em>编译源文件HelloWorld.java，生成HelloWorld.class。</li>
+</ol>
+<blockquote>
+<p>  （1）通过Eclipse编译代码，生成.class文件。</p>
+</blockquote>
+<ol>
+<li>使用<em>javah –jni</em>来生成头文件，这个头文件里面包含了本地方法的函数原型。</li>
+</ol>
+<blockquote>
+<p>  (1)在新建成的工程根目录下，键入以下命令：</p>
+</blockquote>
+<blockquote>
+<p>  <em>\$javah –classpath bin/classes –d jni com.example.hellojni.HelloJNI</em></p>
+</blockquote>
+<blockquote>
+<p>  (2)运行完之后，会在本地生成一个名为<em>jni</em>的目录，里面有一个名为<em>com_example_hellojni_HelloJNI.h</em>的头文件，这个文件就是我们需要的头文件，它包含了我们先前声明的两个函数,还加入了相应的包名作为前缀。</p>
+</blockquote>
+<ol>
+<li>编写C/C++代码（HelloWorld.c）来实现头文件中的函数原型。</li>
+</ol>
+<blockquote>
+<p>  按照<em>com_example_hellojni_HelloJNI.h</em>中声明的函数名，在jni目录下建立一个<em>HelloJNI.c</em>,实现其函数体。</p>
+</blockquote>
+<ol>
+<li><p>将HelloWorld.c编译成一个动态库，生成HelloWorld.so或HelloWorld.dll。</p>
+</li>
+<li><p>下载ndk，在jni目录下输入ndk-build命令。</p>
+</li>
+<li><p>将会在HelloJNI/libs/armeabi目录下生成一个名为<em>libHelloJNI.so</em>的动态库，生成apk时会把这个库一起打包。</p>
+</li>
+</ol>
+<p><strong>JNI(二)</strong></p>
+<p>A）JNI的入口函数，当执行到<em>System.loadLibray(“HelloJNI”)</em>时，会在第一次使用该类的时候加载动态库libHelloJNI.so，当Android的VM执行到System.loadLibrary()这个函数时，首先会执行<em>JNI_OnLoad()</em>这个函数，执行这个函数的意图包括：</p>
+<p>(1)告诉VM此C组件使用哪一个JNI版本。如果动态库中没有提供JNI_onLoad()，VM默认使用最老的JNI<br>1.1版本。</p>
+<p>(2)初始化，例如预先申请资源等等。</p>
+<p>B）使用ndk进行编译。</p>
+<p>C）使用<em>registerNativeMethods</em>方法</p>
+<p>(1)在jni目录下新建<em>HelloJNI.c</em>：</p>
+<p><em>jstring stringFromJNI(JNIEnv\</em> env, jobject this)*</p>
+<p><em>static JNINativeMethod gMethods[] = …</em></p>
+<p><em>int register_location_methods(JNIEnv \</em>env)*</p>
+<p><em>jint JNI_Onload(JavaVm\</em> vm, void *reserved);*</p>
+<p><em>void JNI_Onload(JavaVm\</em> vm, void *reserved);*</p>
+<p>(2)其中的<em>JNI_OnLoad()</em>函数包括以下步骤：获取JNI环境对象，登记本地方法，最后返回JNI版本。</p>
+<p>(3)声明实例：</p>
+<blockquote>
+<p>  <em>Static JNINativeMethod gMethods[] = {</em></p>
+</blockquote>
+<p><em>{ “stringFromJNI”,“()Ljava/lang/String”,(void\</em>)stringFromJNI}*</p>
+<blockquote>
+<p>  <em>}</em></p>
+</blockquote>
+<p>D）使用registerNativeMethods的好处：</p>
+<p>(1)不需要使用长方法名。</p>
+<p>(2)提高效率。当Java类通过VM呼叫到本地函数时，通常是依靠VM去动态寻找动态库中的本地函数（因此才需要特定规则的命名格式），如果某方法需要连续呼叫许多次，则每次都要寻找一遍，所以使用registerNativeMethods将本地函数向VM登记，可以更有效率地找到函数。</p>
+<p>(3)运行时动态调整本地函数与Java函数值之间的映射关系，只需要多次调用registerNativeMethods方法，并传入不同的映射表参数即可。</p>
+<p><strong>JNI(三)</strong></p>
+<ol>
+<li><p>JNI的强大特性使我们在使用Java平台的同时，还可以重用原来的本地代码，作为虚拟机实现的一部分，JNI允许Java和本地代码间的双向交互，你可以使用JNI来实现本地方法，并在Java程序中调用它们。</p>
+</li>
+<li><p>JNI的副作用</p>
+</li>
+<li><p>应用不再跨平台，要想跨平台，必须在不同的系统环境下重新编译本地语言部分。</p>
+</li>
+<li><p>程序不再是绝对安全的，本地代码的不当使用可能导致整个程序崩溃。</p>
+</li>
+</ol>
+<p><strong>将SQLite数据库与apk文件一起发布</strong></p>
+<p>将.db文件复制到Eclipse工程下的res/aw目录中，所有在该目录中的文件不会压缩，这样可以直接提取该目录中的文件。</p>
+<p><strong>Android的常用布局</strong></p>
+<ol>
+<li><p>线性布局：LinearLayout</p>
+</li>
+<li><p>绝对布局：AbsoluteLayout</p>
+</li>
+<li><p>表格式布局：TableLayout</p>
+</li>
+<li><p>相对布局：RelativeLayout</p>
+</li>
+<li><p>层叠布局：FrameLayout</p>
+</li>
+</ol>
+<p><strong>Android的数据存储方式</strong></p>
+<ol>
+<li><p>SharedPreference</p>
+</li>
+<li><p>文件存储数据。</p>
+</li>
+<li><p>SQLite数据库存储数据</p>
+</li>
+<li><p>ContentProvider存储数据。</p>
+</li>
+<li><p>网络存储数据。</p>
+</li>
+</ol>
+<p><strong>Android运行时权限与文件系统权限的区别</strong></p>
+<p>Apk程序是运行在虚拟机上的，对应的是Andrid独特的权限机制，只有体现到文件系统时才使用Linux的权限设置。</p>
+<p><strong>系统上安装了多种浏览器，能否指定某浏览器访问指定页面？</strong></p>
+<p>通过直接发送Uri参数过去，或者通过manifest.xml里的Intent-filter的data属性。</p>
+<p><strong>ANR产生的原因（Application Not Responding）</strong></p>
+<ol>
+<li>产生ANR的原因</li>
+</ol>
+<p>在Android中，应用程序的响应性是由ActivitManager和WindowManager系统服务监视的。当它监视到以下一个情况中的一个时，就会特定的应用程序提示ANR。</p>
+<ol>
+<li><p>在5s内没有响应输入的事件（例如按键按下，屏幕触摸）。</p>
+</li>
+<li><p>BrocaseReceiver在10s内没有执行完毕。</p>
+</li>
+<li><p>如何避免ANR</p>
+</li>
+<li><p>运行在主线程里的任何方法都尽可能少做事情。特别是，Activity应该在它的关键生命周期方法（onCreat()，onResume()）里尽可能少的去做创建操作（可以采用重新开启子线程的方式，然后使用<strong>Handler+Message</strong>的方式做一些操作，比如更新主线程中的UI）。</p>
+</li>
+<li><p>应用程序应该避免在BroadcastReceiver里做耗时的操作或计算。但不再是在子线程里做这些任务（因为BroadcastReceiver的生命周期短），替代的是，如果响应Intent广播需要执行一个耗时操作的动作的话，应用程序应该启动一个<strong>Service</strong>。</p>
+</li>
+<li><p>避免在Intent<br>Receiver里启动一个Activity，因为它会创建一个新的画面，并从当前用户正在运行的程序上抢夺焦点。如果你的应用程序在响应Intent广播时需要向用户展示什么，你应该使用<strong>Notification<br>Manager</strong>来实现。</p>
+</li>
+<li><p>有时候需要做一些和网络交互的耗时操作就采用<strong>Asytask异步任务</strong>的方法，在主线程中更新UI。</p>
+</li>
+</ol>
+<p><strong>Andorid Force close中出现的原因及解决方法</strong></p>
+<ol>
+<li><p>导致出现Force<br>close的原因有很多，常见的有比如空指针，类没有找到，资源没找到，或者Android<br>API使用的顺序也可能导致（比如在setContentView()之前进行了findViewByid）</p>
+</li>
+<li><p>避免弹出Force close：</p>
+</li>
+</ol>
+<p><img src="media/bb23f8cb656f438790412838a5a54360.png" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/27/2018-Android面试分享/" rel="next" title="2018 Android面试分享">
+                <i class="fa fa-chevron-left"></i> 2018 Android面试分享
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">yyg</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/985211yygg" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:2289201033@qq.com" target="_blank" title="QQ-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>QQ-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yyg</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
