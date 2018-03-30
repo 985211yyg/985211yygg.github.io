@@ -104,7 +104,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1159344-a03f87ad72ded7c7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1159344-bf5080e151ad528a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-03-27T14:23:09.814Z">
+<meta property="og:updated_time" content="2018-03-30T07:52:18.080Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2018 Android 面试题整理">
 <meta name="twitter:description" content="2018年Android面试题整理这是我近段时间收集的面试题，献给打算年后找工作的同学们。文中涉及的知识比较广也可能比较零散，并且一些较为基础的知识我都略去了（比如Android四大组件是什么这类问题），有些我附上了自己的理解，有些附上了详细的相关文章链接。大家挑自己感兴趣的内容查看即可，后期我也会继续不断补充。 基础组件篇横竖屏切换时Activity的生命周期变化?1.如果自己没有配置andro">
@@ -356,7 +356,18 @@
 <p>(2)如果从其他Context中启动Activity则必须给intent设置Flag:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK) ;</span><br><span class="line">mContext.startActivity(intent);</span><br></pre></td></tr></table></figure>
 <h3 id="介绍下Android应用程序启动过程"><a href="#介绍下Android应用程序启动过程" class="headerlink" title="介绍下Android应用程序启动过程"></a>介绍下Android应用程序启动过程</h3><p>整个应用程序的启动过程要执行很多步骤，但是整体来看，主要分为以下五个阶段：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">一. ：Launcher通过Binder进程间通信机制通知ActivityManagerService，它要启动一个Activity；</span><br><span class="line"></span><br><span class="line">二.：ActivityManagerService通过Binder进程间通信机制通知Launcher进入Paused状态；</span><br><span class="line"></span><br><span class="line">三.：Launcher通过Binder进程间通信机制通知ActivityManagerService，它已经准备就绪进入Paused状态，于是ActivityManagerService就创建一个新的进程，用来启动一个ActivityThread实例，即将要启动的Activity就是在这个ActivityThread实例中运行；</span><br><span class="line"></span><br><span class="line">四. ：ActivityThread通过Binder进程间通信机制将一个ApplicationThread类型的Binder对象传递给ActivityManagerService，以便以后ActivityManagerService能够通过这个Binder对象和它进行通信；</span><br><span class="line"></span><br><span class="line">五 ：ActivityManagerService通过Binder进程间通信机制通知ActivityThread，现在一切准备就绪，它可以真正执行Activity的启动操作了。</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>Launcher通过Binder进程间通信机制通知ActivityManagerService，它要启动一个Activity；</p>
+</li>
+<li><p>ActivityManagerService通过Binder进程间通信机制通知Launcher进入Paused状态；</p>
+</li>
+<li><p>Launcher通过Binder进程间通信机制通知ActivityManagerService，它已经准备就绪进入Paused状态，于是ActivityManagerService就创建一个新的进程，用来启动一个ActivityThread实例，即将要启动的Activity就是在这个ActivityThread实例中运行；</p>
+</li>
+<li><p>ActivityThread通过Binder进程间通信机制将一个ApplicationThread类型的Binder对象传递给ActivityManagerService，以便以后ActivityManagerService能够通过这个Binder对象和它进行通信；</p>
+</li>
+<li><p>ActivityManagerService通过Binder进程间通信机制通知ActivityThread，现在一切准备就绪，它可以真正执行Activity的启动操作了。</p>
+</li>
+</ol>
 <p>相关文章：<a href="https://link.juejin.im/?target=http%3A%2F%2Fblog.csdn.net%2Fluoshengyang%2Farticle%2Fdetails%2F6689748" target="_blank" rel="noopener">Android应用程序启动过程源代码分析</a></p>
 <h3 id="如何保证Service不被杀死？"><a href="#如何保证Service不被杀死？" class="headerlink" title="如何保证Service不被杀死？"></a>如何保证Service不被杀死？</h3><ul>
 <li>提供进程优先级，降低进程被杀死的概率 方法一：监控手机锁屏解锁事件，在屏幕锁屏时启动1个像素的 Activity，在用户解锁时将 Activity 销毁掉。 方法二：启动前台service。 方法三：提升service优先级： 在AndroidManifest.xml文件中对于intent-filter可以通过android:priority = “1000”这个属性设置最高优先级，1000是最高值，如果数字越小则优先级越低，同时适用于广播。</li>
@@ -484,8 +495,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/27/Android系统框架/" rel="next" title="Android系统框架">
-                <i class="fa fa-chevron-left"></i> Android系统框架
+              <a href="/2018/03/27/app-崩溃之后自动重启/" rel="next" title="APP崩溃后重启">
+                <i class="fa fa-chevron-left"></i> APP崩溃后重启
               </a>
             
           </div>
@@ -494,8 +505,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/27/app-崩溃之后自动重启/" rel="prev" title="APP崩溃后重启">
-                APP崩溃后重启 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/27/Android系统框架/" rel="prev" title="Android系统框架">
+                Android系统框架 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
