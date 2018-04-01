@@ -101,22 +101,22 @@
 <meta property="og:site_name" content="yyg的小黑屋">
 <meta property="og:description" content="Activity(Fragment)的生命周期和启动模式1.1 生命周期分析 1.1.1 典型的生命周期   activity的生命周期        fragment的生命周期     与宿主Activity的生命周期的关系     onStar和onResum、onPause和onStop从描述看起来差不多，对于我们来说有什么实质的不同呢？    对于这两对相似的接口，Android系统既然">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://github.com/985211yygg/985211yygg.github.io/blob/master/images/activity_lifecycle.png?raw=true">
-<meta property="og:image" content="https://github.com/985211yygg/985211yygg.github.io/blob/master/images/activity-lifecycle-detail.PNG?raw=true">
-<meta property="og:image" content="https://github.com/985211yygg/985211yygg.github.io/blob/master/images/fragment_lifecycle_1.png?raw=true">
-<meta property="og:image" content="https://github.com/985211yygg/985211yygg.github.io/blob/master/images/fragment_lifecycle.png?raw=true">
-<meta property="og:image" content="https://github.com/985211yygg/985211yygg.github.io/blob/master/images/fragment_lifecycle_table.PNG?raw=true/w/700/h/300">
-<meta property="og:image" content="https://github.com/985211yygg/985211yygg.github.io/blob/master/images/activity_launch_mode.PNG?raw=true">
+<meta property="og:image" content="http://www.yyglike.com/2018/03/31/Android开发艺术探索总结/activity_lifecycle.PNG">
+<meta property="og:image" content="http://www.yyglike.com/2018/03/31/Android开发艺术探索总结/activity_lifecycle_table.PNG">
+<meta property="og:image" content="http://www.yyglike.com/2018/03/31/Android开发艺术探索总结/fragment_lifecycle.png">
+<meta property="og:image" content="http://www.yyglike.com/2018/03/31/Android开发艺术探索总结/activity_fragment_lifecycle.png">
+<meta property="og:image" content="http://www.yyglike.com/2018/03/31/Android开发艺术探索总结/activity_fragment_lifecycle_table.PNG">
+<meta property="og:image" content="http://www.yyglike.com/2018/03/31/Android开发艺术探索总结/activity_launch_mode.PNG">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/944365-45db4df339348b9b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/944365-c10d6032f91a103f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700">
 <meta property="og:image" content="https://github.com/985211yygg/985211yygg.github.io/blob/master/images/module.png?raw=true">
-<meta property="og:image" content="https://github.com/985211yygg/985211yygg.github.io/blob/master/images/Binder%20Driver.png?raw=true">
-<meta property="og:image" content="https://github.com/985211yygg/985211yygg.github.io/blob/master/images/Binder.png?raw=true">
-<meta property="og:updated_time" content="2018-04-01T10:15:35.377Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/944365-65a5b17426aed424.png?imageMogr2/auto-orient/">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/944365-d3c78b193c3e8a38.png?imageMogr2/auto-orient/">
+<meta property="og:updated_time" content="2018-04-01T10:55:39.359Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android开发艺术探索总结">
 <meta name="twitter:description" content="Activity(Fragment)的生命周期和启动模式1.1 生命周期分析 1.1.1 典型的生命周期   activity的生命周期        fragment的生命周期     与宿主Activity的生命周期的关系     onStar和onResum、onPause和onStop从描述看起来差不多，对于我们来说有什么实质的不同呢？    对于这两对相似的接口，Android系统既然">
-<meta name="twitter:image" content="https://github.com/985211yygg/985211yygg.github.io/blob/master/images/activity_lifecycle.png?raw=true">
+<meta name="twitter:image" content="http://www.yyglike.com/2018/03/31/Android开发艺术探索总结/activity_lifecycle.PNG">
 
 
 
@@ -365,18 +365,18 @@
 </blockquote>
 </li>
 </ul>
-<p><img src="https://github.com/985211yygg/985211yygg.github.io/blob/master/images/activity_lifecycle.png?raw=true" alt="    "></p>
-<p><img src="https://github.com/985211yygg/985211yygg.github.io/blob/master/images/activity-lifecycle-detail.PNG?raw=true" alt=""></p>
+<p><img src="/2018/03/31/Android开发艺术探索总结/activity_lifecycle.PNG" alt=""></p>
+<p><img src="/2018/03/31/Android开发艺术探索总结/activity_lifecycle_table.PNG" alt=""></p>
 <ul>
 <li><blockquote>
 <p><strong>fragment的生命周期</strong></p>
 </blockquote>
 </li>
 </ul>
-<p><img src="https://github.com/985211yygg/985211yygg.github.io/blob/master/images/fragment_lifecycle_1.png?raw=true" alt=""></p>
+<p><img src="/2018/03/31/Android开发艺术探索总结/fragment_lifecycle.png" alt=""></p>
 <p><strong>与宿主Activity的生命周期的关系</strong></p>
-<p><img src="https://github.com/985211yygg/985211yygg.github.io/blob/master/images/fragment_lifecycle.png?raw=true" alt=""></p>
-<p><img src="https://github.com/985211yygg/985211yygg.github.io/blob/master/images/fragment_lifecycle_table.PNG?raw=true/w/700/h/300" alt=""></p>
+<p><img src="/2018/03/31/Android开发艺术探索总结/activity_fragment_lifecycle.png" alt=""></p>
+<p><img src="/2018/03/31/Android开发艺术探索总结/activity_fragment_lifecycle_table.PNG" alt=""></p>
 <ul>
 <li><blockquote>
 <p><strong>onStar和onResum、onPause和onStop从描述看起来差不多，对于我们来说有什么实质的不同呢？</strong></p>
@@ -432,7 +432,7 @@
 <p>5.Fragment 与 ViewPager 结合使用时的生命周期与第 4 点相似。</p>
 <p>6.通过 hide() 、 show() 来隐藏、显示Fragment，此时 Fragment 只改变了可见性，并不涉及生命周期的改变</p>
 <p>7.第 7 点与Fragment 和 Activity 的生命周期有关，即：不要在 Fragment 的 onCreate() 方法中操作宿主Activity 的 UI。因为你无法保证此时 宿主Activity 的 UI 已经完全初始化。PS:某些情况下是可以确保 宿主Activity 已经初始化完成的。</p>
-<h5 id="1-2-Android的启动模式"><a href="#1-2-Android的启动模式" class="headerlink" title="1.2 Android的启动模式"></a>1.2 Android的启动模式</h5><p><img src="https://github.com/985211yygg/985211yygg.github.io/blob/master/images/activity_launch_mode.PNG?raw=true" alt=""></p>
+<h5 id="1-2-Android的启动模式"><a href="#1-2-Android的启动模式" class="headerlink" title="1.2 Android的启动模式"></a>1.2 Android的启动模式</h5><p><img src="/2018/03/31/Android开发艺术探索总结/activity_launch_mode.PNG" alt=""></p>
 <ul>
 <li><blockquote>
 <p><strong> activity的startActivity和context的startActivity区别</strong></p>
@@ -500,9 +500,9 @@
 <p><strong>跨进程通信的核心原理</strong></p>
 </blockquote>
 <p><strong>关于其核心原理：内存映射，具体请看文章：<a href="https://www.jianshu.com/p/719fc4758813" target="_blank" rel="noopener">操作系统：图文详解 内存映射</a> </strong></p>
-<p><img src="https://github.com/985211yygg/985211yygg.github.io/blob/master/images/Binder%20Driver.png?raw=true" alt="Binder Driver"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/944365-65a5b17426aed424.png?imageMogr2/auto-orient/" alt="Binder Driver"></p>
 <p><strong>Binder通信原理图：</strong></p>
-<p><img src="https://github.com/985211yygg/985211yygg.github.io/blob/master/images/Binder.png?raw=true" alt="Binder原理图"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/944365-d3c78b193c3e8a38.png?imageMogr2/auto-orient/" alt="Binder原理图"></p>
 </li>
 </ul>
 </li>

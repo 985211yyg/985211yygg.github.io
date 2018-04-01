@@ -675,7 +675,7 @@
 <p><img src="https://github.com/985211yygg/985211yygg.github.io/blob/master/images/media/12730863761914f1eb53e37266b34433.png?raw=true" alt=""></p>
 <p>B）启动Service时创建一个ServiceConnection匿名类，在里面重写<strong>onServiceConnected()</strong>和<strong>onServiceDisconnected()</strong>方法，这两个方法会在Activity与Service建立关联和解除关联的时候调用。</p>
 <p>C）在<strong>onServiceConnected()</strong>里面对IBinder向下转型得到MyBinder的实例，这时我们在Activity中根据具体的场景调用MyBinder中的任何public方法。</p>
-<p><img src="media/170e6ebee8e46584956e25478d7e8087.png" alt=""></p>
+<p><img src="/2018/03/29/android总结/media/170e6ebee8e46584956e25478d7e8087.png" alt=""></p>
 <p>C）构建Intent对象，然后调用<strong>bindService()</strong>将Activity和Service进行绑定，bindService()接收3个参数（新建的Intent对象，ServiceConnection的实例，标志位），此时onCreat()方法将会执行，但onStartCommend()方法不会执行。</p>
 <ol>
 <li><p>Service其实是运行在主线程中的，如果在Service中做了耗时的工作，那么会出现ANR，我们可以在Service中再创建一个子线程，然后去处理耗时逻辑。</p>
