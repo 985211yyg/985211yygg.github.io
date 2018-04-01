@@ -94,23 +94,29 @@
 
 
 
-<meta name="description" content="Activity(Fragment)的生命周期和启动模式1.1 生命周期分析 1.1.1 典型的生命周期   activity的生命周期  d   fragment的生命周期     1.1.2 异常情况下的生命周期分析   横竖屏切换时Activity的生命周期变化?    app崩溃后的生命周期？      1.2 Android的启动模式   activity的startActivity和">
+<meta name="description" content="Activity(Fragment)的生命周期和启动模式1.1 生命周期分析 1.1.1 典型的生命周期   activity的生命周期        fragment的生命周期     与宿主Activity的生命周期的关系     onStar和onResum、onPause和onStop从描述看起来差不多，对于我们来说有什么实质的不同呢？    对于这两对相似的接口，Android系统既然">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android开发艺术探索总结">
 <meta property="og:url" content="http://www.yyglike.com/2018/03/31/Android开发艺术探索总结/index.html">
 <meta property="og:site_name" content="yyg的小黑屋">
-<meta property="og:description" content="Activity(Fragment)的生命周期和启动模式1.1 生命周期分析 1.1.1 典型的生命周期   activity的生命周期  d   fragment的生命周期     1.1.2 异常情况下的生命周期分析   横竖屏切换时Activity的生命周期变化?    app崩溃后的生命周期？      1.2 Android的启动模式   activity的startActivity和">
+<meta property="og:description" content="Activity(Fragment)的生命周期和启动模式1.1 生命周期分析 1.1.1 典型的生命周期   activity的生命周期        fragment的生命周期     与宿主Activity的生命周期的关系     onStar和onResum、onPause和onStop从描述看起来差不多，对于我们来说有什么实质的不同呢？    对于这两对相似的接口，Android系统既然">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://github.com/985211yygg/985211yygg.github.io/blob/master/images/activity_lifecycle.png?raw=true">
+<meta property="og:image" content="https://github.com/985211yygg/985211yygg.github.io/blob/master/images/activity-lifecycle-detail.PNG?raw=true">
+<meta property="og:image" content="https://github.com/985211yygg/985211yygg.github.io/blob/master/images/fragment_lifecycle_1.png?raw=true">
+<meta property="og:image" content="https://github.com/985211yygg/985211yygg.github.io/blob/master/images/fragment_lifecycle.png?raw=true">
+<meta property="og:image" content="https://github.com/985211yygg/985211yygg.github.io/blob/master/images/fragment_lifecycle_table.PNG?raw=true/w/700/h/300">
+<meta property="og:image" content="https://github.com/985211yygg/985211yygg.github.io/blob/master/images/activity_launch_mode.PNG?raw=true">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/944365-45db4df339348b9b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/944365-c10d6032f91a103f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700">
 <meta property="og:image" content="https://github.com/985211yygg/985211yygg.github.io/blob/master/images/module.png?raw=true">
 <meta property="og:image" content="https://github.com/985211yygg/985211yygg.github.io/blob/master/images/Binder%20Driver.png?raw=true">
 <meta property="og:image" content="https://github.com/985211yygg/985211yygg.github.io/blob/master/images/Binder.png?raw=true">
-<meta property="og:updated_time" content="2018-04-01T04:13:33.358Z">
+<meta property="og:updated_time" content="2018-04-01T10:15:35.377Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android开发艺术探索总结">
-<meta name="twitter:description" content="Activity(Fragment)的生命周期和启动模式1.1 生命周期分析 1.1.1 典型的生命周期   activity的生命周期  d   fragment的生命周期     1.1.2 异常情况下的生命周期分析   横竖屏切换时Activity的生命周期变化?    app崩溃后的生命周期？      1.2 Android的启动模式   activity的startActivity和">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/944365-45db4df339348b9b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700">
+<meta name="twitter:description" content="Activity(Fragment)的生命周期和启动模式1.1 生命周期分析 1.1.1 典型的生命周期   activity的生命周期        fragment的生命周期     与宿主Activity的生命周期的关系     onStar和onResum、onPause和onStop从描述看起来差不多，对于我们来说有什么实质的不同呢？    对于这两对相似的接口，Android系统既然">
+<meta name="twitter:image" content="https://github.com/985211yygg/985211yygg.github.io/blob/master/images/activity_lifecycle.png?raw=true">
 
 
 
@@ -352,38 +358,89 @@
       
         <ol>
 <li><h4 id="Activity-Fragment-的生命周期和启动模式"><a href="#Activity-Fragment-的生命周期和启动模式" class="headerlink" title="Activity(Fragment)的生命周期和启动模式"></a>Activity(Fragment)的生命周期和启动模式</h4><h5 id="1-1-生命周期分析"><a href="#1-1-生命周期分析" class="headerlink" title="1.1 生命周期分析"></a>1.1 <strong>生命周期分析</strong></h5><ul>
-<li><p>1.1.1 典型的生命周期</p>
+<li><p>1.1.1 <strong>典型的生命周期</strong></p>
 <ul>
 <li><blockquote>
 <p><strong>activity的生命周期</strong></p>
 </blockquote>
-<p>d</p>
 </li>
+</ul>
+<p><img src="https://github.com/985211yygg/985211yygg.github.io/blob/master/images/activity_lifecycle.png?raw=true" alt="    "></p>
+<p><img src="https://github.com/985211yygg/985211yygg.github.io/blob/master/images/activity-lifecycle-detail.PNG?raw=true" alt=""></p>
+<ul>
 <li><blockquote>
 <p><strong>fragment的生命周期</strong></p>
 </blockquote>
 </li>
 </ul>
-</li>
-<li><p>1.1.2 异常情况下的生命周期分析</p>
+<p><img src="https://github.com/985211yygg/985211yygg.github.io/blob/master/images/fragment_lifecycle_1.png?raw=true" alt=""></p>
+<p><strong>与宿主Activity的生命周期的关系</strong></p>
+<p><img src="https://github.com/985211yygg/985211yygg.github.io/blob/master/images/fragment_lifecycle.png?raw=true" alt=""></p>
+<p><img src="https://github.com/985211yygg/985211yygg.github.io/blob/master/images/fragment_lifecycle_table.PNG?raw=true/w/700/h/300" alt=""></p>
 <ul>
 <li><blockquote>
-<p><strong>横竖屏切换时Activity的生命周期变化?</strong></p>
+<p><strong>onStar和onResum、onPause和onStop从描述看起来差不多，对于我们来说有什么实质的不同呢？</strong></p>
 </blockquote>
 </li>
+</ul>
+<p>对于这两对相似的接口，Android系统既然提供了就有其用意：onSatrt和onStop是从activity这个角度来回调的，此时是无法操作的 ; onResume和onPause是从activity是否位于前台来回调，此时由可操作变为不克操作。</p>
+</li>
+<li><p>1.1.2 <strong>异常情况下的生命周期分析及一些思考问题</strong></p>
+<ul>
 <li><blockquote>
-<p><strong>app崩溃后的生命周期？</strong></p>
+<p><strong>横竖屏切换时Activity的异常生命周期变化?</strong></p>
 </blockquote>
 </li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">      Activity创建：</span><br><span class="line">      onCreate--&gt;</span><br><span class="line">      onStart--&gt;</span><br><span class="line">      onResume--&gt;</span><br><span class="line">      ============</span><br><span class="line">      竖屏切横屏：</span><br><span class="line">      onSaveInstanceState--&gt;</span><br><span class="line">      onPause--&gt;</span><br><span class="line">      onStop--&gt;</span><br><span class="line">      onDestroy--&gt;</span><br><span class="line">      onCreate--&gt;</span><br><span class="line">      onStart--&gt;</span><br><span class="line">      onRestoreInstanceState--&gt;</span><br><span class="line">      onResume--&gt;</span><br><span class="line">      ============</span><br><span class="line">      横屏切换竖屏</span><br><span class="line">      onSaveInstanceState--&gt;</span><br><span class="line">onPause--&gt;</span><br><span class="line">onStop--&gt;</span><br><span class="line">onDestroy--&gt;</span><br><span class="line">onCreate--&gt;</span><br><span class="line">onStart--&gt;</span><br><span class="line">onRestoreInstanceState--&gt;</span><br><span class="line">onResume--&gt;</span><br><span class="line">onSaveInstanceState--&gt;</span><br><span class="line">onPause--&gt;</span><br><span class="line">onStop--&gt;</span><br><span class="line">onDestroy--&gt;</span><br><span class="line">onCreate--&gt;</span><br><span class="line">onStart--&gt;</span><br><span class="line">onRestoreInstanceState--&gt;</span><br><span class="line">onResume--&gt;</span><br></pre></td></tr></table></figure>
+<p>1、不设置Activity的android:configChanges时，切屏会重新调用各个生命周期，切横屏时会执行一次，切竖屏时会执行两次</p>
+<p>2、设置Activity的android:configChanges=”orientation”时，切屏还是会重新调用各个生命周期，切横、竖屏时只会执行一次</p>
+<p>3、设置Activity的android:configChanges=”orientation|keyboardHidden”时，切屏不会重新调用各个生命周期，只会执行onConfigurationChanged方法</p>
+<p>4、补充：Activity运行时按下HOME键(跟被完全覆盖是一样的)：onSaveInstanceState –&gt; onPause –&gt; onStop;重新回到Activity=： onRestart –&gt;onStart—&gt;onResume<br>  Activity未被完全覆盖只是失去焦点：onPause—&gt;onResume</p>
+<ul>
+<li><blockquote>
+<p><strong> Activity是如何保存和恢复View的结构？</strong></p>
+</blockquote>
 </li>
 </ul>
-<h5 id="1-2-Android的启动模式"><a href="#1-2-Android的启动模式" class="headerlink" title="1.2 Android的启动模式"></a>1.2 Android的启动模式</h5><ul>
+<p>首先，activity被意外终止时，activity会调用onSaveInstanceState()去保存数据，然后activity会委托Window去保存数据，接着window委托它的上级容器去保存数据。顶级容器是一个ViewGroup，一般可能是是DecorView。最后顶级容器再去一一通知子元素去保存数据，对于数据的恢复也是类似的。</p>
+<ul>
+<li><blockquote>
+<p><strong>资源不足导致低优先级的activity被杀死 </strong></p>
+</blockquote>
+</li>
+</ul>
+<p>activity的优先级：<br>1.<code>前台activity</code>——正在和用户交互的activity，优先级最高<br>2.<code>可见但非前台activity</code>—–比如activity中弹出一个对话框，导致activity可见但是位于后台无法与直接交互。<br>3.<code>后台activity</code>—-已经被暂停的activity，比如执行了onStop(),优先级最低</p>
+<p>对于系统内存不足时，系统会按照优先级来杀死目标activity的进程，然后通过onSaveInstanceState()和onRestoreInstanceState()存储恢复数据。</p>
+<ul>
+<li><blockquote>
+<p><strong>假设当前activity为A,若此时用户打开activity B，那么 B 的onResume()和 A 的OnPause()那个先执行？</strong></p>
+</blockquote>
+</li>
+</ul>
+<p>当新启动一个activity时，位于栈顶的旧activity的onPause()会先执行，才会启动新的activity，另外Android对onPause()的解释是不能在其中进行重量级的操作，为了新的activity尽快出现在前台，所以资源回收等重量尽量在onStop()中进行，这也能说明onRsume()先执行。</p>
+<ul>
+<li><blockquote>
+<p><strong> 通过 addToBackStack() 将 Fragment 放入回退栈，然后通过 popBackStack() 出栈，Fragment 的生命周期会如何变化呢？2. 如果 Fragment 与 ViewPager 结合使用，Fragment 的生命周期又是如何？3. 如果通过 hide() 和 show() 方法来展示隐藏，这时 Fragment 的生命周期又会如何？</strong></p>
+</blockquote>
+</li>
+</ul>
+<p>1.第一点很重要，最开始的两张图展示的 Fragment 与 Activity 的生命周期关系没毛病。</p>
+<p>2.onAttach() 和 onCreate() 只在 Fragment 与 Activity 第一次关联时调用。</p>
+<p>3.onDestroy() 和 onDetach() 只在 Fragment 的宿主 Activity 销毁时才会被调用。</p>
+<p>4.根据前 3 点，将 Fragment 通过 addToBackStack() 只涉及 onCreateView() 和 onDestroyView() 这之间的生命周期。add() 和 replace() 不会对 Fragment 的生命周期产生影响，但 add() 方法会造成 Fragment 叠加显示。</p>
+<p>5.Fragment 与 ViewPager 结合使用时的生命周期与第 4 点相似。</p>
+<p>6.通过 hide() 、 show() 来隐藏、显示Fragment，此时 Fragment 只改变了可见性，并不涉及生命周期的改变</p>
+<p>7.第 7 点与Fragment 和 Activity 的生命周期有关，即：不要在 Fragment 的 onCreate() 方法中操作宿主Activity 的 UI。因为你无法保证此时 宿主Activity 的 UI 已经完全初始化。PS:某些情况下是可以确保 宿主Activity 已经初始化完成的。</p>
+<h5 id="1-2-Android的启动模式"><a href="#1-2-Android的启动模式" class="headerlink" title="1.2 Android的启动模式"></a>1.2 Android的启动模式</h5><p><img src="https://github.com/985211yygg/985211yygg.github.io/blob/master/images/activity_launch_mode.PNG?raw=true" alt=""></p>
+<ul>
 <li><blockquote>
 <p><strong> activity的startActivity和context的startActivity区别</strong></p>
 </blockquote>
 <p>(1) 从Activity中启动新的Activity时可以直接mContext.startActivity(intent)就好，<br>(2) 如果从其他Context中启动Activity则必须给intent设置Flag:</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK) ;</span><br><span class="line">mContext.startActivity(intent);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK) ;</span><br><span class="line">mContext.startActivity(intent);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 </li>
 </ul>
 <h5 id="1-3-Acticity和Fragment的通信方式"><a href="#1-3-Acticity和Fragment的通信方式" class="headerlink" title="1.3 Acticity和Fragment的通信方式"></a>1.3 Acticity和Fragment的通信方式</h5></li>
