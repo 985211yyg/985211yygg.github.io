@@ -112,9 +112,10 @@
 <meta property="og:image" content="http://www.yyglike.com/2018/03/31/Android开发艺术探索总结/Binder_module-table.PNG">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/944365-65a5b17426aed424.png?imageMogr2/auto-orient/">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/944365-d3c78b193c3e8a38.png?imageMogr2/auto-orient/">
+<meta property="og:image" content="http://www.yyglike.com/2018/03/31/Android开发艺术探索总结/IPC.PNG">
 <meta property="og:image" content="http://www.yyglike.com/2018/03/31/Android开发艺术探索总结/android_view_hierarchy.jpg">
 <meta property="og:image" content="http://www.yyglike.com/2018/03/31/Android开发艺术探索总结/motion_event_method.png">
-<meta property="og:updated_time" content="2018-04-03T02:00:35.962Z">
+<meta property="og:updated_time" content="2018-04-03T03:26:25.226Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android开发艺术探索总结">
 <meta name="twitter:description" content="Activity(Fragment)的生命周期和启动模式1.1 生命周期分析 1.1.1 典型的生命周期   activity的生命周期        fragment的生命周期     与宿主Activity的生命周期的关系     onStar和onResum、onPause和onStop从描述看起来差不多，对于我们来说有什么实质的不同呢？    对于这两对相似的接口，Android系统既然">
@@ -472,12 +473,12 @@
 </ul>
 <h5 id="2-3-Android-Binder跨进程通信的原理"><a href="#2-3-Android-Binder跨进程通信的原理" class="headerlink" title="2.3 Android Binder跨进程通信的原理"></a>2.3 Android Binder跨进程通信的原理</h5><ul>
 <li><blockquote>
-<p><strong>Binder是什么？</strong></p>
-</blockquote>
-<p><img src="https://upload-images.jianshu.io/upload_images/944365-45db4df339348b9b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt=""><br><strong>说人话—-</strong></p>
+<p><strong>Binder是什么？</strong><br>-<br><img src="https://upload-images.jianshu.io/upload_images/944365-45db4df339348b9b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt=""><br><strong>说人话—-</strong></p>
 <ul>
-<li><p><code>直观角度</code>：Binder是Android的一个类，实现了IBinder接口</p>
-</li>
+<li><code>直观角度</code>：Binder是Android的一个类，实现了IBinder接口</li>
+</ul>
+</blockquote>
+<ul>
 <li><p><code>IPC角度</code>：Binder是Android一种跨进程通信的方式</p>
 </li>
 <li><p><code>Android Framework角度</code>: Binder是<code>ServiceManager</code>连接各        种Manager(<code>ActivityManager</code>、<code>WindowManger</code>)和相应ManagerService的桥梁</p>
@@ -514,69 +515,13 @@
 <p><img src="https://upload-images.jianshu.io/upload_images/944365-65a5b17426aed424.png?imageMogr2/auto-orient/" alt="Binder Driver"></p>
 <p><strong>Binder通信原理图：</strong></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/944365-d3c78b193c3e8a38.png?imageMogr2/auto-orient/" alt="Binder原理图"></p>
-</li>
-</ul>
-</li>
-</ol>
 <blockquote>
 <p><strong>Android的中IPC方式对比</strong></p>
 </blockquote>
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>定义</th>
-<th>优点</th>
-<th>缺点</th>
-<th>适用场景</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Bundle</td>
-<td><strong>intent中通过传递Bundle支持的序列化数据</strong></td>
-<td>简单易用</td>
-<td>只能传输Bundle支持的数据类型</td>
-<td>四大组件之间进行通信</td>
-</tr>
-<tr>
-<td>文件共享</td>
-<td><strong>两个进程通过读/写同一个文件进行数据交换</strong></td>
-<td>简单易用</td>
-<td>不适合高并发场景，并且无法做到进程间的及时通信</td>
-<td>无并发访问的的场景，交换简单的数据实时性要求不高</td>
-</tr>
-<tr>
-<td>Messenger</td>
-<td><strong>在不同进程将传递携带数据的Message对象，轻量的IPC方案，底层AIDL实现</strong></td>
-<td>功能一般支持一对多串行通信，支持实时通信</td>
-<td>不能很好的的支持高并发情形，数据通过message传输，因此只能传输Bundle支持的类型</td>
-<td>一对多的低并发及时通信，五RPC需求，或无法返回结果的RPC</td>
-</tr>
-<tr>
-<td>AIDL</td>
-<td><strong>使用Android接口定义语言，定义进程间通信的方法，Binder实现</strong></td>
-<td>功能强大支持一对多的高并发情景 ，支持实时通信</td>
-<td>使用复杂，需要处理好线程的同步</td>
-<td>一对多且有RPC需求</td>
-</tr>
-<tr>
-<td>ContentProvider</td>
-<td><strong>Android提供的专门用于不同应用间进行数据共享的方式，底层实现Binder </strong></td>
-<td>在数据源访问方面功能强大，支持一对多的并发数共享</td>
-<td>可以理解为受约束的AIDL主要是提供数据源的CURD操作</td>
-<td>一对多进程间的数据共享</td>
-</tr>
-<tr>
-<td>Socket</td>
-<td><strong>使用网络传输控制层中的TCP和UDP协议进行通信</strong></td>
-<td>功能强大，支持一对多的实时并发通信，可以再网络上传输字节流</td>
-<td>实现细节稍稍微繁琐，不支持RPC</td>
-<td>网络数据交换</td>
-</tr>
-</tbody>
-</table>
-<ol start="3">
+<p><img src="/2018/03/31/Android开发艺术探索总结/IPC.PNG" alt=""></p>
+</li>
+</ul>
+</li>
 <li><h4 id="View的事件体系"><a href="#View的事件体系" class="headerlink" title="View的事件体系"></a>View的事件体系</h4><h5 id="3-1-View的滑动"><a href="#3-1-View的滑动" class="headerlink" title="3.1 View的滑动"></a>3.1 View的滑动</h5><ul>
 <li>使用scrollTo/scrollBy<br><code>scrollTo</code>:一次性滑动，屏幕左上角坐标为基准<br><code>scrollBy</code>:多次的，相对于当前位置的</li>
 <li>使用动画</li>
@@ -599,7 +544,21 @@
 </li>
 </ul>
 </li>
-<li><h4 id="View的工作原理"><a href="#View的工作原理" class="headerlink" title="View的工作原理"></a>View的工作原理</h4></li>
+<li><h4 id="View的工作原理"><a href="#View的工作原理" class="headerlink" title="View的工作原理"></a>View的工作原理</h4><ul>
+<li><blockquote>
+<p><strong>View的绘制流程：</strong></p>
+</blockquote>
+</li>
+</ul>
+<p>View的绘制是从ViewRoot的performTraversals()方法开始的，该方法会依次调用performMeasure、performLayout、performDraw三个方法，这三个方法一次完成顶级view的measure、layout、draw。其中perform会调用measure方法，在measure中有会调用onMeasure方法，在onMeasure方法中会对所有的子view进行measure，此时整个measure流程从父容器传到了子元素，完成一次measur过程，接着子元素会重复父容器的measure过程，如此反复完成整个view树的遍历。同理performLayout、performDraw与performMeasure的流程是类似的，最终完成view的绘制。</p>
+<ul>
+<li><blockquote>
+<p><strong>view的工作流程：</strong></p>
+</blockquote>
+</li>
+<li>主要是指measure、layout、draw这三大流程，其中measure确定view的测量宽/高；layout确定view的最终宽/高和四个顶点的位置；二draw将view绘制在屏幕上。</li>
+</ul>
+</li>
 <li><h4 id="Android动画分析"><a href="#Android动画分析" class="headerlink" title="Android动画分析"></a>Android动画分析</h4></li>
 <li><h4 id="理解Window和WinowManager"><a href="#理解Window和WinowManager" class="headerlink" title="理解Window和WinowManager"></a>理解Window和WinowManager</h4></li>
 <li><h4 id="四大组件的工作过程"><a href="#四大组件的工作过程" class="headerlink" title="四大组件的工作过程"></a>四大组件的工作过程</h4><h5 id="7-1-Activity的工作过程"><a href="#7-1-Activity的工作过程" class="headerlink" title="7.1 Activity的工作过程"></a>7.1 Activity的工作过程</h5><ul>
@@ -736,7 +695,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
