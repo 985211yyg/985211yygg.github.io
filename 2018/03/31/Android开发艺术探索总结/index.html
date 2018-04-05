@@ -115,7 +115,7 @@
 <meta property="og:image" content="http://www.yyglike.com/2018/03/31/Android开发艺术探索总结/IPC.PNG">
 <meta property="og:image" content="http://www.yyglike.com/2018/03/31/Android开发艺术探索总结/android_view_hierarchy.jpg">
 <meta property="og:image" content="http://www.yyglike.com/2018/03/31/Android开发艺术探索总结/motion_event_method.png">
-<meta property="og:updated_time" content="2018-04-03T03:26:25.226Z">
+<meta property="og:updated_time" content="2018-04-05T01:01:05.527Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android开发艺术探索总结">
 <meta name="twitter:description" content="Activity(Fragment)的生命周期和启动模式1.1 生命周期分析 1.1.1 典型的生命周期   activity的生命周期        fragment的生命周期     与宿主Activity的生命周期的关系     onStar和onResum、onPause和onStop从描述看起来差不多，对于我们来说有什么实质的不同呢？    对于这两对相似的接口，Android系统既然">
@@ -550,17 +550,96 @@
 </blockquote>
 </li>
 </ul>
-<p>View的绘制是从ViewRoot的performTraversals()方法开始的，该方法会依次调用performMeasure、performLayout、performDraw三个方法，这三个方法一次完成顶级view的measure、layout、draw。其中perform会调用measure方法，在measure中有会调用onMeasure方法，在onMeasure方法中会对所有的子view进行measure，此时整个measure流程从父容器传到了子元素，完成一次measur过程，接着子元素会重复父容器的measure过程，如此反复完成整个view树的遍历。同理performLayout、performDraw与performMeasure的流程是类似的，最终完成view的绘制。</p>
+<p>View的绘制是从ViewRoot的performTraversals()方法开始的，该方法会依次调用performMeasure、performLayout、performDraw三个方法，这三个方法依次完成顶级view的measure、layout、draw。其中perform会调用measure方法，在measure中有会调用onMeasure方法，在onMeasure方法中会对所有的子view进行measure，此时整个measure流程从父容器传到了子元素，完成一次measur过程，接着子元素会重复父容器的measure过程，如此反复完成整个view树的遍历。同理performLayout、performDraw与performMeasure的流程是类似的，最终完成view的绘制。</p>
 <ul>
 <li><blockquote>
 <p><strong>view的工作流程：</strong></p>
 </blockquote>
 </li>
-<li>主要是指measure、layout、draw这三大流程，其中measure确定view的测量宽/高；layout确定view的最终宽/高和四个顶点的位置；二draw将view绘制在屏幕上。</li>
+<li><p>主要是指measure、layout、draw这三大流程，其中measure确定view的测量宽/高；layout确定view的最终宽/高和四个顶点的位置；二draw将view绘制在屏幕上。</p>
+<ul>
+<li><p>对于view直接调用onMeasure方法来测量，而ViewGroup是抽象类，没有重写onMeasure方法，而是通过measureChildren遍历子元素，通过measureChild方法调用子元素的measure完成测量；</p>
+</li>
+<li><p>ViewGroup layout的大致流程：通过setFrame方法来设定view的四个顶点的位置，view的四个顶点一单确定view在父容器的中的位置也就确定，接着调用onLaytout确定子元素的位置;</p>
+</li>
+<li>Draw遵循步骤：<ul>
+<li>1、绘制背景background.draw(canvas);</li>
+<li>2、绘制自己onDraw;</li>
+<li>3、绘制children–dispatchDraw;</li>
+<li>4、绘制装饰—onDrawScrollBars.</li>
 </ul>
 </li>
-<li><h4 id="Android动画分析"><a href="#Android动画分析" class="headerlink" title="Android动画分析"></a>Android动画分析</h4></li>
-<li><h4 id="理解Window和WinowManager"><a href="#理解Window和WinowManager" class="headerlink" title="理解Window和WinowManager"></a>理解Window和WinowManager</h4></li>
+</ul>
+</li>
+<li><blockquote>
+<p><strong>自定义View</strong></p>
+</blockquote>
+<ul>
+<li><p><strong>自定义View的分类及流程：</strong></p>
+<ul>
+<li><p>1、<strong>继承View重写onDraw方法</strong>；需要自己支持warp_content，处理padding；</p>
+</li>
+<li><p>2、<strong>继承ViewGroup派生特殊的布局</strong>，方法需要适当的处理ViewGroup的测量和布局的两个过程，并同时处理子元素的布局和测量过程。</p>
+</li>
+<li><p>3、<strong>继承特定的View</strong>，如TextView，对已有的功能进行拓展，无序自己支持warp_content，处理padding</p>
+</li>
+<li><p>4、<strong>继承特定的ViewGroup</strong>,如线性布局，此方法不需要自己处理ViewGroup的测量和布局。</p>
+</li>
+<li><strong>为了使自定义的View更易用，还需要添加自定义属性，以便在布局文件中使用：</strong><ul>
+<li>1、在values目录中创建自定义属性xml文件，如attrs.在values目录中创建自定义属性xml文件</li>
+<li>2、在view的构造方法中解析自定义的属性，并相应的处理，如定义默认值等。</li>
+<li>3、在布局文件中声明然后使用。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>直接继承view或者ViewGroup的控件，有时候warp_content达不到预期效果？</strong><br><code>原因</code>：当view在布局中使用warp_content，此时specMode为AT_MOST，宽高等于specSize，这种情况下View的specSize为parentSize,而parentSized的大小为父容器当前的剩余空间，使得和使用match_parent效果一致。</p>
+<p><code>解决方法</code>：给View设定默认的宽/高，并在warp_content时根据情况设置此宽/高，即可。</p>
+</li>
+<li><p><strong>自定义View注意事项</strong></p>
+<ul>
+<li><p>1.让View支持warp_content</p>
+</li>
+<li><p>2.如有必要，让view支持padding</p>
+</li>
+<li><p>3.尽量不要在view中使用Handler,没必要，view本身提供post方法，完全可以替代Handler的作用，除非明确用handler来发送消息。</p>
+</li>
+<li><p>View中如果有线程或者动画，需要及时停止，View的OnDetachFromWindow是个好时机，当包含此view的Activity退出或者当前的View被remove是，此方法都会被调用。同事view背的不可见时候也需停止动画或者线程，避免内存泄漏。</p>
+</li>
+<li><p>View带有嵌套滑动的情形是，需要处理滑动冲突。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h4 id="Android动画分析"><a href="#Android动画分析" class="headerlink" title="Android动画分析"></a>Android动画分析</h4><ul>
+<li><p><strong>Android动画分类：view动画，属性动画和新增的物理动画</strong></p>
+<ul>
+<li><p><strong>View动画</strong>：对场景里的对象不断做图像变换（平移，缩放，旋转，透明度）从而产生一系列的动画效果，是一种渐进式动画，支持自定义；它包含该两个特殊的类型帧动画和补间动画：</p>
+<ul>
+<li>帧动画：通过顺序播放一系列图像从而产生动画效果，可以简单理解为图片的切换动画。图片过多过大会导致oom;</li>
+<li>补间动画：是帧动画的特殊形式，只需要提供开始图片和结束图片作为开始帧和结束帧，而动画的中间帧由系统计算补充。</li>
+</ul>
+</li>
+<li><p><strong>属性动画</strong>：通过动态的改变对象的属性从而达到动画效果。</p>
+</li>
+<li><strong>物理动画</strong>：基于物理规律的动画效果。</li>
+</ul>
+</li>
+<li><strong>自定义view和view动画的特殊使用场景</strong><ul>
+<li><code>自定义view动画</code><br>继承Animation抽象类—-&gt;重写initialize和applyTransformation方法—–&gt;在initialize中做初始化工作，在applyTransformation中进行相应的矩阵变换。</li>
+<li><code>view动画的特殊使用场景</code>：在ViewGroup中控制元素的出场效果，实现activity的出场动画。</li>
+</ul>
+</li>
+<li><strong>属性动画：</strong><br>常见的几个动画类：ValueAnimator,ObjectAnimator,AnimatorSet。<br><code>插值器</code>：根据时间流逝的百分比来计算出当前属性值改变的百分比<br><code>估值器</code>:根据当前属性变化的百分比计算改变后的属性值<h5 id="属性动画的工作原理："><a href="#属性动画的工作原理：" class="headerlink" title="属性动画的工作原理："></a>属性动画的工作原理：</h5>在一定时间间隔内和值范围内，通过不断对值进行改变，并不断将该值赋给对象的属性，从而实现该对象在该属性上的动画效果。因此要求作用的对象有该属性的set方法，如果没有设置初始值，还需要对象提供get方法，或者进行包装设置getter/setter方法。ValueAnimator不断控制值的变化，然后手动赋值给对象的属性，ObjectAnimator直接操作对象属性的值。<h5 id="使用动画的注意事项："><a href="#使用动画的注意事项：" class="headerlink" title="使用动画的注意事项："></a>使用动画的注意事项：</h5>1、帧动画中如果使用的图片过多多大容易出现OOM;<br>2、内存泄漏：属性动画中的无限循环动画需要在activity退出时及时停止，避免activity无法释放造成内存泄漏。<br>3、尽量使用dp保证在不同设备上的效果；<br>4、动画元素的交互问题：使用view动画移动之后点击事件还在原地，点击移动后的view无效======这是因为view动画只是对控件影像的操作，到达动画视觉的效果，而控件还留在原来的区域。</li>
+</ul>
+</li>
+<li><h4 id="理解Window和WinowManager"><a href="#理解Window和WinowManager" class="headerlink" title="理解Window和WinowManager"></a>理解Window和WinowManager</h4><blockquote>
+<p><strong>概述：</strong>Window表示一个窗口的概念，是一个抽象类，Android的所有视图都通过Window呈现，并依附于它，不管是activity、dialog、还是toast，是view的直接管理者。具体实现是PhoneWindow，通过WindowManager创建window，window的外界访问入口是WindowMananger，具体实现在WindowManagerServer中，因此windowmanger和WindowManagerServer的交互式IPC过程。</p>
+</blockquote>
+</li>
 <li><h4 id="四大组件的工作过程"><a href="#四大组件的工作过程" class="headerlink" title="四大组件的工作过程"></a>四大组件的工作过程</h4><h5 id="7-1-Activity的工作过程"><a href="#7-1-Activity的工作过程" class="headerlink" title="7.1 Activity的工作过程"></a>7.1 Activity的工作过程</h5><ul>
 <li><strong>activity是如何启动？</strong></li>
 </ul>
@@ -766,7 +845,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Activity-Fragment-的生命周期和启动模式"><span class="nav-number">1.</span> <span class="nav-text">Activity(Fragment)的生命周期和启动模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-生命周期分析"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 生命周期分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-Android的启动模式"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Android的启动模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-3-Acticity和Fragment的通信方式"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 Acticity和Fragment的通信方式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进程间通信IPC机制"><span class="nav-number">2.</span> <span class="nav-text">进程间通信IPC机制</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-什么是IPC？"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 什么是IPC？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-什么是多进程？"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 什么是多进程？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-Android-Binder跨进程通信的原理"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 Android Binder跨进程通信的原理</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#View的事件体系"><span class="nav-number">3.</span> <span class="nav-text">View的事件体系</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-View的滑动"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 View的滑动</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-事件拦截和分发"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 事件拦截和分发</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-3-View的滑动冲突"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 View的滑动冲突</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#View的工作原理"><span class="nav-number">4.</span> <span class="nav-text">View的工作原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Android动画分析"><span class="nav-number">5.</span> <span class="nav-text">Android动画分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#理解Window和WinowManager"><span class="nav-number">6.</span> <span class="nav-text">理解Window和WinowManager</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四大组件的工作过程"><span class="nav-number">7.</span> <span class="nav-text">四大组件的工作过程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#7-1-Activity的工作过程"><span class="nav-number">7.1.</span> <span class="nav-text">7.1 Activity的工作过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-2-Service的工作过程"><span class="nav-number">7.2.</span> <span class="nav-text">7.2 Service的工作过程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Android的消息机制"><span class="nav-number">8.</span> <span class="nav-text">Android的消息机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Android的线程和线程池"><span class="nav-number">9.</span> <span class="nav-text">Android的线程和线程池</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bitmap的加载和缓存"><span class="nav-number">10.</span> <span class="nav-text">Bitmap的加载和缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Android的性能优化"><span class="nav-number">11.</span> <span class="nav-text">Android的性能优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#View相关"><span class="nav-number">12.</span> <span class="nav-text">View相关</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-View的绘制流程"><span class="nav-number">12.1.</span> <span class="nav-text">1.1 View的绘制流程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-自定义view的的步骤"><span class="nav-number">12.2.</span> <span class="nav-text">1.2 自定义view的的步骤</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-3-PhoneWindow实例实在哪一个类方法中实例化的"><span class="nav-number">12.3.</span> <span class="nav-text">1.3 PhoneWindow实例实在哪一个类方法中实例化的</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-Selector是如何实现的"><span class="nav-number">12.4.</span> <span class="nav-text">1.4 Selector是如何实现的</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-5-View动画及如何实现的"><span class="nav-number">12.5.</span> <span class="nav-text">1.5 View动画及如何实现的</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-6-为什么移动后的点击事件还在原来的位置"><span class="nav-number">12.6.</span> <span class="nav-text">1.6 为什么移动后的点击事件还在原来的位置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-7-属性动画的原理机制"><span class="nav-number">12.7.</span> <span class="nav-text">1.7 属性动画的原理机制</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Activity-Fragment-的生命周期和启动模式"><span class="nav-number">1.</span> <span class="nav-text">Activity(Fragment)的生命周期和启动模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-生命周期分析"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 生命周期分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-Android的启动模式"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Android的启动模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-3-Acticity和Fragment的通信方式"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 Acticity和Fragment的通信方式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进程间通信IPC机制"><span class="nav-number">2.</span> <span class="nav-text">进程间通信IPC机制</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-什么是IPC？"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 什么是IPC？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-什么是多进程？"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 什么是多进程？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-Android-Binder跨进程通信的原理"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 Android Binder跨进程通信的原理</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#View的事件体系"><span class="nav-number">3.</span> <span class="nav-text">View的事件体系</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-View的滑动"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 View的滑动</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-事件拦截和分发"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 事件拦截和分发</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-3-View的滑动冲突"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 View的滑动冲突</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#View的工作原理"><span class="nav-number">4.</span> <span class="nav-text">View的工作原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Android动画分析"><span class="nav-number">5.</span> <span class="nav-text">Android动画分析</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#属性动画的工作原理："><span class="nav-number">5.1.</span> <span class="nav-text">属性动画的工作原理：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用动画的注意事项："><span class="nav-number">5.2.</span> <span class="nav-text">使用动画的注意事项：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#理解Window和WinowManager"><span class="nav-number">6.</span> <span class="nav-text">理解Window和WinowManager</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四大组件的工作过程"><span class="nav-number">7.</span> <span class="nav-text">四大组件的工作过程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#7-1-Activity的工作过程"><span class="nav-number">7.1.</span> <span class="nav-text">7.1 Activity的工作过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-2-Service的工作过程"><span class="nav-number">7.2.</span> <span class="nav-text">7.2 Service的工作过程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Android的消息机制"><span class="nav-number">8.</span> <span class="nav-text">Android的消息机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Android的线程和线程池"><span class="nav-number">9.</span> <span class="nav-text">Android的线程和线程池</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bitmap的加载和缓存"><span class="nav-number">10.</span> <span class="nav-text">Bitmap的加载和缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Android的性能优化"><span class="nav-number">11.</span> <span class="nav-text">Android的性能优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#View相关"><span class="nav-number">12.</span> <span class="nav-text">View相关</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-View的绘制流程"><span class="nav-number">12.1.</span> <span class="nav-text">1.1 View的绘制流程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-自定义view的的步骤"><span class="nav-number">12.2.</span> <span class="nav-text">1.2 自定义view的的步骤</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-3-PhoneWindow实例实在哪一个类方法中实例化的"><span class="nav-number">12.3.</span> <span class="nav-text">1.3 PhoneWindow实例实在哪一个类方法中实例化的</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-Selector是如何实现的"><span class="nav-number">12.4.</span> <span class="nav-text">1.4 Selector是如何实现的</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-5-View动画及如何实现的"><span class="nav-number">12.5.</span> <span class="nav-text">1.5 View动画及如何实现的</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-6-为什么移动后的点击事件还在原来的位置"><span class="nav-number">12.6.</span> <span class="nav-text">1.6 为什么移动后的点击事件还在原来的位置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-7-属性动画的原理机制"><span class="nav-number">12.7.</span> <span class="nav-text">1.7 属性动画的原理机制</span></a></li></ol></li></ol></div>
             
 
           </div>
