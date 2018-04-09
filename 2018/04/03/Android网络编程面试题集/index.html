@@ -104,7 +104,8 @@
 <meta property="og:image" content="https://github.com/guoxiaoxing/android-open-source-project-analysis/raw/master/art/practice/network/three_way_handshake.jpeg">
 <meta property="og:image" content="https://github.com/guoxiaoxing/android-open-source-project-analysis/raw/master/art/practice/network/http_https.png">
 <meta property="og:image" content="https://github.com/guoxiaoxing/android-open-framwork-analysis/raw/master/art/okhttp/http_cache_structure.png">
-<meta property="og:updated_time" content="2018-04-03T02:10:03.782Z">
+<meta property="og:image" content="http://www.yyglike.com/2018/04/03/Android网络编程面试题集/HTTP&HTTPS.png">
+<meta property="og:updated_time" content="2018-04-09T02:10:52.019Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android网络编程面试题集">
 <meta name="twitter:description" content="网络编程TCP与UDP有什么区别？ TCP面向连接（如打电话要先拨号建立连接）;UDP是无连接的，即发送数据之前不需要建立连接 TCP提供可靠的服务。也就是说，通过TCP连接传送的数据，无差错，不丢失，不重复，且按序到达;UDP尽最大努力交付，即不保证可靠交付 TCP面向字节流，实际上是TCP把数据看成一连串无结构的字节流;UDP是面向报文的UDP没有拥塞控制，因此网络出现拥塞不会使源主机的发送速">
@@ -418,7 +419,7 @@
 <p>如下图所示，可以很明显的看出两个的区别：</p>
 <p><img src="https://github.com/guoxiaoxing/android-open-source-project-analysis/raw/master/art/practice/network/http_https.png" width="500"></p>
 <p>注：TLS是SSL的升级替代版，具体发展历史可以参考<a href="https://zh.wikipedia.org/wiki/%E5%82%B3%E8%BC%B8%E5%B1%A4%E5%AE%89%E5%85%A8%E6%80%A7%E5%8D%94%E5%AE%9A" target="_blank" rel="noopener">传输层安全性协议</a>。</p>
-<p>HTTP与HTTPS在写法上的区别也是前缀的不同，客户端处理的方式也不同，具体说来：</p>
+<p>HTTP与HTTPS在写法上的区别也是后缀的不同，客户端处理的方式也不同，具体说来：</p>
 <ul>
 <li>如果URL的协议是HTTP，则客户端会打开一条到服务端端口80（默认）的连接，并向其发送老的HTTP请求。</li>
 <li>如果URL的协议是HTTPS，则客户端会打开一条到服务端端口443（默认）的连接，然后与服务器握手，以二进制格式与服务器交换一些SSL的安全参数，附上加密的<br>HTTP请求。</li>
@@ -469,7 +470,14 @@
 <p>客户端再次发送，会在header里携带上次服务端返回的资源标识码：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">If-None-Match:<span class="string">"5694c7ef-24dc"</span></span><br></pre></td></tr></table></figure>
 <p>服务端接收到客户端发来的资源标识码，则会与自己当前的资源吗进行比较，如果不同，则说明资源已经被修改，则返回200，如果相同则说明资源没有被修改，返回<br>304，客户端可以继续使用缓存。</p>
-<h3 id="HTTPS是如何保证安全的，证书如何校验？"><a href="#HTTPS是如何保证安全的，证书如何校验？" class="headerlink" title="HTTPS是如何保证安全的，证书如何校验？"></a>HTTPS是如何保证安全的，证书如何校验？</h3><h3 id="HTTP如何实现长连接？"><a href="#HTTP如何实现长连接？" class="headerlink" title="HTTP如何实现长连接？"></a>HTTP如何实现长连接？</h3>
+<h3 id="HTTP1-1-与-HTTP1-0的区别"><a href="#HTTP1-1-与-HTTP1-0的区别" class="headerlink" title="HTTP1.1 与 HTTP1.0的区别"></a>HTTP1.1 与 HTTP1.0的区别</h3><ul>
+<li>引入持久连接，即 在同一个TCP的连接中可传送多个HTTP请求 &amp; 响应</li>
+<li>多个请求 &amp; 响应可同时进行、可重叠</li>
+<li>引入更加多的请求头 &amp; 响应头</li>
+</ul>
+<h3 id="HTTP如何实现长连接？"><a href="#HTTP如何实现长连接？" class="headerlink" title="HTTP如何实现长连接？"></a>HTTP如何实现长连接？</h3><p>HTTP 1.1默认实现长连接，即数据传输完成后TCP连接不断开，继续使用该通道传输数据；<br><code>建立长连接</code>：在 http的头部（请求头或者响应头）字符中包含<code>Connection: Keep-Alive</code>,开启长连接，打开长连接后TCP定时发送相应的Keep-Alive探针确定连接的可用性，最后会检测擦传输的数据是否达到Content_Lenght指示的大小，达到则传输完成，结束长连接；或者根据Chunked编码判断，如果是使用Chunked编码的数据在最后会有一个空的chunked块，同原样可以结束长连接。<br><code>Connection: Close</code>:表示关闭长连接，<br><code>Connection: Keep-Alive,Keep-Alive：max=xx</code>,表示长连接失败的次数，超过该次数自动断开长连接，<br><code>Connection: Keep-Alive,Keep-Alive：time=xx</code>,表示长连接的的超时时间，超过时间自动断开连接。</p>
+<h3 id="HTTPS是如何保证安全的，证书如何校验？"><a href="#HTTPS是如何保证安全的，证书如何校验？" class="headerlink" title="HTTPS是如何保证安全的，证书如何校验？"></a>HTTPS是如何保证安全的，证书如何校验？</h3><p><img src="/2018/04/03/Android网络编程面试题集/HTTP&amp;HTTPS.png" alt=""></p>
+
       
     </div>
     
@@ -653,7 +661,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#网络编程"><span class="nav-number">1.</span> <span class="nav-text">网络编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP与UDP有什么区别？"><span class="nav-number">1.1.</span> <span class="nav-text">TCP与UDP有什么区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简单介绍一下TCP三次握手与四次分手过程？"><span class="nav-number">1.2.</span> <span class="nav-text">简单介绍一下TCP三次握手与四次分手过程？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP如何保证数据传输的可靠性？"><span class="nav-number">1.3.</span> <span class="nav-text">TCP如何保证数据传输的可靠性？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP与HTTPS有什么区别？"><span class="nav-number">1.4.</span> <span class="nav-text">HTTP与HTTPS有什么区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#谈一谈对HTTP缓存的理解？"><span class="nav-number">1.5.</span> <span class="nav-text">谈一谈对HTTP缓存的理解？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTPS是如何保证安全的，证书如何校验？"><span class="nav-number">1.6.</span> <span class="nav-text">HTTPS是如何保证安全的，证书如何校验？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP如何实现长连接？"><span class="nav-number">1.7.</span> <span class="nav-text">HTTP如何实现长连接？</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#网络编程"><span class="nav-number">1.</span> <span class="nav-text">网络编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP与UDP有什么区别？"><span class="nav-number">1.1.</span> <span class="nav-text">TCP与UDP有什么区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简单介绍一下TCP三次握手与四次分手过程？"><span class="nav-number">1.2.</span> <span class="nav-text">简单介绍一下TCP三次握手与四次分手过程？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP如何保证数据传输的可靠性？"><span class="nav-number">1.3.</span> <span class="nav-text">TCP如何保证数据传输的可靠性？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP与HTTPS有什么区别？"><span class="nav-number">1.4.</span> <span class="nav-text">HTTP与HTTPS有什么区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#谈一谈对HTTP缓存的理解？"><span class="nav-number">1.5.</span> <span class="nav-text">谈一谈对HTTP缓存的理解？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP1-1-与-HTTP1-0的区别"><span class="nav-number">1.6.</span> <span class="nav-text">HTTP1.1 与 HTTP1.0的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP如何实现长连接？"><span class="nav-number">1.7.</span> <span class="nav-text">HTTP如何实现长连接？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTPS是如何保证安全的，证书如何校验？"><span class="nav-number">1.8.</span> <span class="nav-text">HTTPS是如何保证安全的，证书如何校验？</span></a></li></ol></li></ol></div>
             
 
           </div>
