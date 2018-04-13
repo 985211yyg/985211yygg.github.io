@@ -105,7 +105,7 @@
 <meta property="og:image" content="https://github.com/guoxiaoxing/android-open-source-project-analysis/raw/master/art/practice/network/http_https.png">
 <meta property="og:image" content="https://github.com/guoxiaoxing/android-open-framwork-analysis/raw/master/art/okhttp/http_cache_structure.png">
 <meta property="og:image" content="http://www.yyglike.com/2018/04/03/Android网络编程面试题集/HTTP&HTTPS.png">
-<meta property="og:updated_time" content="2018-04-09T02:10:52.019Z">
+<meta property="og:updated_time" content="2018-04-13T10:15:45.522Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android网络编程面试题集">
 <meta name="twitter:description" content="网络编程TCP与UDP有什么区别？ TCP面向连接（如打电话要先拨号建立连接）;UDP是无连接的，即发送数据之前不需要建立连接 TCP提供可靠的服务。也就是说，通过TCP连接传送的数据，无差错，不丢失，不重复，且按序到达;UDP尽最大努力交付，即不保证可靠交付 TCP面向字节流，实际上是TCP把数据看成一连串无结构的字节流;UDP是面向报文的UDP没有拥塞控制，因此网络出现拥塞不会使源主机的发送速">
@@ -384,8 +384,8 @@
 <p><img src="https://github.com/guoxiaoxing/android-open-source-project-analysis/raw/master/art/practice/network/three_way_handshake.jpeg" width="500"></p>
 <p>三次握手</p>
 <ul>
-<li>第一次握手：建立连接。客户端发送连接请求报文段，将SYN位置为1，Sequence Number为x；然后，客户端进入SYN_SEND状态，等待服务器的确认；</li>
-<li>第二次握手：服务器收到SYN报文段。服务器收到客户端的SYN报文段，需要对这个SYN报文段进行确认，设置Acknowledgment Number为x+1(Sequence Number+1)；同时，自己自己还要发送SYN请求信息，将SYN位置为1，Sequence Number为y；服务器端将上述所有信息放到一个报文段（即SYN+ACK报文段）中，一并发送给客户端，此时服务器进入SYN_RECV状态；</li>
+<li>第一次握手：建立连接。客户端发送连接请求报文段，将SYN位置为1,ack=0，Sequence Number为x；然后，客户端进入SYN_SEND状态，等待服务器的确认；</li>
+<li>第二次握手：服务器收到客户端的SYN报文段，需要对这个SYN报文段进行确认，设置Acknowledgment Number为x+1(Sequence Number+1)；同时，自己自己还要发送SYN请求信息，将SYN位置为1，Sequence Number为y；服务器端将上述所有信息放到一个报文段（即SYN+ACK报文段）中，一并发送给客户端，此时服务器进入SYN_RECV状态；</li>
 <li>第三次握手：客户端收到服务器的SYN+ACK报文段。然后将Acknowledgment Number设置为y+1，向服务器发送ACK报文段，这个报文段发送完毕以后，客户端和服务器端都进入ESTABLISHED状态，完成TCP三次握手。<br>完成了三次握手，客户端和服务器端就可以开始传送数据。以上就是TCP三次握手的总体介绍。</li>
 </ul>
 <p>四次分手</p>
