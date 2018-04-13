@@ -94,12 +94,12 @@
 
 
 
-<meta name="description" content="Activity(Fragment)的生命周期和启动模式1.1 生命周期分析 1.1.1 典型的生命周期   activity的生命周期        fragment的生命周期     与宿主Activity的生命周期的关系     onStar和onResum、onPause和onStop从描述看起来差不多，对于我们来说有什么实质的不同呢？    对于这两对相似的接口，Android系统既然">
+<meta name="description" content="Activity(Fragment)的生命周期和启动模式1.1 生命周期分析 1.1.1 典型的生命周期   activity的生命周期      fragment的生命周期   与宿主Activity的生命周期的关系     onStar和onResum、onPause和onStop从描述看起来差不多，对于我们来说有什么实质的不同呢？    对于这两对相似的接口，Android系统既然提供了就有">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android开发艺术探索总结">
 <meta property="og:url" content="http://www.yyglike.com/2018/03/31/Android开发艺术探索总结/index.html">
 <meta property="og:site_name" content="yyg的小黑屋">
-<meta property="og:description" content="Activity(Fragment)的生命周期和启动模式1.1 生命周期分析 1.1.1 典型的生命周期   activity的生命周期        fragment的生命周期     与宿主Activity的生命周期的关系     onStar和onResum、onPause和onStop从描述看起来差不多，对于我们来说有什么实质的不同呢？    对于这两对相似的接口，Android系统既然">
+<meta property="og:description" content="Activity(Fragment)的生命周期和启动模式1.1 生命周期分析 1.1.1 典型的生命周期   activity的生命周期      fragment的生命周期   与宿主Activity的生命周期的关系     onStar和onResum、onPause和onStop从描述看起来差不多，对于我们来说有什么实质的不同呢？    对于这两对相似的接口，Android系统既然提供了就有">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.yyglike.com/2018/03/31/Android开发艺术探索总结/activity_lifecycle.PNG">
 <meta property="og:image" content="http://www.yyglike.com/2018/03/31/Android开发艺术探索总结/activity_lifecycle_table.PNG">
@@ -122,10 +122,10 @@
 <meta property="og:image" content="http://www.yyglike.com/2018/03/31/Android开发艺术探索总结/Handler消息机制.jpg">
 <meta property="og:image" content="http://www.yyglike.com/2018/03/31/Android开发艺术探索总结/TCP_shake_hands_LI.jpg">
 <meta property="og:image" content="http://www.yyglike.com/2018/03/31/Android开发艺术探索总结/TCP_wave_hands.png">
-<meta property="og:updated_time" content="2018-04-08T01:55:26.680Z">
+<meta property="og:updated_time" content="2018-04-13T02:26:54.371Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android开发艺术探索总结">
-<meta name="twitter:description" content="Activity(Fragment)的生命周期和启动模式1.1 生命周期分析 1.1.1 典型的生命周期   activity的生命周期        fragment的生命周期     与宿主Activity的生命周期的关系     onStar和onResum、onPause和onStop从描述看起来差不多，对于我们来说有什么实质的不同呢？    对于这两对相似的接口，Android系统既然">
+<meta name="twitter:description" content="Activity(Fragment)的生命周期和启动模式1.1 生命周期分析 1.1.1 典型的生命周期   activity的生命周期      fragment的生命周期   与宿主Activity的生命周期的关系     onStar和onResum、onPause和onStop从描述看起来差不多，对于我们来说有什么实质的不同呢？    对于这两对相似的接口，Android系统既然提供了就有">
 <meta name="twitter:image" content="http://www.yyglike.com/2018/03/31/Android开发艺术探索总结/activity_lifecycle.PNG">
 
 
@@ -366,23 +366,18 @@
       
 
       
-        <ol>
-<li><h4 id="Activity-Fragment-的生命周期和启动模式"><a href="#Activity-Fragment-的生命周期和启动模式" class="headerlink" title="Activity(Fragment)的生命周期和启动模式"></a>Activity(Fragment)的生命周期和启动模式</h4><h5 id="1-1-生命周期分析"><a href="#1-1-生命周期分析" class="headerlink" title="1.1 生命周期分析"></a>1.1 <strong>生命周期分析</strong></h5><ul>
+        <h4 id="Activity-Fragment-的生命周期和启动模式"><a href="#Activity-Fragment-的生命周期和启动模式" class="headerlink" title="Activity(Fragment)的生命周期和启动模式"></a>Activity(Fragment)的生命周期和启动模式</h4><h5 id="1-1-生命周期分析"><a href="#1-1-生命周期分析" class="headerlink" title="1.1 生命周期分析"></a>1.1 <strong>生命周期分析</strong></h5><ul>
 <li><p>1.1.1 <strong>典型的生命周期</strong></p>
 <ul>
 <li><blockquote>
 <p><strong>activity的生命周期</strong></p>
 </blockquote>
-</li>
-</ul>
 <p><img src="/2018/03/31/Android开发艺术探索总结/activity_lifecycle.PNG" alt=""></p>
 <p><img src="/2018/03/31/Android开发艺术探索总结/activity_lifecycle_table.PNG" alt=""></p>
-<ul>
+</li>
 <li><blockquote>
 <p><strong>fragment的生命周期</strong></p>
 </blockquote>
-</li>
-</ul>
 <p><img src="/2018/03/31/Android开发艺术探索总结/fragment_lifecycle.png" alt=""></p>
 <p><strong>与宿主Activity的生命周期的关系</strong></p>
 <p><img src="/2018/03/31/Android开发艺术探索总结/activity_fragment_lifecycle.png" alt=""></p>
@@ -395,6 +390,8 @@
 </ul>
 <p>对于这两对相似的接口，Android系统既然提供了就有其用意：onSatrt和onStop是从activity这个角度来回调的，此时是无法操作的 ; onResume和onPause是从activity是否位于前台来回调，此时由可操作变为不克操作。</p>
 </li>
+</ul>
+<ul>
 <li><p>1.1.2 <strong>异常情况下的生命周期分析及一些思考问题</strong></p>
 <ul>
 <li><blockquote>
@@ -454,8 +451,10 @@
 </li>
 </ul>
 <h5 id="1-3-Acticity和Fragment的通信方式"><a href="#1-3-Acticity和Fragment的通信方式" class="headerlink" title="1.3 Acticity和Fragment的通信方式"></a>1.3 Acticity和Fragment的通信方式</h5></li>
-<li><h4 id="进程间通信IPC机制"><a href="#进程间通信IPC机制" class="headerlink" title="进程间通信IPC机制"></a>进程间通信IPC机制</h4><h5 id="2-1-什么是IPC？"><a href="#2-1-什么是IPC？" class="headerlink" title="2.1 什么是IPC？"></a>2.1 什么是IPC？</h5><p>IPC,Inter-Process Communication的缩写，含义为进程通信或者跨进程通信，是指两个进程之间进行数据交换的过程。<br><code>**线程**：</code>cup调度的最小单位<br><code>**进程**：</code>一般指一个执行单元，在PC和移动设备上指一个程序或者一个应用。<br><code>**ANR**:</code>在主线程中进行大量的耗时操作导致界面无法响应。</p>
-<h5 id="2-2-什么是多进程？"><a href="#2-2-什么是多进程？" class="headerlink" title="2.2 什么是多进程？"></a>2.2 什么是多进程？</h5><ul>
+</ul>
+<h4 id="进程间通信IPC机制"><a href="#进程间通信IPC机制" class="headerlink" title="进程间通信IPC机制"></a>进程间通信IPC机制</h4><ol>
+<li><h5 id="什么是IPC？"><a href="#什么是IPC？" class="headerlink" title="什么是IPC？"></a>什么是IPC？</h5>IPC,Inter-Process Communication的缩写，含义为进程通信或者跨进程通信，是指两个进程之间进行数据交换的过程。<br><code>**线程**：</code>cup调度的最小单位<br><code>**进程**：</code>一般指一个执行单元，在PC和移动设备上指一个程序或者一个应用。<br><code>**ANR**:</code>在主线程中进行大量的耗时操作导致界面无法响应。</li>
+<li><h5 id="什么是多进程？"><a href="#什么是多进程？" class="headerlink" title="什么是多进程？"></a>什么是多进程？</h5><ul>
 <li><blockquote>
 <p><strong>如何开启多进程？</strong></p>
 </blockquote>
@@ -480,12 +479,12 @@
 </ul>
 <h5 id="2-3-Android-Binder跨进程通信的原理"><a href="#2-3-Android-Binder跨进程通信的原理" class="headerlink" title="2.3 Android Binder跨进程通信的原理"></a>2.3 Android Binder跨进程通信的原理</h5><ul>
 <li><blockquote>
-<p><strong>Binder是什么？</strong><br>-<br><img src="https://upload-images.jianshu.io/upload_images/944365-45db4df339348b9b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt=""><br><strong>说人话—-</strong></p>
-<ul>
-<li><code>直观角度</code>：Binder是Android的一个类，实现了IBinder接口</li>
-</ul>
+<p><strong>Binder是什么？</strong></p>
 </blockquote>
+<p><img src="https://upload-images.jianshu.io/upload_images/944365-45db4df339348b9b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt=""><br><strong>说人话—-</strong></p>
 <ul>
+<li><p><code>直观角度</code>：Binder是Android的一个类，实现了IBinder接口</p>
+</li>
 <li><p><code>IPC角度</code>：Binder是Android一种跨进程通信的方式</p>
 </li>
 <li><p><code>Android Framework角度</code>: Binder是<code>ServiceManager</code>连接各        种Manager(<code>ActivityManager</code>、<code>WindowManger</code>)和相应ManagerService的桥梁</p>
@@ -497,9 +496,11 @@
 <li><blockquote>
 <p><strong>Binder跨进程通信原理</strong></p>
 </blockquote>
+</li>
+</ul>
 <p><img src="https://upload-images.jianshu.io/upload_images/944365-c10d6032f91a103f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="通信原理图"></p>
 <p><strong>各个模块的作用</strong>：<br><img src="/2018/03/31/Android开发艺术探索总结/Binder_module-table.PNG" alt="各模块的作用"></p>
-</li>
+<ul>
 <li><blockquote>
 <p><strong>ServerManager是如何管理server的？</strong></p>
 </blockquote>
@@ -518,6 +519,8 @@
 <li><blockquote>
 <p><strong>跨进程通信的核心原理</strong></p>
 </blockquote>
+</li>
+</ul>
 <p><strong>关于其核心原理：内存映射，具体请看文章：<a href="https://www.jianshu.com/p/719fc4758813" target="_blank" rel="noopener">操作系统：图文详解 内存映射</a> </strong></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/944365-65a5b17426aed424.png?imageMogr2/auto-orient/" alt="Binder Driver"></p>
 <p><strong>Binder通信原理图：</strong></p>
@@ -527,21 +530,24 @@
 </blockquote>
 <p><img src="/2018/03/31/Android开发艺术探索总结/IPC.PNG" alt=""></p>
 </li>
-</ul>
-</li>
-<li><h4 id="View的事件体系"><a href="#View的事件体系" class="headerlink" title="View的事件体系"></a>View的事件体系</h4><h5 id="3-1-View的滑动"><a href="#3-1-View的滑动" class="headerlink" title="3.1 View的滑动"></a>3.1 View的滑动</h5><ul>
+</ol>
+<h4 id="View的事件体系"><a href="#View的事件体系" class="headerlink" title="View的事件体系"></a>View的事件体系</h4><ol>
+<li><h5 id="View的滑动"><a href="#View的滑动" class="headerlink" title="View的滑动"></a>View的滑动</h5><ul>
 <li>使用scrollTo/scrollBy<br><code>scrollTo</code>:一次性滑动，屏幕左上角坐标为基准<br><code>scrollBy</code>:多次的，相对于当前位置的</li>
 <li>使用动画</li>
 <li>改变布局参数</li>
 </ul>
-<h5 id="3-2-事件拦截和分发"><a href="#3-2-事件拦截和分发" class="headerlink" title="3.2 事件拦截和分发"></a>3.2 事件拦截和分发</h5><p>   <img src="/2018/03/31/Android开发艺术探索总结/android_view_hierarchy.jpg" alt=""><br>   <strong>先来一段伪代码简单表示事件的传递规则</strong></p>
-   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public boolean dispatchTouchEvent(MotionEvent ev)&#123;</span><br><span class="line">    boolean cousume = flase;</span><br><span class="line">    //拦截</span><br><span class="line">    if(onInterceptTouchEvent(ev))&#123;</span><br><span class="line">        //消费</span><br><span class="line">       consume = onTouchEvent();</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">       //子view继续分发事件</span><br><span class="line">       consume = child.dispatchTouchEvent(ev);</span><br><span class="line">    &#125;</span><br><span class="line">    return consume;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MotionEvent=====&gt;Activty-----&gt;Window(PhoneWindow)-------&gt;DecorView----&gt;</span><br><span class="line">---&gt;顶级View(setContentView()，一般是ViewGroup)-------&gt;目标View</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><h5 id="事件拦截和分发"><a href="#事件拦截和分发" class="headerlink" title="事件拦截和分发"></a>事件拦截和分发</h5><img src="/2018/03/31/Android开发艺术探索总结/android_view_hierarchy.jpg" alt=""><br><strong>先来一段伪代码简单表示事件的传递规则</strong></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public boolean dispatchTouchEvent(MotionEvent ev)&#123;</span><br><span class="line">    boolean cousume = flase;</span><br><span class="line">    //拦截</span><br><span class="line">    if(onInterceptTouchEvent(ev))&#123;</span><br><span class="line">        //消费</span><br><span class="line">       consume = onTouchEvent();</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">       //子view继续分发事件</span><br><span class="line">       consume = child.dispatchTouchEvent(ev);</span><br><span class="line">    &#125;</span><br><span class="line">    return consume;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MotionEvent=====&gt;Activty-----&gt;Window(PhoneWindow)-------&gt;DecorView----&gt;</span><br><span class="line">---&gt;顶级View(setContentView()，一般是ViewGroup)-------&gt;目标View</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p><strong>说人话描述上面这段代码</strong>：</p>
 </blockquote>
 <p><strong>点击事件产生后，经过Activty,PhoneWindow,DecorView的分发传递，事件会传递给顶级View(一般是ViewGroup)，这时候它的dispatchTouchEvent()方法会被调用，如果内部的onInterceptTouchEvent()方法返回true,则表示它拦截当前的事件，特殊的如果ViewGroup的mOnTouchListener被设置，事件会被onTouch()处理，否则事件就正常交给ViewGroup的onTouchEvent()方法会处理；相反，如果ViewGroup的onInterceptTouchEvent()方法返回出false,则表示不拦截当前的事件，这时当前的事件就会传递它的子元素，接着子元素的dispatchTouchEvent()方法会被调用，如此反复直到事件被处理。</strong></p>
-<p>   <img src="/2018/03/31/Android开发艺术探索总结/motion_event_method.png" alt=""></p>
-<h5 id="3-3-View的滑动冲突"><a href="#3-3-View的滑动冲突" class="headerlink" title="3.3 View的滑动冲突"></a>3.3 View的滑动冲突</h5><ul>
+<p><img src="/2018/03/31/Android开发艺术探索总结/motion_event_method.png" alt=""></p>
+</li>
+<li><h5 id="View的滑动冲突"><a href="#View的滑动冲突" class="headerlink" title="View的滑动冲突"></a>View的滑动冲突</h5><ul>
 <li><blockquote>
 <p><strong>解决ScrollView嵌套ListView和GridView冲突的方法</strong></p>
 </blockquote>
@@ -551,38 +557,22 @@
 </li>
 </ul>
 </li>
-<li><h4 id="View的工作原理"><a href="#View的工作原理" class="headerlink" title="View的工作原理"></a>View的工作原理</h4><ul>
-<li><blockquote>
-<p><strong>View的绘制流程：</strong></p>
-</blockquote>
+</ol>
+<h4 id="View的工作原理"><a href="#View的工作原理" class="headerlink" title="View的工作原理"></a>View的工作原理</h4><ol>
+<li><h5 id="View的绘制流程："><a href="#View的绘制流程：" class="headerlink" title="View的绘制流程："></a>View的绘制流程：</h5><p>View的绘制是从ViewRoot的performTraversals()方法开始的，该方法会依次调用performMeasure、performLayout、performDraw三个方法，这三个方法依次完成顶级view的measure、layout、draw。其中perform会调用measure方法，在measure中有会调用onMeasure方法，在onMeasure方法中会对所有的子view进行measure，此时整个measure流程从父容器传到了子元素，完成一次measur过程，接着子元素会重复父容器的measure过程，如此反复完成整个view树的遍历。同理performLayout、performDraw与performMeasure的流程是类似的，最终完成view的绘制。</p>
 </li>
-</ul>
-<p>View的绘制是从ViewRoot的performTraversals()方法开始的，该方法会依次调用performMeasure、performLayout、performDraw三个方法，这三个方法依次完成顶级view的measure、layout、draw。其中perform会调用measure方法，在measure中有会调用onMeasure方法，在onMeasure方法中会对所有的子view进行measure，此时整个measure流程从父容器传到了子元素，完成一次measur过程，接着子元素会重复父容器的measure过程，如此反复完成整个view树的遍历。同理performLayout、performDraw与performMeasure的流程是类似的，最终完成view的绘制。</p>
+<li><h5 id="view的工作流程："><a href="#view的工作流程：" class="headerlink" title="view的工作流程："></a>view的工作流程：</h5><p>主要是指measure、layout、draw这三大流程，其中measure确定view的测量宽/高；layout确定view的最终宽/高和四个顶点的位置；二draw将view绘制在屏幕上。</p>
+<p>对于view直接调用onMeasure方法来测量，而ViewGroup是抽象类，没有重写onMeasure方法，而是通过measureChildren遍历子元素，通过measureChild方法调用子元素的measure完成测量；</p>
+<p>ViewGroup layout的大致流程：通过setFrame方法来设定view的四个顶点的位置，view的四个顶点一单确定view在父容器的中的位置也就确定，接着调用onLaytout确定子元素的位置;</p>
 <ul>
-<li><blockquote>
-<p><strong>view的工作流程：</strong></p>
-</blockquote>
-</li>
-<li><p>主要是指measure、layout、draw这三大流程，其中measure确定view的测量宽/高；layout确定view的最终宽/高和四个顶点的位置；二draw将view绘制在屏幕上。</p>
-<ul>
-<li><p>对于view直接调用onMeasure方法来测量，而ViewGroup是抽象类，没有重写onMeasure方法，而是通过measureChildren遍历子元素，通过measureChild方法调用子元素的measure完成测量；</p>
-</li>
-<li><p>ViewGroup layout的大致流程：通过setFrame方法来设定view的四个顶点的位置，view的四个顶点一单确定view在父容器的中的位置也就确定，接着调用onLaytout确定子元素的位置;</p>
-</li>
-<li>Draw遵循步骤：<ul>
+<li>Draw遵循步骤：</li>
 <li>1、绘制背景background.draw(canvas);</li>
 <li>2、绘制自己onDraw;</li>
 <li>3、绘制children–dispatchDraw;</li>
 <li>4、绘制装饰—onDrawScrollBars.</li>
 </ul>
 </li>
-</ul>
-</li>
-<li><blockquote>
-<p><strong>自定义View</strong></p>
-</blockquote>
-<ul>
-<li><p><strong>自定义View的分类及流程：</strong></p>
+<li><h5 id="自定义View"><a href="#自定义View" class="headerlink" title="自定义View"></a>自定义View</h5><p>　自定义View的分类及流程：</p>
 <ul>
 <li><p>1、<strong>继承View重写onDraw方法</strong>；需要自己支持warp_content，处理padding；</p>
 </li>
@@ -592,19 +582,17 @@
 </li>
 <li><p>4、<strong>继承特定的ViewGroup</strong>,如线性布局，此方法不需要自己处理ViewGroup的测量和布局。</p>
 </li>
-<li><strong>为了使自定义的View更易用，还需要添加自定义属性，以便在布局文件中使用：</strong><ul>
+<li>5、<strong>为了使自定义的View更易用，还需要添加自定义属性，以便在布局文件中使用：</strong><ul>
 <li>1、在values目录中创建自定义属性xml文件，如attrs.在values目录中创建自定义属性xml文件</li>
 <li>2、在view的构造方法中解析自定义的属性，并相应的处理，如定义默认值等。</li>
 <li>3、在布局文件中声明然后使用。</li>
 </ul>
 </li>
 </ul>
-</li>
-<li><p><strong>直接继承view或者ViewGroup的控件，有时候warp_content达不到预期效果？</strong><br><code>原因</code>：当view在布局中使用warp_content，此时specMode为AT_MOST，宽高等于specSize，这种情况下View的specSize为parentSize,而parentSized的大小为父容器当前的剩余空间，使得和使用match_parent效果一致。</p>
+<p><strong>直接继承view或者ViewGroup的控件，有时候warp_content达不到预期效果？</strong><br><code>原因</code>：当view在布局中使用warp_content，此时specMode为AT_MOST，宽高等于specSize，这种情况下View的specSize为parentSize,而parentSized的大小为父容器当前的剩余空间，使得和使用match_parent效果一致。</p>
 <p><code>解决方法</code>：给View设定默认的宽/高，并在warp_content时根据情况设置此宽/高，即可。</p>
-</li>
-<li><p><strong>自定义View注意事项</strong></p>
 <ul>
+<li><strong>自定义View注意事项</strong></li>
 <li><p>1.让View支持warp_content</p>
 </li>
 <li><p>2.如有必要，让view支持padding</p>
@@ -616,12 +604,10 @@
 <li><p>View带有嵌套滑动的情形是，需要处理滑动冲突。</p>
 </li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><h4 id="Android动画分析"><a href="#Android动画分析" class="headerlink" title="Android动画分析"></a>Android动画分析</h4><ul>
+<ol start="5">
+<li><h4 id="Android动画分析"><a href="#Android动画分析" class="headerlink" title="Android动画分析"></a>Android动画分析</h4></li>
+</ol>
+<ul>
 <li><p><strong>Android动画分类：view动画，属性动画和新增的物理动画</strong></p>
 <ul>
 <li><p><strong>View动画</strong>：对场景里的对象不断做图像变换（平移，缩放，旋转，透明度）从而产生一系列的动画效果，是一种渐进式动画，支持自定义；它包含该两个特殊的类型帧动画和补间动画：</p>
@@ -643,6 +629,8 @@
 <li><strong>属性动画：</strong><br>常见的几个动画类：ValueAnimator,ObjectAnimator,AnimatorSet。<br><code>插值器</code>：根据时间流逝的百分比来计算出当前属性值改变的百分比<br><code>估值器</code>:根据当前属性变化的百分比计算改变后的属性值<h5 id="属性动画的工作原理："><a href="#属性动画的工作原理：" class="headerlink" title="属性动画的工作原理："></a>属性动画的工作原理：</h5>在一定时间间隔内和值范围内，通过不断对值进行改变，并不断将该值赋给对象的属性，从而实现该对象在该属性上的动画效果。因此要求作用的对象有该属性的set方法，如果没有设置初始值，还需要对象提供get方法，或者进行包装设置getter/setter方法。ValueAnimator不断控制值的变化，然后手动赋值给对象的属性，ObjectAnimator直接操作对象属性的值。<h5 id="使用动画的注意事项："><a href="#使用动画的注意事项：" class="headerlink" title="使用动画的注意事项："></a>使用动画的注意事项：</h5>1、帧动画中如果使用的图片过多多大容易出现OOM;<br>2、内存泄漏：属性动画中的无限循环动画需要在activity退出时及时停止，避免activity无法释放造成内存泄漏。<br>3、尽量使用dp保证在不同设备上的效果；<br>4、动画元素的交互问题：使用view动画移动之后点击事件还在原地，点击移动后的view无效======这是因为view动画只是对控件影像的操作，到达动画视觉的效果，而控件还留在原来的区域。</li>
 </ul>
 </li>
+</ol>
+<ol start="6">
 <li><h4 id="理解Window和WinowManager"><a href="#理解Window和WinowManager" class="headerlink" title="理解Window和WinowManager"></a>理解Window和WinowManager</h4><blockquote>
 <p><strong>概述：</strong>Window表示一个窗口的概念，是一个抽象类，Android的所有视图都通过Window呈现，并依附于它，不管是activity、dialog、还是toast，Window都是view的直接管理者。具体实现是PhoneWindow，通过WindowManager创建window，window的外界访问入口是WindowMananger，具体实现在WindowManagerServer中，因此windowmanger和WindowManagerServer的交互式IPC过程。</p>
 </blockquote>
@@ -701,7 +689,9 @@
 <p>1.外部类结束生命周期时清空handler内的消息列队，比如在onDestory中调用 mHandler.removeCallbacksAndMessages(null);</p>
 <p>2.将handler设置成静态内部类并对外部类进行弱引用。</p>
 </blockquote>
-</li>
+<h6 id="为什么一个线程只有一个Looper、只有一个MessageQueue？"><a href="#为什么一个线程只有一个Looper、只有一个MessageQueue？" class="headerlink" title="为什么一个线程只有一个Looper、只有一个MessageQueue？"></a>为什么一个线程只有一个Looper、只有一个MessageQueue？</h6><h6 id="如何获取当前线程的Looper？是怎么实现的？（理解ThreadLocal）"><a href="#如何获取当前线程的Looper？是怎么实现的？（理解ThreadLocal）" class="headerlink" title="如何获取当前线程的Looper？是怎么实现的？（理解ThreadLocal）"></a>如何获取当前线程的Looper？是怎么实现的？（理解ThreadLocal）</h6><h6 id="是不是任何线程都可以实例化Handler？有没有什么约束条件？"><a href="#是不是任何线程都可以实例化Handler？有没有什么约束条件？" class="headerlink" title="是不是任何线程都可以实例化Handler？有没有什么约束条件？"></a>是不是任何线程都可以实例化Handler？有没有什么约束条件？</h6><h6 id="Looper-loop是一个死循环，拿不到需要处理的Message就会阻塞，那在UI线程中为什么不会导致ANR？"><a href="#Looper-loop是一个死循环，拿不到需要处理的Message就会阻塞，那在UI线程中为什么不会导致ANR？" class="headerlink" title="Looper.loop是一个死循环，拿不到需要处理的Message就会阻塞，那在UI线程中为什么不会导致ANR？"></a>Looper.loop是一个死循环，拿不到需要处理的Message就会阻塞，那在UI线程中为什么不会导致ANR？</h6><h6 id="Handler-sendMessageDelayed-怎么实现延迟的？结合Looper-loop-循环中，Message-messageQueue-next-和MessageQueue-enqueueMessage-分析。"><a href="#Handler-sendMessageDelayed-怎么实现延迟的？结合Looper-loop-循环中，Message-messageQueue-next-和MessageQueue-enqueueMessage-分析。" class="headerlink" title="Handler.sendMessageDelayed()怎么实现延迟的？结合Looper.loop()循环中，Message=messageQueue.next()和MessageQueue.enqueueMessage()分析。"></a>Handler.sendMessageDelayed()怎么实现延迟的？结合Looper.loop()循环中，Message=messageQueue.next()和MessageQueue.enqueueMessage()分析。</h6></li>
+</ol>
+<ol start="9">
 <li><h4 id="Android的线程和线程池"><a href="#Android的线程和线程池" class="headerlink" title="Android的线程和线程池"></a>Android的线程和线程池</h4><h5 id="主线程和子线程"><a href="#主线程和子线程" class="headerlink" title="主线程和子线程"></a>主线程和子线程</h5><p>进程所拥有的的线程叫做主线程，除主线程之外的线程叫做子线程，或工作线程。<br>主线程主要用来是运行四大组件以及处理界面交互相关的逻辑，子线程用来执行耗时操作。</p>
 <h5 id="Android中的线程形态"><a href="#Android中的线程形态" class="headerlink" title="Android中的线程形态"></a>Android中的线程形态</h5><ol>
 <li>传统的Thread</li>
@@ -709,6 +699,7 @@
 <li>HandlerThread</li>
 <li>IntentService</li>
 </ol>
+<h5 id="HandlerThread、IntentService理解"><a href="#HandlerThread、IntentService理解" class="headerlink" title="HandlerThread、IntentService理解"></a>HandlerThread、IntentService理解</h5><p>？？？？？？？？</p>
 <h5 id="android中的线程池"><a href="#android中的线程池" class="headerlink" title="android中的线程池"></a>android中的线程池</h5><ol>
 <li><strong>线程池的优点</strong><ul>
 <li>重用线程池中线程，避免线程创建和销毁带来的性能开销</li>
@@ -723,6 +714,7 @@
 <li>SingleThreadPool :只有一个核心线程，任务在同一个线程中顺序执行</li>
 </ul>
 </li>
+<li><strong>线程池的参数详解</strong><br>？？？？</li>
 </ol>
 </li>
 <li><h4 id="Bitmap的加载和缓存"><a href="#Bitmap的加载和缓存" class="headerlink" title="Bitmap的加载和缓存"></a>Bitmap的加载和缓存</h4><h5 id="Bitmap的高效加载"><a href="#Bitmap的高效加载" class="headerlink" title="Bitmap的高效加载"></a>Bitmap的高效加载</h5><p>核心思想是：采用BitmapFactory.Option设置采样率inSampleSzie来加载所需尺寸的图片。<br>获取采样率的流程：</p>
@@ -781,8 +773,33 @@
 <li><p>原因2：防止客户端已失效的连接请求报文出现在连接中。客户端发送了最后1个连接释放请求确认报文后，再经过2MSL时间，则可使本连接持续时间内所产生的所有报文段都从网络中消失。</p>
 </li>
 </ul>
+<h5 id="DDoS攻击"><a href="#DDoS攻击" class="headerlink" title="DDoS攻击"></a>DDoS攻击</h5></li>
+</ol>
+<h4 id="Http-Https"><a href="#Http-Https" class="headerlink" title="Http/Https"></a>Http/Https</h4><h4 id="Java垃圾回收机制"><a href="#Java垃圾回收机制" class="headerlink" title="Java垃圾回收机制"></a>Java垃圾回收机制</h4><h4 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h4><h4 id="类加载机制"><a href="#类加载机制" class="headerlink" title="类加载机制"></a>类加载机制</h4><h4 id="弱引用、软引用区别"><a href="#弱引用、软引用区别" class="headerlink" title="弱引用、软引用区别"></a>弱引用、软引用区别</h4><h4 id="int、Integer有什么区别"><a href="#int、Integer有什么区别" class="headerlink" title="int、Integer有什么区别"></a>int、Integer有什么区别</h4><h4 id="动态权限适配问题、换肤实现原理"><a href="#动态权限适配问题、换肤实现原理" class="headerlink" title="动态权限适配问题、换肤实现原理"></a>动态权限适配问题、换肤实现原理</h4><p>  这方面看下鸿洋大神的博文吧</p>
+<h4 id="SharedPreference原理，能否跨进程？如何实现？"><a href="#SharedPreference原理，能否跨进程？如何实现？" class="headerlink" title="SharedPreference原理，能否跨进程？如何实现？"></a>SharedPreference原理，能否跨进程？如何实现？</h4><h4 id="响应速度优化"><a href="#响应速度优化" class="headerlink" title="响应速度优化"></a>响应速度优化</h4><p>   Activity如果5秒之内无法响应屏幕触碰事件和键盘输入事件，就会出现ANR；<br>而BroadcastReceiver如果10秒之内还未执行操作也会出现ANR，<br>Serve20秒会出现ANR 为了避免ANR，可以开启子线程执行耗时操作，但是子线程不能更新UI，因此需要Handler消息机制、AsyncTask、IntentService进行线程通信。<br>备：出现ANR时，adb pull data/anr/tarces.txt 结合log分析</p>
+<h4 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h4><ol>
+<li><h6 id="单例模式：好几种写法，要求会手写，分析优劣。一般双重校验锁中用到volatile，需要分析volatile的原理"><a href="#单例模式：好几种写法，要求会手写，分析优劣。一般双重校验锁中用到volatile，需要分析volatile的原理" class="headerlink" title="单例模式：好几种写法，要求会手写，分析优劣。一般双重校验锁中用到volatile，需要分析volatile的原理"></a>单例模式：好几种写法，要求会手写，分析优劣。一般双重校验锁中用到volatile，需要分析volatile的原理</h6></li>
+<li><h6 id="观察者模式：要求会手写，有些面试官会问你在项目中用到了吗？实在没有到的可以讲一讲EventBus，它用到的就是观察者模式"><a href="#观察者模式：要求会手写，有些面试官会问你在项目中用到了吗？实在没有到的可以讲一讲EventBus，它用到的就是观察者模式" class="headerlink" title="观察者模式：要求会手写，有些面试官会问你在项目中用到了吗？实在没有到的可以讲一讲EventBus，它用到的就是观察者模式"></a>观察者模式：要求会手写，有些面试官会问你在项目中用到了吗？实在没有到的可以讲一讲EventBus，它用到的就是观察者模式</h6></li>
+<li><h6 id="适配器模式：要求会手写，有些公司会问和装饰器模式、代理模式有什么区别？"><a href="#适配器模式：要求会手写，有些公司会问和装饰器模式、代理模式有什么区别？" class="headerlink" title="适配器模式：要求会手写，有些公司会问和装饰器模式、代理模式有什么区别？"></a>适配器模式：要求会手写，有些公司会问和装饰器模式、代理模式有什么区别？</h6></li>
+<li><h6 id="建造者模式-工厂模式：要求会手写"><a href="#建造者模式-工厂模式：要求会手写" class="headerlink" title="建造者模式+工厂模式：要求会手写"></a>建造者模式+工厂模式：要求会手写</h6></li>
+<li><h6 id="策略模式：这个问得比较少，不过有些做电商的会问。"><a href="#策略模式：这个问得比较少，不过有些做电商的会问。" class="headerlink" title="策略模式：这个问得比较少，不过有些做电商的会问。"></a>策略模式：这个问得比较少，不过有些做电商的会问。</h6></li>
+<li><h6 id="MVC、MVP、MVVM：比较异同，选择一种你拿手的着重讲就行"><a href="#MVC、MVP、MVVM：比较异同，选择一种你拿手的着重讲就行" class="headerlink" title="MVC、MVP、MVVM：比较异同，选择一种你拿手的着重讲就行"></a>MVC、MVP、MVVM：比较异同，选择一种你拿手的着重讲就行</h6></li>
+</ol>
+<h4 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h4><ol>
+<li><h6 id="HashMap、LinkedHashMap、ConcurrentHashMap，在用法和原理上有什么差异，很多公司会考HashMap原理，通过它做一些扩展，比如中国13亿人口年龄的排序问题，年龄对应桶的个数，年龄相同和hash相同问题类似。"><a href="#HashMap、LinkedHashMap、ConcurrentHashMap，在用法和原理上有什么差异，很多公司会考HashMap原理，通过它做一些扩展，比如中国13亿人口年龄的排序问题，年龄对应桶的个数，年龄相同和hash相同问题类似。" class="headerlink" title="HashMap、LinkedHashMap、ConcurrentHashMap，在用法和原理上有什么差异，很多公司会考HashMap原理，通过它做一些扩展，比如中国13亿人口年龄的排序问题，年龄对应桶的个数，年龄相同和hash相同问题类似。"></a>HashMap、LinkedHashMap、ConcurrentHashMap，在用法和原理上有什么差异，很多公司会考HashMap原理，通过它做一些扩展，比如中国13亿人口年龄的排序问题，年龄对应桶的个数，年龄相同和hash相同问题类似。</h6></li>
+<li><h6 id="ArrayList和LinkedList对比，这个相对简单一点。"><a href="#ArrayList和LinkedList对比，这个相对简单一点。" class="headerlink" title="ArrayList和LinkedList对比，这个相对简单一点。"></a>ArrayList和LinkedList对比，这个相对简单一点。</h6></li>
+<li><h6 id="平衡二叉树、二叉查找树、红黑树，这几个我也被考到。"><a href="#平衡二叉树、二叉查找树、红黑树，这几个我也被考到。" class="headerlink" title="平衡二叉树、二叉查找树、红黑树，这几个我也被考到。"></a>平衡二叉树、二叉查找树、红黑树，这几个我也被考到。</h6></li>
+<li><h6 id="Set原理，这个和HashMap考得有点类似，考hash算法相关，被问到过常用hash算法。HashSet内部用到了HashMap。"><a href="#Set原理，这个和HashMap考得有点类似，考hash算法相关，被问到过常用hash算法。HashSet内部用到了HashMap。" class="headerlink" title="Set原理，这个和HashMap考得有点类似，考hash算法相关，被问到过常用hash算法。HashSet内部用到了HashMap。"></a>Set原理，这个和HashMap考得有点类似，考hash算法相关，被问到过常用hash算法。HashSet内部用到了HashMap。</h6></li>
+<li><h6 id="缓存淘汰策略-Lru"><a href="#缓存淘汰策略-Lru" class="headerlink" title="缓存淘汰策略(Lru)"></a>缓存淘汰策略(Lru)</h6></li>
+</ol>
+<h4 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h4><p>算法主要考刷题吧，去LeetCode和牛客网刷下。</p>
+<h4 id="热更新、热修复、插件化-这一块要求高点，一般高级工程师是需要理解的"><a href="#热更新、热修复、插件化-这一块要求高点，一般高级工程师是需要理解的" class="headerlink" title="热更新、热修复、插件化(这一块要求高点，一般高级工程师是需要理解的)"></a>热更新、热修复、插件化(这一块要求高点，一般高级工程师是需要理解的)</h4><p>了解classLoader</p>
+<h4 id="源码理解"><a href="#源码理解" class="headerlink" title="源码理解"></a>源码理解</h4><p>项目中多多少少会用到开源框架，很多公司都喜欢问原理和是否看过源码，比如网络框架Okhttp，这是最常用的，现在Retrofit+RxJava也很流行。</p>
+<ol>
+<li><h5 id="网络框架库-Okhttp"><a href="#网络框架库-Okhttp" class="headerlink" title="网络框架库 Okhttp"></a>网络框架库 Okhttp</h5><p>okhttp源码一定要去看下，里面几个关键的类要记住，还有连接池，拦截器都需要理解。被问到如何给某些特定域名的url增加header，如果是自己封装的代码，可以在封装Request中可以解决，也可以增加拦截器，通过拦截器去做。<br>推荐一篇讲解<a href="https://www.jianshu.com/p/230e2e2988e0" target="_blank" rel="noopener">Okhttp</a>不错的文章</p>
 </li>
-<li><h4 id="DA"><a href="#DA" class="headerlink" title="DA"></a>DA</h4></li>
+<li><h5 id="消息通知-EventBus"><a href="#消息通知-EventBus" class="headerlink" title="消息通知 EventBus"></a>消息通知 EventBus</h5><h6 id="EventBus原理：建议看下源码，不多。内部实现：观察者模式-注解-反射"><a href="#EventBus原理：建议看下源码，不多。内部实现：观察者模式-注解-反射" class="headerlink" title="EventBus原理：建议看下源码，不多。内部实现：观察者模式+注解+反射"></a>EventBus原理：建议看下源码，不多。内部实现：观察者模式+注解+反射</h6><h6 id="EventBus可否跨进程问题？代替EventBus的方法（RxBus）"><a href="#EventBus可否跨进程问题？代替EventBus的方法（RxBus）" class="headerlink" title="EventBus可否跨进程问题？代替EventBus的方法（RxBus）"></a>EventBus可否跨进程问题？代替EventBus的方法（RxBus）</h6></li>
+<li><h5 id="图片加载库（Fresco、Glide、Picasso）"><a href="#图片加载库（Fresco、Glide、Picasso）" class="headerlink" title="图片加载库（Fresco、Glide、Picasso）"></a>图片加载库（Fresco、Glide、Picasso）</h5><h6 id="项目中选择了哪个图片加载库？为什么选择它？其他库不好吗？这几个库的区别"><a href="#项目中选择了哪个图片加载库？为什么选择它？其他库不好吗？这几个库的区别" class="headerlink" title="项目中选择了哪个图片加载库？为什么选择它？其他库不好吗？这几个库的区别"></a>项目中选择了哪个图片加载库？为什么选择它？其他库不好吗？这几个库的区别</h6><h6 id="项目中选择图片库它的原理，如Glide（LruCache结合弱引用），那么面试官会问LruCache原理，进而问LinkedHashMap原理，这样一层一层地问，所以建议看到不懂的追进去看。如Fresco是用来MVC设计模式，5-0以下是用了共享内存，那共享内存怎么用？Fresco怎么实现圆角？Fresco怎么配置缓存？"><a href="#项目中选择图片库它的原理，如Glide（LruCache结合弱引用），那么面试官会问LruCache原理，进而问LinkedHashMap原理，这样一层一层地问，所以建议看到不懂的追进去看。如Fresco是用来MVC设计模式，5-0以下是用了共享内存，那共享内存怎么用？Fresco怎么实现圆角？Fresco怎么配置缓存？" class="headerlink" title="项目中选择图片库它的原理，如Glide（LruCache结合弱引用），那么面试官会问LruCache原理，进而问LinkedHashMap原理，这样一层一层地问，所以建议看到不懂的追进去看。如Fresco是用来MVC设计模式，5.0以下是用了共享内存，那共享内存怎么用？Fresco怎么实现圆角？Fresco怎么配置缓存？"></a>项目中选择图片库它的原理，如Glide（LruCache结合弱引用），那么面试官会问LruCache原理，进而问LinkedHashMap原理，这样一层一层地问，所以建议看到不懂的追进去看。如Fresco是用来MVC设计模式，5.0以下是用了共享内存，那共享内存怎么用？Fresco怎么实现圆角？Fresco怎么配置缓存？</h6></li>
 </ol>
 
       
@@ -897,7 +914,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -968,7 +985,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Activity-Fragment-的生命周期和启动模式"><span class="nav-number">1.</span> <span class="nav-text">Activity(Fragment)的生命周期和启动模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-生命周期分析"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 生命周期分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-Android的启动模式"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Android的启动模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-3-Acticity和Fragment的通信方式"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 Acticity和Fragment的通信方式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进程间通信IPC机制"><span class="nav-number">2.</span> <span class="nav-text">进程间通信IPC机制</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-什么是IPC？"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 什么是IPC？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-什么是多进程？"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 什么是多进程？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-Android-Binder跨进程通信的原理"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 Android Binder跨进程通信的原理</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#View的事件体系"><span class="nav-number">3.</span> <span class="nav-text">View的事件体系</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-View的滑动"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 View的滑动</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-事件拦截和分发"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 事件拦截和分发</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-3-View的滑动冲突"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 View的滑动冲突</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#View的工作原理"><span class="nav-number">4.</span> <span class="nav-text">View的工作原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Android动画分析"><span class="nav-number">5.</span> <span class="nav-text">Android动画分析</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#属性动画的工作原理："><span class="nav-number">5.1.</span> <span class="nav-text">属性动画的工作原理：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用动画的注意事项："><span class="nav-number">5.2.</span> <span class="nav-text">使用动画的注意事项：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#理解Window和WinowManager"><span class="nav-number">6.</span> <span class="nav-text">理解Window和WinowManager</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Window的内部机制"><span class="nav-number">6.1.</span> <span class="nav-text">Window的内部机制</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#PhoneWindow实例是在哪一个类哪一个方法中实例化的？也就是Winodow的创建过程？"><span class="nav-number">6.2.</span> <span class="nav-text">PhoneWindow实例是在哪一个类哪一个方法中实例化的？也就是Winodow的创建过程？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Activity的视图创建过程"><span class="nav-number">6.3.</span> <span class="nav-text">Activity的视图创建过程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四大组件的工作过程"><span class="nav-number">7.</span> <span class="nav-text">四大组件的工作过程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#7-1-Activity的工作过程"><span class="nav-number">7.1.</span> <span class="nav-text">7.1 Activity的工作过程</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#activity是如何启动？"><span class="nav-number">7.1.1.</span> <span class="nav-text">activity是如何启动？</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-2-Service的工作过程"><span class="nav-number">7.2.</span> <span class="nav-text">7.2 Service的工作过程</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Service的启动过程和绑定过程"><span class="nav-number">7.2.1.</span> <span class="nav-text">Service的启动过程和绑定过程</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#1-在Service中创建"><span class="nav-number">7.2.2.</span> <span class="nav-text">(1)在Service中创建</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-在Service中发送广播在Activity中显示"><span class="nav-number">7.2.3.</span> <span class="nav-text">(2)在Service中发送广播在Activity中显示</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Android的消息机制"><span class="nav-number">8.</span> <span class="nav-text">Android的消息机制</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#消息机制原理"><span class="nav-number">8.1.</span> <span class="nav-text">消息机制原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ThreadLocal"><span class="nav-number">8.2.</span> <span class="nav-text">ThreadLocal</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在不传递Looperd参数给Handler构造函数的情况下，更新UI的Handler为什么必须在UI线程中创建？"><span class="nav-number">8.3.</span> <span class="nav-text">在不传递Looperd参数给Handler构造函数的情况下，更新UI的Handler为什么必须在UI线程中创建？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#只能在主线程中更新UI，这种说法对吗？"><span class="nav-number">8.4.</span> <span class="nav-text">只能在主线程中更新UI，这种说法对吗？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Handler导致的内存泄漏"><span class="nav-number">8.5.</span> <span class="nav-text">Handler导致的内存泄漏</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Android的线程和线程池"><span class="nav-number">9.</span> <span class="nav-text">Android的线程和线程池</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#主线程和子线程"><span class="nav-number">9.1.</span> <span class="nav-text">主线程和子线程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Android中的线程形态"><span class="nav-number">9.2.</span> <span class="nav-text">Android中的线程形态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#android中的线程池"><span class="nav-number">9.3.</span> <span class="nav-text">android中的线程池</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bitmap的加载和缓存"><span class="nav-number">10.</span> <span class="nav-text">Bitmap的加载和缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Bitmap的高效加载"><span class="nav-number">10.1.</span> <span class="nav-text">Bitmap的高效加载</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#android的缓存策略"><span class="nav-number">10.2.</span> <span class="nav-text">android的缓存策略</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Android的性能优化"><span class="nav-number">11.</span> <span class="nav-text">Android的性能优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP和UDP"><span class="nav-number">12.</span> <span class="nav-text">TCP和UDP</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#简述TCP建立连接的三次握手及原因？"><span class="nav-number">12.1.</span> <span class="nav-text">简述TCP建立连接的三次握手及原因？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TCP四次分手"><span class="nav-number">12.2.</span> <span class="nav-text">TCP四次分手</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#为什么客户端关闭连接前要等待2MSL时间？"><span class="nav-number">12.3.</span> <span class="nav-text">为什么客户端关闭连接前要等待2MSL时间？</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DA"><span class="nav-number">13.</span> <span class="nav-text">DA</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Activity-Fragment-的生命周期和启动模式"><span class="nav-number">1.</span> <span class="nav-text">Activity(Fragment)的生命周期和启动模式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-生命周期分析"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 生命周期分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-Android的启动模式"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Android的启动模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-3-Acticity和Fragment的通信方式"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 Acticity和Fragment的通信方式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进程间通信IPC机制"><span class="nav-number">2.</span> <span class="nav-text">进程间通信IPC机制</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#什么是IPC？"><span class="nav-number">2.1.</span> <span class="nav-text">什么是IPC？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#什么是多进程？"><span class="nav-number">2.2.</span> <span class="nav-text">什么是多进程？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-Android-Binder跨进程通信的原理"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 Android Binder跨进程通信的原理</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#View的事件体系"><span class="nav-number">3.</span> <span class="nav-text">View的事件体系</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#View的滑动"><span class="nav-number">3.1.</span> <span class="nav-text">View的滑动</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#事件拦截和分发"><span class="nav-number">3.2.</span> <span class="nav-text">事件拦截和分发</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#View的滑动冲突"><span class="nav-number">3.3.</span> <span class="nav-text">View的滑动冲突</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#View的工作原理"><span class="nav-number">4.</span> <span class="nav-text">View的工作原理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#View的绘制流程："><span class="nav-number">4.1.</span> <span class="nav-text">View的绘制流程：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#view的工作流程："><span class="nav-number">4.2.</span> <span class="nav-text">view的工作流程：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#自定义View"><span class="nav-number">4.3.</span> <span class="nav-text">自定义View</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Android动画分析"><span class="nav-number">5.</span> <span class="nav-text">Android动画分析</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#属性动画的工作原理："><span class="nav-number">5.1.</span> <span class="nav-text">属性动画的工作原理：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用动画的注意事项："><span class="nav-number">5.2.</span> <span class="nav-text">使用动画的注意事项：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#理解Window和WinowManager"><span class="nav-number">6.</span> <span class="nav-text">理解Window和WinowManager</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Window的内部机制"><span class="nav-number">6.1.</span> <span class="nav-text">Window的内部机制</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#PhoneWindow实例是在哪一个类哪一个方法中实例化的？也就是Winodow的创建过程？"><span class="nav-number">6.2.</span> <span class="nav-text">PhoneWindow实例是在哪一个类哪一个方法中实例化的？也就是Winodow的创建过程？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Activity的视图创建过程"><span class="nav-number">6.3.</span> <span class="nav-text">Activity的视图创建过程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四大组件的工作过程"><span class="nav-number">7.</span> <span class="nav-text">四大组件的工作过程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#7-1-Activity的工作过程"><span class="nav-number">7.1.</span> <span class="nav-text">7.1 Activity的工作过程</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#activity是如何启动？"><span class="nav-number">7.1.1.</span> <span class="nav-text">activity是如何启动？</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-2-Service的工作过程"><span class="nav-number">7.2.</span> <span class="nav-text">7.2 Service的工作过程</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Service的启动过程和绑定过程"><span class="nav-number">7.2.1.</span> <span class="nav-text">Service的启动过程和绑定过程</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#1-在Service中创建"><span class="nav-number">7.2.2.</span> <span class="nav-text">(1)在Service中创建</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-在Service中发送广播在Activity中显示"><span class="nav-number">7.2.3.</span> <span class="nav-text">(2)在Service中发送广播在Activity中显示</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Android的消息机制"><span class="nav-number">8.</span> <span class="nav-text">Android的消息机制</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#消息机制原理"><span class="nav-number">8.1.</span> <span class="nav-text">消息机制原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ThreadLocal"><span class="nav-number">8.2.</span> <span class="nav-text">ThreadLocal</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在不传递Looperd参数给Handler构造函数的情况下，更新UI的Handler为什么必须在UI线程中创建？"><span class="nav-number">8.3.</span> <span class="nav-text">在不传递Looperd参数给Handler构造函数的情况下，更新UI的Handler为什么必须在UI线程中创建？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#只能在主线程中更新UI，这种说法对吗？"><span class="nav-number">8.4.</span> <span class="nav-text">只能在主线程中更新UI，这种说法对吗？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Handler导致的内存泄漏"><span class="nav-number">8.5.</span> <span class="nav-text">Handler导致的内存泄漏</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#为什么一个线程只有一个Looper、只有一个MessageQueue？"><span class="nav-number">8.5.1.</span> <span class="nav-text">为什么一个线程只有一个Looper、只有一个MessageQueue？</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#如何获取当前线程的Looper？是怎么实现的？（理解ThreadLocal）"><span class="nav-number">8.5.2.</span> <span class="nav-text">如何获取当前线程的Looper？是怎么实现的？（理解ThreadLocal）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#是不是任何线程都可以实例化Handler？有没有什么约束条件？"><span class="nav-number">8.5.3.</span> <span class="nav-text">是不是任何线程都可以实例化Handler？有没有什么约束条件？</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Looper-loop是一个死循环，拿不到需要处理的Message就会阻塞，那在UI线程中为什么不会导致ANR？"><span class="nav-number">8.5.4.</span> <span class="nav-text">Looper.loop是一个死循环，拿不到需要处理的Message就会阻塞，那在UI线程中为什么不会导致ANR？</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Handler-sendMessageDelayed-怎么实现延迟的？结合Looper-loop-循环中，Message-messageQueue-next-和MessageQueue-enqueueMessage-分析。"><span class="nav-number">8.5.5.</span> <span class="nav-text">Handler.sendMessageDelayed()怎么实现延迟的？结合Looper.loop()循环中，Message=messageQueue.next()和MessageQueue.enqueueMessage()分析。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Android的线程和线程池"><span class="nav-number">9.</span> <span class="nav-text">Android的线程和线程池</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#主线程和子线程"><span class="nav-number">9.1.</span> <span class="nav-text">主线程和子线程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Android中的线程形态"><span class="nav-number">9.2.</span> <span class="nav-text">Android中的线程形态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HandlerThread、IntentService理解"><span class="nav-number">9.3.</span> <span class="nav-text">HandlerThread、IntentService理解</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#android中的线程池"><span class="nav-number">9.4.</span> <span class="nav-text">android中的线程池</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bitmap的加载和缓存"><span class="nav-number">10.</span> <span class="nav-text">Bitmap的加载和缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Bitmap的高效加载"><span class="nav-number">10.1.</span> <span class="nav-text">Bitmap的高效加载</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#android的缓存策略"><span class="nav-number">10.2.</span> <span class="nav-text">android的缓存策略</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Android的性能优化"><span class="nav-number">11.</span> <span class="nav-text">Android的性能优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP和UDP"><span class="nav-number">12.</span> <span class="nav-text">TCP和UDP</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#简述TCP建立连接的三次握手及原因？"><span class="nav-number">12.1.</span> <span class="nav-text">简述TCP建立连接的三次握手及原因？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TCP四次分手"><span class="nav-number">12.2.</span> <span class="nav-text">TCP四次分手</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#为什么客户端关闭连接前要等待2MSL时间？"><span class="nav-number">12.3.</span> <span class="nav-text">为什么客户端关闭连接前要等待2MSL时间？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DDoS攻击"><span class="nav-number">12.4.</span> <span class="nav-text">DDoS攻击</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Http-Https"><span class="nav-number">13.</span> <span class="nav-text">Http/Https</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java垃圾回收机制"><span class="nav-number">14.</span> <span class="nav-text">Java垃圾回收机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JVM"><span class="nav-number">15.</span> <span class="nav-text">JVM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类加载机制"><span class="nav-number">16.</span> <span class="nav-text">类加载机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#弱引用、软引用区别"><span class="nav-number">17.</span> <span class="nav-text">弱引用、软引用区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#int、Integer有什么区别"><span class="nav-number">18.</span> <span class="nav-text">int、Integer有什么区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态权限适配问题、换肤实现原理"><span class="nav-number">19.</span> <span class="nav-text">动态权限适配问题、换肤实现原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SharedPreference原理，能否跨进程？如何实现？"><span class="nav-number">20.</span> <span class="nav-text">SharedPreference原理，能否跨进程？如何实现？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#响应速度优化"><span class="nav-number">21.</span> <span class="nav-text">响应速度优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设计模式"><span class="nav-number">22.</span> <span class="nav-text">设计模式</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#单例模式：好几种写法，要求会手写，分析优劣。一般双重校验锁中用到volatile，需要分析volatile的原理"><span class="nav-number">22.0.1.</span> <span class="nav-text">单例模式：好几种写法，要求会手写，分析优劣。一般双重校验锁中用到volatile，需要分析volatile的原理</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#观察者模式：要求会手写，有些面试官会问你在项目中用到了吗？实在没有到的可以讲一讲EventBus，它用到的就是观察者模式"><span class="nav-number">22.0.2.</span> <span class="nav-text">观察者模式：要求会手写，有些面试官会问你在项目中用到了吗？实在没有到的可以讲一讲EventBus，它用到的就是观察者模式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#适配器模式：要求会手写，有些公司会问和装饰器模式、代理模式有什么区别？"><span class="nav-number">22.0.3.</span> <span class="nav-text">适配器模式：要求会手写，有些公司会问和装饰器模式、代理模式有什么区别？</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#建造者模式-工厂模式：要求会手写"><span class="nav-number">22.0.4.</span> <span class="nav-text">建造者模式+工厂模式：要求会手写</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#策略模式：这个问得比较少，不过有些做电商的会问。"><span class="nav-number">22.0.5.</span> <span class="nav-text">策略模式：这个问得比较少，不过有些做电商的会问。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#MVC、MVP、MVVM：比较异同，选择一种你拿手的着重讲就行"><span class="nav-number">22.0.6.</span> <span class="nav-text">MVC、MVP、MVVM：比较异同，选择一种你拿手的着重讲就行</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据结构"><span class="nav-number">23.</span> <span class="nav-text">数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#HashMap、LinkedHashMap、ConcurrentHashMap，在用法和原理上有什么差异，很多公司会考HashMap原理，通过它做一些扩展，比如中国13亿人口年龄的排序问题，年龄对应桶的个数，年龄相同和hash相同问题类似。"><span class="nav-number">23.0.1.</span> <span class="nav-text">HashMap、LinkedHashMap、ConcurrentHashMap，在用法和原理上有什么差异，很多公司会考HashMap原理，通过它做一些扩展，比如中国13亿人口年龄的排序问题，年龄对应桶的个数，年龄相同和hash相同问题类似。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#ArrayList和LinkedList对比，这个相对简单一点。"><span class="nav-number">23.0.2.</span> <span class="nav-text">ArrayList和LinkedList对比，这个相对简单一点。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#平衡二叉树、二叉查找树、红黑树，这几个我也被考到。"><span class="nav-number">23.0.3.</span> <span class="nav-text">平衡二叉树、二叉查找树、红黑树，这几个我也被考到。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Set原理，这个和HashMap考得有点类似，考hash算法相关，被问到过常用hash算法。HashSet内部用到了HashMap。"><span class="nav-number">23.0.4.</span> <span class="nav-text">Set原理，这个和HashMap考得有点类似，考hash算法相关，被问到过常用hash算法。HashSet内部用到了HashMap。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#缓存淘汰策略-Lru"><span class="nav-number">23.0.5.</span> <span class="nav-text">缓存淘汰策略(Lru)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法"><span class="nav-number">24.</span> <span class="nav-text">算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#热更新、热修复、插件化-这一块要求高点，一般高级工程师是需要理解的"><span class="nav-number">25.</span> <span class="nav-text">热更新、热修复、插件化(这一块要求高点，一般高级工程师是需要理解的)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#源码理解"><span class="nav-number">26.</span> <span class="nav-text">源码理解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#网络框架库-Okhttp"><span class="nav-number">26.1.</span> <span class="nav-text">网络框架库 Okhttp</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#消息通知-EventBus"><span class="nav-number">26.2.</span> <span class="nav-text">消息通知 EventBus</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#EventBus原理：建议看下源码，不多。内部实现：观察者模式-注解-反射"><span class="nav-number">26.2.1.</span> <span class="nav-text">EventBus原理：建议看下源码，不多。内部实现：观察者模式+注解+反射</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#EventBus可否跨进程问题？代替EventBus的方法（RxBus）"><span class="nav-number">26.2.2.</span> <span class="nav-text">EventBus可否跨进程问题？代替EventBus的方法（RxBus）</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#图片加载库（Fresco、Glide、Picasso）"><span class="nav-number">26.3.</span> <span class="nav-text">图片加载库（Fresco、Glide、Picasso）</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#项目中选择了哪个图片加载库？为什么选择它？其他库不好吗？这几个库的区别"><span class="nav-number">26.3.1.</span> <span class="nav-text">项目中选择了哪个图片加载库？为什么选择它？其他库不好吗？这几个库的区别</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#项目中选择图片库它的原理，如Glide（LruCache结合弱引用），那么面试官会问LruCache原理，进而问LinkedHashMap原理，这样一层一层地问，所以建议看到不懂的追进去看。如Fresco是用来MVC设计模式，5-0以下是用了共享内存，那共享内存怎么用？Fresco怎么实现圆角？Fresco怎么配置缓存？"><span class="nav-number">26.3.2.</span> <span class="nav-text">项目中选择图片库它的原理，如Glide（LruCache结合弱引用），那么面试官会问LruCache原理，进而问LinkedHashMap原理，这样一层一层地问，所以建议看到不懂的追进去看。如Fresco是用来MVC设计模式，5.0以下是用了共享内存，那共享内存怎么用？Fresco怎么实现圆角？Fresco怎么配置缓存？</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
