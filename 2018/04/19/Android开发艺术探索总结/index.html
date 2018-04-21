@@ -124,10 +124,10 @@
 <meta property="og:image" content="http://www.yyglike.com/2018/04/19/Android开发艺术探索总结/TCP_shake_hands_LI.jpg">
 <meta property="og:image" content="http://www.yyglike.com/2018/04/19/Android开发艺术探索总结/TCP_wave_hands.png">
 <meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1524205439643&di=a5edd509b8a7945fc4ffbd20aed67db3&imgtype=0&src=http%3A%2F%2Fs1.knowsky.com%2F20170221%2Fvbru5sfvszb03.png">
-<meta property="og:image" content="http://images2015.cnblogs.com/blog/681047/201512/681047-20151219185808288-1330656739.png">
+<meta property="og:image" content="http://www.yyglike.com/2018/04/19/Android开发艺术探索总结/LinkedHashMap.png">
 <meta property="og:image" content="https://img-blog.csdn.net/20170512155609530?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvanVzdGxvdmV5b3Vf/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://www.yyglike.com/2018/04/19/Android开发艺术探索总结/HashSet.png">
-<meta property="og:updated_time" content="2018-04-20T06:45:15.744Z">
+<meta property="og:updated_time" content="2018-04-21T14:52:00.603Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android开发艺术探索总结">
 <meta name="twitter:description" content="Activity(Fragment)的生命周期和启动模式 生命周期分析典型的生命周期 activity的生命周期    fragment的生命周期   与宿主Activity的生命周期的关系    onStar和onResum、onPause和onStop从描述看起来差不多，对于我们来说有什么实质的不同呢？ 对于这两对相似的接口，Android系统既然提供了就有其用意：onSatrt和onStop">
@@ -820,7 +820,7 @@
 </li>
 </ol>
 </li>
-<li><h5 id="LinkedHashMap"><a href="#LinkedHashMap" class="headerlink" title="LinkedHashMap"></a>LinkedHashMap</h5><p><img src="http://images2015.cnblogs.com/blog/681047/201512/681047-20151219185808288-1330656739.png" alt=""><br><img src="https://img-blog.csdn.net/20170512155609530?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvanVzdGxvdmV5b3Vf/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<li><h5 id="LinkedHashMap"><a href="#LinkedHashMap" class="headerlink" title="LinkedHashMap"></a>LinkedHashMap</h5><p><img src="/2018/04/19/Android开发艺术探索总结/LinkedHashMap.png" alt=""><br><img src="https://img-blog.csdn.net/20170512155609530?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvanVzdGxvdmV5b3Vf/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
 <p><strong>HashMap是无序的，也就是说，迭代HashMap所得到的元素顺序并不是它们最初放置到HashMap的顺序.</strong></p>
 <p><strong>基于HashMap的LinkedHashMap通过维护一个运行于所有条目的双向链表，LinkedHashMap保证了元素迭代的顺序。该迭代顺序可以是插入顺序或者是访问顺序</strong>。</p>
 <p><strong>LinkedHashMap采用的hash算法和HashMap相同，但是它重新定义了数组中保存的元素Entry，该Entry除了保存当前对象的引用 外，还保存了其上一个元素before和下一个元素after的引用，从而在哈希表的基础上又构成了双向链接列表。</strong></p>
