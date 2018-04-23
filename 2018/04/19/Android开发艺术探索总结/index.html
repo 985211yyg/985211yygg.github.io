@@ -127,7 +127,7 @@
 <meta property="og:image" content="http://www.yyglike.com/2018/04/19/Android开发艺术探索总结/LinkedHashMap.png">
 <meta property="og:image" content="https://img-blog.csdn.net/20170512155609530?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvanVzdGxvdmV5b3Vf/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://www.yyglike.com/2018/04/19/Android开发艺术探索总结/HashSet.png">
-<meta property="og:updated_time" content="2018-04-21T14:52:00.603Z">
+<meta property="og:updated_time" content="2018-04-23T03:31:05.398Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android开发艺术探索总结">
 <meta name="twitter:description" content="Activity(Fragment)的生命周期和启动模式 生命周期分析典型的生命周期 activity的生命周期    fragment的生命周期   与宿主Activity的生命周期的关系    onStar和onResum、onPause和onStop从描述看起来差不多，对于我们来说有什么实质的不同呢？ 对于这两对相似的接口，Android系统既然提供了就有其用意：onSatrt和onStop">
@@ -409,10 +409,11 @@
 <li><h5 id="Activity是如何保存和恢复View的结构？"><a href="#Activity是如何保存和恢复View的结构？" class="headerlink" title="Activity是如何保存和恢复View的结构？"></a>Activity是如何保存和恢复View的结构？</h5><p> 首先，activity被意外终止时，activity会调用onSaveInstanceState()去保存数据，然后activity会委托Window去保存数据，接着window委托它的上级容器去保存数据。顶级容器是一个ViewGroup，一般可能是是DecorView。最后顶级容器再去一一通知子元素去保存数据，对于数据的恢复也是类似的。</p>
 </li>
 <li><h5 id="资源不足导致低优先级的activity被杀死"><a href="#资源不足导致低优先级的activity被杀死" class="headerlink" title="资源不足导致低优先级的activity被杀死"></a>资源不足导致低优先级的activity被杀死</h5><p> activity的优先级：<br> 1.<code>前台activity</code>——正在和用户交互的activity，优先级最高<br> 2.<code>可见但非前台activity</code>—–比如activity中弹出一个对话框，导致activity可见但是位于后台无法与直接交互。<br> 3.<code>后台activity</code>—-已经被暂停的activity，比如执行了onStop(),优先级最低</p>
-<p> 对于系统内存不足时，系统会按照优先级来杀死目标activity的进程，然后通过onSaveInstanceState()和onRestoreInstanceState()存储恢复数据。</p>
+<p> 对于系统内存不足时，系统会按照优先级来杀死目标activity的进程，然后通过onSaveInstanceState()和onRestoreInstanceState()一bundle的形式存储恢复数据。但是onSaveInstanceState()这个方法只会出现在activity被异常终止时，它出现在onStop()之前，但是和onPuase()没有既定的关系，可能出现在之前也可能是之后。</p>
 </li>
 <li><h5 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h5><p> <strong>假设当前activity为A,若此时用户打开activity B，那么 B 的onResume()和 A 的OnPause()那个先执行？</strong></p>
-<p> 当新启动一个activity时，位于栈顶的旧activity的onPause()会先执行，才会启动新的activity，另外Android对onPause()的解释是不能在其中进行重量级的操作，为了新的activity尽快出现在前台，所以资源回收等重量尽量在onStop()中进行，这也能说明onRsume()先执行。</p>
+<p> 当新启动一个activity时，位于栈顶的旧activity的onPause()会先执行，才会启动新的activity，另外Android对onPause()的解释是不能在其中进行重量级的操作，为了新的activity尽快出现在前台，所以也可以说明西先onPause在onResume,注意：资源回收等重量尽量在onStop()中进行.</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">onPause(A)--&gt;onCreat(B)--&gt;onStart(B)--&gt;onResume(B)--&gt;onStop(A)</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>须知：最开始的两张图展示的 Fragment 与 Activity 的生命周期关系没毛病。<br>onAttach() 和 onCreate() 只在 Fragment 与 Activity 第一次关联时调用。<br>onDestroy() 和 onDetach() 只在 Fragment 的宿主 Activity 销毁时才会被调用。</p>
 </blockquote>
@@ -420,6 +421,7 @@
 <p><strong>如果 Fragment 与 ViewPager 结合使用，Fragment 的生命周期又是如何？</strong><br>  Fragment 与 ViewPager 结合使用时的只涉及 onCreateView() 和 onDestroyView() 这之间的生命周期生命周期。</p>
 <p><strong>如果通过 hide() 和 show() 方法来展示隐藏，这时 Fragment 的生命周期又会如何？</strong><br>通过 hide() 、 show() 来隐藏、显示Fragment，此时 Fragment 只改变了可见性，并不涉及生命周期的改变</p>
 <p><strong>Fragment 和 Activity 的生命周期有关，即：不要在 Fragment 的 onCreate() 方法中操作宿主Activity 的 UI。因为你无法保证此时 宿主Activity 的 UI 已经完全初始化。PS:某些情况下是可以确保 宿主Activity 已经初始化完成的。</strong></p>
+<p><strong><a href="https://www.jianshu.com/p/5c32bf28b653" target="_blank" rel="noopener">如何理解 Activity 的生命周期</a></strong></p>
 </li>
 </ol>
 <ol start="2">
@@ -431,9 +433,9 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK) ;</span><br><span class="line">mContext.startActivity(intent);</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+<p><strong><a href="https://www.jianshu.com/p/b60d8097e519" target="_blank" rel="noopener">说说 Activity 的四种启动模式</a></strong></p>
 </li>
-<li><h5 id="Acticity和Fragment的通信方式"><a href="#Acticity和Fragment的通信方式" class="headerlink" title="Acticity和Fragment的通信方式"></a>Acticity和Fragment的通信方式</h5><p>？？？？？</p>
-</li>
+<li><h5 id="Acticity和Fragment的通信方式"><a href="#Acticity和Fragment的通信方式" class="headerlink" title="Acticity和Fragment的通信方式"></a>Acticity和Fragment的通信方式</h5>？？？？？</li>
 </ol>
 <h4 id="进程间通信IPC机制"><a href="#进程间通信IPC机制" class="headerlink" title="进程间通信IPC机制"></a>进程间通信IPC机制</h4><ol>
 <li><h5 id="什么是IPC？"><a href="#什么是IPC？" class="headerlink" title="什么是IPC？"></a>什么是IPC？</h5>IPC,Inter-Process Communication的缩写，含义为进程通信或者跨进程通信，是指两个进程之间进行数据交换的过程。<br><code>**线程**：</code>cup调度的最小单位<br><code>**进程**：</code>一般指一个执行单元，在PC和移动设备上指一个程序或者一个应用。<br><code>**ANR**:</code>在主线程中进行大量的耗时操作导致界面无法响应。</li>
@@ -876,8 +878,9 @@
 <li><h5 id="网络框架库-Okhttp"><a href="#网络框架库-Okhttp" class="headerlink" title="网络框架库 Okhttp"></a>网络框架库 Okhttp</h5><p>okhttp源码一定要去看下，里面几个关键的类要记住，还有连接池，拦截器都需要理解。被问到如何给某些特定域名的url增加header，如果是自己封装的代码，可以在封装Request中可以解决，也可以增加拦截器，通过拦截器去做。</p>
 <p>推荐一篇讲解<a href="https://juejin.im/post/5a704ed05188255a8817f4c9" target="_blank" rel="noopener">Okhttp</a>不错的文章<br><a href="https://blog.csdn.net/lmj623565791/article/details/47911083" target="_blank" rel="noopener">Android OkHttp完全解析 是时候来了解OkHttp了</a></p>
 </li>
-<li><h5 id="消息通知-EventBus"><a href="#消息通知-EventBus" class="headerlink" title="消息通知 EventBus"></a>消息通知 EventBus</h5><h6 id="EventBus原理：建议看下源码，不多。内部实现：观察者模式-注解-反射"><a href="#EventBus原理：建议看下源码，不多。内部实现：观察者模式-注解-反射" class="headerlink" title="EventBus原理：建议看下源码，不多。内部实现：观察者模式+注解+反射"></a>EventBus原理：建议看下源码，不多。内部实现：观察者模式+注解+反射</h6><p> 详见文章<a href="https://juejin.im/post/5ab9fb4951882521d6579830" target="_blank" rel="noopener">EventBus</a></p>
-<h6 id="EventBus可否跨进程问题？代替EventBus的方法（RxBus）"><a href="#EventBus可否跨进程问题？代替EventBus的方法（RxBus）" class="headerlink" title="EventBus可否跨进程问题？代替EventBus的方法（RxBus）"></a>EventBus可否跨进程问题？代替EventBus的方法（RxBus）</h6><p> <a href="https://www.jianshu.com/p/669eda5dc5a4" target="_blank" rel="noopener">RxBus真的能替代EventBus吗？</a></p>
+<li><h5 id="消息通知-EventBus"><a href="#消息通知-EventBus" class="headerlink" title="消息通知 EventBus"></a>消息通知 EventBus</h5><h6 id="EventBus原理：建议看下源码，不多。内部实现：观察者模式-注解-反射"><a href="#EventBus原理：建议看下源码，不多。内部实现：观察者模式-注解-反射" class="headerlink" title="EventBus原理：建议看下源码，不多。内部实现：观察者模式+注解+反射"></a>EventBus原理：建议看下源码，不多。内部实现：观察者模式+注解+反射</h6><p> EventBus 是Android上的以发布\订阅事件为核心的库。事件 (event) 通过 post() 发送到总线，然后再分发到匹配事件类型的订阅者 (subscribers) 。订阅者只有在总线中注册 (register) 了才能收到事件，注销 (unrigister) 之后就收不到任何事件了。事件方法必须带有 Subscribe 的注解，必须是 public ，没有返回类型 void 并且只能有一个参数。</p>
+<p> 详见文章<a href="https://juejin.im/post/5ab9fb4951882521d6579830" target="_blank" rel="noopener">EventBus</a></p>
+<h6 id="EventBus可否跨进程问题？代替EventBus的方法（RxBus）"><a href="#EventBus可否跨进程问题？代替EventBus的方法（RxBus）" class="headerlink" title="EventBus可否跨进程问题？代替EventBus的方法（RxBus）"></a>EventBus可否跨进程问题？代替EventBus的方法（RxBus）</h6><p> <a href="https://juejin.im/post/59f93349f265da43085d5727" target="_blank" rel="noopener"> 全方位解析BroadcastReceiver,对比EventBus!</a><br> <a href="https://blog.csdn.net/riley_zhang/article/details/53127042" target="_blank" rel="noopener">BroadcastReceiver、EventBus的优缺点及使用场景</a><br> <a href="https://www.jianshu.com/p/669eda5dc5a4" target="_blank" rel="noopener">RxBus真的能替代EventBus吗？</a></p>
 </li>
 <li><h5 id="图片加载库（Fresco、Glide、Picasso）"><a href="#图片加载库（Fresco、Glide、Picasso）" class="headerlink" title="图片加载库（Fresco、Glide、Picasso）"></a>图片加载库（Fresco、Glide、Picasso）</h5><h6 id="项目中选择了哪个图片加载库？为什么选择它？其他库不好吗？这几个库的区别"><a href="#项目中选择了哪个图片加载库？为什么选择它？其他库不好吗？这几个库的区别" class="headerlink" title="项目中选择了哪个图片加载库？为什么选择它？其他库不好吗？这几个库的区别"></a>项目中选择了哪个图片加载库？为什么选择它？其他库不好吗？这几个库的区别</h6><p><a href="https://juejin.im/post/5a7568825188257a7a2d9ddb" target="_blank" rel="noopener">Fresco</a><br><a href="https://www.jianshu.com/p/7ce7b02988a4" target="_blank" rel="noopener">Glide</a><br><a href="http://jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0327/2650.html" target="_blank" rel="noopener">Glide 对比 Picasso</a></p>
 <h6 id="项目中选择图片库它的原理，"><a href="#项目中选择图片库它的原理，" class="headerlink" title="项目中选择图片库它的原理，"></a>项目中选择图片库它的原理，</h6><p>如Glide（LruCache结合弱引用），那么面试官会问LruCache原理，进而问LinkedHashMap原理，这样一层一层地问，所以建议看到不懂的追进去看。如Fresco是用来MVC设计模式，5.0以下是用了共享内存，那共享内存怎么用？Fresco怎么实现圆角？Fresco怎么配置缓存？</p>
