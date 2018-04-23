@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="技术储备基础不管是Android基础还是Java基础以及常见的数据结构，这些是无原则地必须要熟练掌握的，尤其是非计算机专业的同学，面试官一上来肯定是问你基础，要是基础表现不好很容易被扣上基础不扎实的帽子，常见的就那些，只要你平时认真思考过基本上面试是没太大问题的。 算法基本上每家公司都会有算法题，我当时是看了左程云的《程序员代码面试指南》，重点看了数组跟链表，二叉树没有去刷算法题，对于二叉树的掌握">
+<meta property="og:type" content="article">
+<meta property="og:title" content="别人的面试">
+<meta property="og:url" content="http://www.yyglike.com/2018/04/23/别人的面试/index.html">
+<meta property="og:site_name" content="yyg的小黑屋">
+<meta property="og:description" content="技术储备基础不管是Android基础还是Java基础以及常见的数据结构，这些是无原则地必须要熟练掌握的，尤其是非计算机专业的同学，面试官一上来肯定是问你基础，要是基础表现不好很容易被扣上基础不扎实的帽子，常见的就那些，只要你平时认真思考过基本上面试是没太大问题的。 算法基本上每家公司都会有算法题，我当时是看了左程云的《程序员代码面试指南》，重点看了数组跟链表，二叉树没有去刷算法题，对于二叉树的掌握">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-23T06:48:33.086Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="别人的面试">
+<meta name="twitter:description" content="技术储备基础不管是Android基础还是Java基础以及常见的数据结构，这些是无原则地必须要熟练掌握的，尤其是非计算机专业的同学，面试官一上来肯定是问你基础，要是基础表现不好很容易被扣上基础不扎实的帽子，常见的就那些，只要你平时认真思考过基本上面试是没太大问题的。 算法基本上每家公司都会有算法题，我当时是看了左程云的《程序员代码面试指南》，重点看了数组跟链表，二叉树没有去刷算法题，对于二叉树的掌握">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.yyglike.com/2018/04/23/别人的面试/"/>
+
+
+
+
+
+  <title>别人的面试 | yyg的小黑屋</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">yyg的小黑屋</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.yyglike.com/2018/04/23/别人的面试/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="yyg">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yyg的小黑屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">别人的面试</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-23T14:15:58+08:00">
+                2018-04-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="技术储备"><a href="#技术储备" class="headerlink" title="技术储备"></a>技术储备</h3><h4 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h4><p>不管是<strong>Android基础</strong>还是<strong>Java基础</strong>以及常见的<strong>数据结构</strong>，这些是无原则地必须要熟练掌握的，尤其是非计算机专业的同学，面试官一上来肯定是问你基础，要是基础表现不好很容易被扣上基础不扎实的帽子，常见的就那些，只要你平时认真思考过基本上面试是没太大问题的。</p>
+<h4 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h4><p>基本上每家公司都会有算法题，我当时是看了左程云的《程序员代码面试指南》，重点看了<strong>数组跟链表</strong>，二叉树没有去刷算法题，对于二叉树的掌握在于三种基本的遍历以及在排序算法中堆排序中用到的二叉堆，然后每道算法题都先自己去实现，先写思路，然后自己去实现一遍，然后再看看答案，记住答案的思路，第二天再重新按照答案的思路实现一遍，这种效果非常好，我没有去刷很多题目，而是想通过这种方式去分析常见的算法题，所以我不大建议去刷算法题，首先作为客户端开发，涉及不到很多的算法，第二，面试的时候考的算法大部分都是很基本的数组组跟链表构成的，最后算法这个东西是个无底洞，个人觉得没必要去刷题，刷题可能对小公司有用，但是大公司更看重你解决问题的能力。</p>
+<h4 id="虚拟机"><a href="#虚拟机" class="headerlink" title="虚拟机"></a>虚拟机</h4><h5 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h5><p>对于Java，加载的是Class文件，一般会问到Java运行时的内存分配，类加载机制以及GC，实际上后面两个问地比较多，尤其是GC相关，往往结合四种引用出题，最后会通过这个来引出内存泄露相关的一些问题。</p>
+<h5 id="DVM-amp-ART"><a href="#DVM-amp-ART" class="headerlink" title="DVM&amp;ART"></a>DVM&amp;ART</h5><p>Android的虚拟就DVM以及ART是对JVM做了一些优化，加载的是dex文件，对Class字节码做了一些优化，这个里面其实挺复杂的，我只知道一些基本的概念。</p>
+<h5 id="ClassLoader"><a href="#ClassLoader" class="headerlink" title="ClassLoader"></a>ClassLoader</h5><p>这个其实要是问起来其实是有很多东西的，如果是Java相关其实还好，会问你类加载机制，但是Android里面除了Java的类加载机制之外，还会引出插件化跟热修复。</p>
+<h4 id="JNI"><a href="#JNI" class="headerlink" title="JNI"></a>JNI</h4><p>基本上稍微大点的公司都会问到，不过我的回答始终如一：我只能看懂C的代码，项目中没有用过JNI，当然这个属于加分项，因为我当时的选择是把我用过熟悉的东西研究地滚瓜烂熟，而不是在自己平时很少接触到的东西上面搞个一知半解。</p>
+<h4 id="Binder"><a href="#Binder" class="headerlink" title="Binder"></a>Binder</h4><p>Binder系列，各种AMS,WMS,PWS，常问到的有APP的启动流程，然后两个Activity相互跳转的时候的生命周期，Activity的生命周期。</p>
+<h4 id="心态"><a href="#心态" class="headerlink" title="心态"></a>心态</h4><p>不要想着什么都会，那样不现实，比如说我对Binder机制以及热修复，插件化这块儿确实了解地比较浅显，也跟高德，爱奇艺等公司的面试官聊过这个话题，这些属于加分项，不会影响到最终的面试结果，还有就是算法，面试最多考一道或者两道算法，所以没必要在这方面花太多的时间，掌握好常见的数组跟链表，二叉树/堆了解一下，基本就够了，公司看重的是你解决问题的能力，你把原理掌握好，常见地基本上都没什么问题。</p>
+<p>当你基础知识OK，自己用过的东西的理解地有深度，解决问题的能力OK，如果面试官想要你，那么他会去找你的优点，反之他会去找你的缺点。所以如果你想进某家公司，那么你就按照他们的要求去面，就算面不上那么也没什么，只能说不合适，然后查漏补缺继续面，不要因为某一次或者几次的不顺就否定自己，有些公司的面试官就是喜欢装，而且还是大公司的。</p>
+<p>学历很重要，我的学校只是个普通一本，相对一般，所以投了很多知名互联网公司简历都过不了，就连好大夫在邀请我面试的时候特意问了我是不是统招一本，任何行业都看重学历，不仅仅是IT，那些说学历不重要的基本上都是一些学历比较好的或者是在Android比较火地那个阶段开始搞地Android，他们这批人往往会觉得在03年跟18年加入的阿里的难度是一样的，那些觉得学历不重要的可以去看看张雪峰老在《演说家》中的演讲，不要说什么3年以后公司就不看学历了，学历是一辈子的事情，那些高考能够碾压你的人，出了社会只要他们愿意，照样能碾压你，你努力，你拼命，别人也不会睡大觉等你。</p>
+<p>科班很重要，如果你本科学地是非计算机专业，任何一个面试官或者HR都会认为你基础不行，你需要花很多的时间去精力去补基础，然后再花时间跟精力在HR不Pass掉你简历的情况下摘掉基础不行这顶帽子。</p>
+<p>工作背景很重要，如果你有大公司背景给你背书，相同的岗位，你进入的门槛比有大公司背景的人要高地多，如果你有大公司背景，不管是面试官还是HR都会在你面试前给你打一个较高的基本分，这个是很有利于你通过面试的。</p>
+<p>不过上面都是既定的事实，你没法改变，所以当我意识到这些问题的时候，我只能去不断地提升自己的能力，去花更多地代价去获得一个面试机会，去证明自己的能力进而进入到一个比较好的平台。</p>
+<h3 id="面试公司"><a href="#面试公司" class="headerlink" title="面试公司"></a>面试公司</h3><h4 id="火币网-Offer"><a href="#火币网-Offer" class="headerlink" title="火币网(Offer)"></a>火币网(Offer)</h4><p>面试机会来自于V2EX</p>
+<h5 id="一面："><a href="#一面：" class="headerlink" title="一面："></a>一面：</h5><ol>
+<li>如何开启多进程?应用是否可以开启N个进程？</li>
+<li>Activity的启动模式、任务栈以及使用场景？</li>
+<li>Volley能否进行数据量很大的请求，比如说加载100M的图片？<br>4.手写快速排序</li>
+<li>Volley的优缺点<br>6.final修饰一个对象，能否调用对象修改属性的方法<br>7.子线程中如何使用Handler<br>8.如何进行单元测试,如何保证APP稳定。</li>
+</ol>
+<p><strong>面试官是Android的负责人，比较有亲和力，看起来比较幽默，，然后先从我的笔试题开始聊，聊地最多的是进程，他问我应用能不能一上来能不能开多个进程保活，对于这个问题我知道肯定是不能的，因为自己平时确实没有在项目中开多个进程，然后面试官态度很好地分析了下说，因为多进程首先会有多个Application，数据会被初始化多次，其次进程间通信比较麻烦，还有一个就是每个进程有单独的虚拟机，多个进程就会比较占内存，确实是这样，这些我有些印象，但是平时确实没有认真思考过这些问题，然后问我有没有用过Binder，我说只是写过几个Demo，然后面试官就说这个就不问了，就开始聊一些我简历上以及我会的东西，比如说Volley的优缺点，然后提出了一个问题说Volley能否下载电影以及加载大图片，我当时根据我看的源码说可以，因为Volley本身是不支持下载的，需要自定义Request才能实现这个功能，然后如果是读流到磁盘是没问题的，他说不行因为Volley是在内存中进行操作的，我当时跟他争了下，我说Volley原生不支持下载功能，只能自定义Request，包括上传也是需要自定义的，然后他感觉我有些不快，说读流确实是可以，但是ImageRequest去加载大图片的时候，也是在内存中读取的，这个时候就会有问题。不过我想了下确实是这样，这样的话确实会出现OOM，接着面试官就问了一个基础的问题，比如说final一般怎么用，final修饰对象的话能够调用修改属性方法等，最后让我写了个快排。</strong></p>
+<h5 id="二面："><a href="#二面：" class="headerlink" title="二面："></a>二面：</h5><ol>
+<li>TabLayout如何设置指示器的宽度包裹内容？</li>
+<li>公差为1的等差数列求和，如何优化</li>
+<li>自己的优势在哪里</li>
+<li>注解如何获取，反射为何耗性能？</li>
+<li>Java的GC机制，分代回收策略</li>
+<li>Binder机制：ServiceManager什么时候注册的？</li>
+<li>int,long的取值范围以及BigDecimal，数值越界了如何处理？</li>
+<li>ConcurrentHashMap的原理，分的段数是多少？</li>
+<li>APP是如何适配的？</li>
+<li>Android中如何查看一个对象的回收情况？</li>
+</ol>
+<p><strong>面试官问的Java偏多一下，同时也问地很深很细，关于Binder问到了一个问题就是SM是什么时候注册的，这个完问题我完全是懵逼的，然后给我出了一个算法题，就是公差为1的等差数列求和，当时我用了一个很笨的方法，就是用递归实现的，因为当时面试官不是直接说的等差数列，说的是如果输入0，返回0，如果输入1，返回1，如果大于1就依次累加，之前思维定势了，没有想到这是个等差数列，然后面试官问我能不能优化，我当时想到了高斯，然后把首尾相加，做了一步优化，后来实在是感觉没法优化了，面试官给我写出了那个等差数列的前n项和，不过当时面试官给我出了这个题目，返回值是int，我当时注意到int可能会越界，然后说应该返回long，估计是这个细节可能打动了面试官，然后我们就从int,long,到String，double以及BigDecimal，说了很多，因为之前在项目中计算价格的时候确实出现过精度丢失的情况，所以我对这块很熟，所以也聊了很多，聊到屏幕适配，ConcurrentHashMap所分的段数，最后问了我最大的一次线上Bug是如何解决的，还有在Android中如何查看一个对象的回收情况，那个确实不知道，后来想想应该通过ReferenceQueue能观察到，因为平时没有想过这个问题，所以被问到的时候很容易懵逼，不过整体表现还可以。</strong></p>
+<h4 id="三面："><a href="#三面：" class="headerlink" title="三面："></a>三面：</h4><ol>
+<li>APK的大小如何压缩</li>
+<li>APP的崩溃率，多渠道包</li>
+<li>自己做过的APP用户量</li>
+<li>能否接受加班</li>
+</ol>
+<p><strong>面试官是火币的大前端负责人，问了我一些项目开发流程上的东西，类似APK的大小如何进行压缩，如何查看APP的崩溃率，以及多渠道包，然后聊了下薪资以及能否加班等，大部分都是一些非技术性的问题，第二天火币网就给我Offer了，虽然后来我没有去这家公司，还是挺感谢这家公司的，给我后续的面试增加了很多信心。</strong></p>
+<h3 id="蛋壳公寓-Offer"><a href="#蛋壳公寓-Offer" class="headerlink" title="蛋壳公寓(Offer)"></a>蛋壳公寓(Offer)</h3><p>面试机会来自于拉勾网</p>
+<h4 id="一面：-1"><a href="#一面：-1" class="headerlink" title="一面："></a>一面：</h4><ol>
+<li>MVP如何管理Presenter的生命周期，何时取消网络请求</li>
+<li>用过的框架及原理</li>
+<li>天猫的Tangram布局，vLayout原理</li>
+</ol>
+<p><strong>面试官是是Android的负责人，主要是在聊自己做过的东西，然后发现我们很多技术上的观点都是相同的，比如说我们都认为任何一个框架两三句话都可以把原理说清楚，但是真正自己去实现的时候往往比这个复杂的多，我告诉他我在自己写图片加载框架的时候踩过的坑，然后面试官也说了他在使用MVP的过程中遇到的管理Presenter的生命周期过程中的探索，因为之前我的一个项目采用的是MVC，当时是用的RxLifecycle进行管理的生命周期，在MVP中我是在BaseActivity中统一把请求取消掉了，然后他说了他的解决方式，确实很有探索精神，我也学到了很多东西，最后简单说了天猫的七巧板布局，大部分还是在聊项目中的一些细节。</strong></p>
+<h4 id="二面：-1"><a href="#二面：-1" class="headerlink" title="二面："></a>二面：</h4><ol>
+<li>APP的启动流程</li>
+<li>回形打印二维数组</li>
+<li>Java为何引入泛型，泛型边界</li>
+<li>常见的Java数据结构</li>
+<li>ArrayMap跟SparseArray在HashMap上面的改进</li>
+<li>Java的四种引用及使用场景</li>
+<li>Webview性能优化</li>
+</ol>
+<p><strong>面试官是移动端负责人，然后问了我APP的启动流程，这个我说我没怎么深入研究过，面试官也没说啥，然后继续问了一些Java基础，Java引入泛型的原因，泛型边界，集合框架，最后问到了SparseArray以及ArrayMap。最后说到了内存回收，然后带出了GC以及四种引用，由于他们的项目中很多地方用到了WebView，所以他问了一些WebView的跟JS进行交互的问题，最后还聊到了WebView的性能优化，感觉面试官确实对WebView比较了解，不过我也觉得没什么，毕竟这块不是我擅长的地方，面试官也表示理解，然后最后出了一道算法题就是回形打印二维数组，整体来讲他们其实还是侧重于项目，也考察了基础，整体感觉他们的技术还是很好的。</strong></p>
+<h3 id="GrowingIO-Over"><a href="#GrowingIO-Over" class="headerlink" title="GrowingIO(Over)"></a>GrowingIO(Over)</h3><p>面试机会来自于Android Weekly</p>
+<h4 id="一面"><a href="#一面" class="headerlink" title="一面"></a>一面</h4><ol>
+<li>Binder机制</li>
+<li>ClassLoader的理解</li>
+<li>Arouter的原理</li>
+<li>组件化原理，组件化中路由的实现</li>
+<li>热修复跟插件化的原理</li>
+<li>线程池的几个参数的理解，四种线程池的使用场景</li>
+<li>常用的设计模式，手写DCL单例模式</li>
+<li>进程间为什么不能直接进行通信</li>
+<li>应用跟系统之间通信什么时候用Socket什么时候用Binder</li>
+</ol>
+<p><strong>面试官问地都是Android底层的东西，有些还涉及到了Android的Hook插桩技术，面试完，我觉得自己跟只傻狗一样，什么都不会，问了有10来个问题，唯一的两个应用层的问题由于紧张也没有答好，一个是线程池原理，一个是DCL单例少写了个非空判断，其余的问题真的是答地很水，因为前面的底层知识了回答地很不好，所以对自己应用层的发挥确实是有影响的，所以希望大家在面试的时候心态一定要平和，切记不要紧张。由于他们项目在底层采用了很多关于IPC之间的东西，所以基本上需要对底层很了解的工程师，我自己也感觉确实回答地力不从心，而且我是给他们CTO直接发的简历，突然间觉得不好意思，回答地挺垃圾的</strong>。</p>
+<h4 id="二面"><a href="#二面" class="headerlink" title="二面"></a>二面</h4><p>面试官是做IOS的，基本上是处于聊天的状态，反正聊地很开心的，然后对我评价很好，他说他不懂Android,但是能感受到我的技术好奇心,听了还是很开心的，反正基本上没怎么聊具体的技术，主要是聊了聊IOS的Hook以及热修复相关的技术，问他们是怎么实现的，因为我知道IOS在这个上面比Android要复杂一些，反正整体就是很放松。</p>
+<h3 id="昆仑智启-Offer"><a href="#昆仑智启-Offer" class="headerlink" title="昆仑智启(Offer)"></a>昆仑智启(Offer)</h3><p>面试机会来自于拉勾网</p>
+<h4 id="一面：-2"><a href="#一面：-2" class="headerlink" title="一面："></a>一面：</h4><ol>
+<li>Debug跟Release的APK的区别</li>
+<li>软引用跟弱引用的区别</li>
+<li>ConcurrentHashmap的原理</li>
+<li>Listview跟Recyclerview的区别（刷新，缓存，各自的使用场景）</li>
+<li>对谷歌新推出的Room架构</li>
+<li>动画的两种实现：setX跟setTranslationX区别</li>
+<li>事件分发：Activity跟window依次到viewgroup</li>
+<li>Volley源码，优缺点</li>
+<li>Picasso传入的Activity跟Application的context的区别</li>
+</ol>
+<p><strong>一面还是只要从简历上入手，然后问地相对来说比较简单，面试官应该跟我年限差不多，更多地在于很多东西怎么去使用，比较侧重于一些细节，不过整体来说表现地自我感觉比较满意，因为基本上都是问我会哪些东西，然后从我会的角度出发，一步一步来进行深入交流。</strong></p>
+<h4 id="二面-1"><a href="#二面-1" class="headerlink" title="二面"></a>二面</h4><ol>
+<li>数据库的升级，表结构的修改</li>
+<li>常见的排序算法，手写二分查找，二分查找的复杂度分析</li>
+<li>点击APP图标启动APP的大致流程</li>
+<li>SplashActivity中进行初始化MainActivity的参数，Splash没有初始化，AMS直接启动了MainActivity怎么办</li>
+<li>设计一个多线程，可以同时读，读的时候不能写，写的时候不能读(读写锁)</li>
+<li>设计断点续传，如何判断服务端是否支持断点续传</li>
+<li>Binder机制：Binder内核所在的进程是如何找到到Server跟Client进行通信的</li>
+<li>对JNI是否了解</li>
+<li>组件化的原理，组件间通信</li>
+</ol>
+<p><strong>面试官看起来经验比较丰富，偏向于Java这一块，应该是从Java转的Android，看上面的问题其实就能够看出来，问到的Android很有深度，一上来就搞了个APP的启动流程以及AMS，那个读写锁确实不会，之前没听过，当时是要我实现这个功能，我用了很多种方法去尝试，但是最终没有达到预期的效果，然后面试官就问我知不知道读写锁，我不知道，然后他就没有再深究了，虽然这是一家小公司，但是我能感受到对一个非科班出身的程序员的尊重，再次表示感谢。</strong></p>
+<h3 id="京东"><a href="#京东" class="headerlink" title="京东"></a>京东</h3><p>面试机会来自于Boss直聘</p>
+<h4 id="京东到家-电面"><a href="#京东到家-电面" class="headerlink" title="京东到家(电面)"></a>京东到家(电面)</h4><ol>
+<li>GitHub上面的开源项目</li>
+<li>一个线程能否创建多个Handler，Handler跟Looper之间的对应关系</li>
+<li>ArrayList跟HashMap是够线程安全，如何保证线程安全</li>
+<li>Volley返回数据量比较大的请求时怎么办</li>
+<li>ListView跟RecyclerView刷新数据原理，使用到的设计模式</li>
+<li>适配如何做，有没有适配过全面屏</li>
+<li>Fragment跟Activity的通信方式，你知道几种？</li>
+</ol>
+<p><strong>电话面试之后就挂掉了，第2个问题回答地不是很好，由于没试过一个线程能创建几个Handler，所以不太确定，最后还是对Handler机制了解地不够深刻，别的基本上答地还可以，全面屏没适配过，最后就没联系我了。</strong></p>
+<h4 id="京东商城-电面"><a href="#京东商城-电面" class="headerlink" title="京东商城(电面)"></a>京东商城(电面)</h4><ol>
+<li>内存泄露的种类</li>
+<li>ActivityA启动ActivityB时生命周期的变化</li>
+<li>AMS是如何管理Activity的</li>
+<li>JVM中的GC回收机制</li>
+<li>常见的跨进程通信方式，AIDL的实现原理</li>
+<li>APP以及Activity的启动流程</li>
+<li>Hook以及插桩技术</li>
+</ol>
+<p><strong>联系我的是京东上海的部门，然后说他们主要是做底层的，所以问了一些底层的东西，第2个问题，我就之前没遇到过，然后Hook插桩这些，很显然不会，然后就凉凉了。</strong></p>
+<h4 id="京东金融-Offer"><a href="#京东金融-Offer" class="headerlink" title="京东金融(Offer)"></a>京东金融(Offer)</h4><h5 id="一面：-3"><a href="#一面：-3" class="headerlink" title="一面："></a>一面：</h5><ol>
+<li>从长度为m的int数组中随机取出n个元素，每次取的元素都是之前未取过的，如何优化</li>
+<li>https是如何保证安全的，证书如何校验</li>
+<li>Android的签名机制，APK包含哪些东西</li>
+<li>是否遇到过OOM，如何解决</li>
+<li>是否做过逆向</li>
+<li>对JNI了解多少</li>
+<li>手写单例(DCL)</li>
+<li>是否写过so文件</li>
+<li>热修复原理，如何进行dex替换的</li>
+</ol>
+<p><strong>看面试题其实就可以发现，京东金融是偏向于安全这个领域的，最后面试官也跟我说，我进去之后会往移动安全工程师方向发展，最开始的那个算法，没答好，当时我的思路实际上是打算取一个数组就把数组中的元素给置空，但是由于是int数组，所以没法置空，当时就在这儿想了一会儿，然后面试官给出的答案是直接删掉这个元素就可以了，但是性能较差，如果考虑性能则可以直接跟尾部元素进行交换，然后下次随机的范围减1就可以了。剩余的问题答地其实还可以。</strong></p>
+<h5 id="二面：-2"><a href="#二面：-2" class="headerlink" title="二面："></a>二面：</h5><ol>
+<li>简单说下项目</li>
+<li>内存泄露，如何检测以及检测的原理</li>
+<li>点击Launcher跟点击微信支付启动微信有什么区别</li>
+<li>逆序一个字符串，不能调用String的reverse方法(考察编码风格)</li>
+<li>组件化原理，模块化机制</li>
+<li>没有给权限如何定位，特定机型定位失败，如何解决</li>
+<li>同步跟异步机制(是业务上的，不知道他想问什么)</li>
+<li>线程池中核心线程数跟最大线程数如何定义</li>
+</ol>
+<p><strong>二面的话问的问题比较常规，基本上跟之前的公司重合度较高，没有难度，主要比较注重应聘者解决问题的能力，特别是像那个权限适配，我之前做过权限适配，所以那个问题回答地他挺满意的。</strong></p>
+<h3 id="完美世界-Over"><a href="#完美世界-Over" class="headerlink" title="完美世界(Over)"></a>完美世界(Over)</h3><p>面试机会来自于拉勾</p>
+<h4 id="一面：-4"><a href="#一面：-4" class="headerlink" title="一面："></a>一面：</h4><ol>
+<li>StringBuffer跟StringBuilder之间的区别</li>
+<li>并发相关，各种锁</li>
+<li>View的绘制流程，事件分发</li>
+<li>Hashmap,Arraymap，SparseArray</li>
+<li>四种引用</li>
+<li>MVP跟MVC的区别</li>
+<li>LV跟RV之间的区别</li>
+<li>Service相关，startService以及bindService</li>
+<li>Fragment不同于Activity的生命周期</li>
+<li>生产者消费者问题：一对多，多对多情况</li>
+<li>常见的设计模式，并选择一种描述一下</li>
+<li>Scroller的使用</li>
+</ol>
+<p><strong>看过面试题能够知道，一面比较重基础，也是一些重复性很高的问题，不过完美的面试官可能比较注重细节，很多问题你只要平时思考过了基本上是OK的。</strong></p>
+<h4 id="二面：-3"><a href="#二面：-3" class="headerlink" title="二面："></a>二面：</h4><ol>
+<li>Gradle生命周期</li>
+<li>Java&amp;Android关于Classloader源码解析</li>
+<li>Python的class文件</li>
+<li>DCL中Volatile的作用，如何防止反射实例化单例对象</li>
+<li>抽象类能否实例化，理论依据是什么？</li>
+<li>如何通过Gradle配置差异较大(20%差异)的多渠道包</li>
+<li>class文件如何转化成dex</li>
+<li>Service先start再bind如何关闭service，为什么bindService可以跟Activity生命周期联动？</li>
+<li>JVM相关,DVM以及ART是如何进行优化的，具体步骤</li>
+<li>长连接常见的库，短链接</li>
+<li>静态同步锁与普通同步锁的区别</li>
+<li>直接在Activity中创建一个thread跟在service中创建一个thread之间恩区别</li>
+</ol>
+<p><strong>二面的面试官是北大毕业的，问的问题都比较深入，涉及到了很多Java跟Android的细节，后来才知道，他知道我基础还可以，之所以问到后面的那些问题是因为想给我定级，当我说我了解Gradle的时候，面试官问我是否了解Gradle的生命周期，当让我写一个DCL的时候，问我Volatile的作用是什么，如何防止单例被反射实例化，DVM&amp;ART是如何对JVM进行优化的，Class文件如何转换成Dex文件，反正就是你会的肯定会让你表达出来，你不会的你也没法装下去。</strong></p>
+<h3 id="高德—汽车事业部-Over"><a href="#高德—汽车事业部-Over" class="headerlink" title="高德—汽车事业部(Over)"></a>高德—汽车事业部(Over)</h3><p>面试机会来自于Boss</p>
+<h4 id="一面-1"><a href="#一面-1" class="headerlink" title="一面:"></a>一面:</h4><ol>
+<li>View的生命周期</li>
+<li>View的绘制流程跟事件分发</li>
+<li>Activity跟Window之间的关系</li>
+<li>对C跟JNI是否熟悉</li>
+<li>热修复原理，插件化是如何进行加载插件的</li>
+<li>Java中的锁，各种同步方式之间的区别</li>
+<li>ANR在四大组件中的时间，场景</li>
+<li>OOM，如何避免</li>
+<li>内存泄露原理，如何避免</li>
+<li>MVC跟MVP之间的区别</li>
+<li>ListView针对多种item的缓存是如何实现的</li>
+<li>Android绘制二维跟三维的View的区别</li>
+<li>是否了解硬件加速</li>
+<li>ListView是如何实现对不同type的item的管理的</li>
+</ol>
+<p><strong>面试官问了很多底层的实现场景，有深度也有广度，在跟他交流的时候，能够很明显地感觉到自己在很多问题上没有做过太深入的尝试，不过整体感觉还可以，基本上自己的能力是完全发挥出来了，很多问题他问地特别细，比如说ANR问题，问到了在四大组件中ANR的时间是多少，还有ListView的缓存对于多种Type是如何实现的，很多问题你只知道概念是没有什么用的，都需要自己的理解，不过像硬件加速这种问题，确实没有细想过，我也不会去细想，以为之前在传统公司是不可能有时间跟精力了解这些东西的，只能说北京自己来晚了，但是来对了，当面试官知道我是第一次来北京的时候，还跟我开玩笑说会不会干几个月又跑了，最后一面面完之后还让我留了他的电话，说北京租房子挺贵的，要是有什么问题的话可以给他打电话，感动ing。*</strong></p>
+<h4 id="二面：-4"><a href="#二面：-4" class="headerlink" title="二面："></a>二面：</h4><ol>
+<li>Android中IPC方式，各种方式优缺点，为什么选择用Binder</li>
+<li>主流的热修复框架流派，原理，是否研究过classloader源码</li>
+<li>Android为什么要设计两种classloader，为什么不用一种，通过type来区分</li>
+<li>Bundle传递数据为什么需要序列化</li>
+<li>手写一个快排，分析原理</li>
+<li>广播传输的数据是否有限制，是多少，为什么要限制？</li>
+<li>Activity启动时生命周期是如何回调的？</li>
+<li>MVP.MVC.MVVM之间对比分析</li>
+<li>组件化通讯:有几种通信方式，Arouter原理</li>
+<li>插件化加载流程，原理</li>
+<li>关于反射混淆，耗性能的解决方式</li>
+<li>天猫七巧板布局原理</li>
+<li>热修复流派，原理</li>
+</ol>
+<p><strong>面试官的问题基本上是没有离开过Binder，热修复以及插件化，不过我确实，由于紧张，快排写地也出了点问题，心中千万头羊驼呼啸而过，尴尬地一比，当聊到组件化的时候，我觉得这个是我的优势，然后说了一大堆自己通过反射的实现，然后他说反射会在混淆的时候出问题，还有就是性能上的问题，自己研究了那么久的东西，在他这里没有看到丝毫的价值，确实也比较失落，不过他们是做车机的，确实需要对底层掌握地比较熟练，想着十有八九是凉凉了。</strong></p>
+<h3 id="高德—地图事业部-Over-："><a href="#高德—地图事业部-Over-：" class="headerlink" title="高德—地图事业部(Over)："></a>高德—地图事业部(Over)：</h3><p>面试机会来自于Trinea内推</p>
+<h3 id="一面：-5"><a href="#一面：-5" class="headerlink" title="一面："></a>一面：</h3><ol>
+<li>RecyclerView的itemdecoration如何处理点击事件</li>
+<li>单例模式如何修改数据</li>
+<li>android事件传递，非常细</li>
+<li>多线程</li>
+</ol>
+<p><strong>一面面试官可能比较忙，没有问太多的问题，主要聊了聊我GitHub上面的开源项目，当时这个聊了很久，然后说了他们项目中也采用了ItemDecoration的列表联动，然后就问了我如何处理ItemDecoration的多个点击，最后聊到了事件分发机制，主要是在ListView里面嵌套一个Button以及在ListView里面嵌套一个ScrollerView让我说一下事件在dispatchTouchEvent，onInterceptTouchEvent，onTouchEvent中的传递过程，面试官先让我说，我只是说了大体流程，然后面试官又给详细地分析了一遍，分析地非常详细，确实让我受益匪浅，自己对事件分发的理解又更加进了一步。</strong></p>
+<h4 id="二面：-5"><a href="#二面：-5" class="headerlink" title="二面："></a>二面：</h4><ol>
+<li>JVM内存分布，Classloader</li>
+<li>静态代理跟动态代理</li>
+<li>线程的生命周期</li>
+<li>是否用过DataBinding</li>
+<li>是否接触过JNI</li>
+<li>对热修复跟插件化了解多少</li>
+<li>对RN了解多少</li>
+<li>二分查找</li>
+<li>说下多态</li>
+<li>编译期注解跟运行时注解</li>
+<li>线程跟进程间通信</li>
+<li>Android中的IPC</li>
+<li>java中的传递</li>
+<li>equals跟==</li>
+<li>Picasso的存储</li>
+<li>项目中的难点</li>
+<li>项目中用到了哪些第三方</li>
+<li>MVC,MVVM,Clean架构</li>
+<li>抽象类跟接口的区别，接口的默认修饰符</li>
+</ol>
+<p><strong>二面面试官问了很多基础方面的东西，问地特别细，主要是考察Java基础，感觉面试官是想跟我探讨一下比较新的技术框架 的，但是像DataBinding以及Glide这些我都没有用过，所以就问了我很多基础的知识，整体感觉还可以，确实有些基础没有掌握好，深度也有些欠缺</strong></p>
+<h3 id="掌阅科技-Over"><a href="#掌阅科技-Over" class="headerlink" title="掌阅科技(Over)"></a>掌阅科技(Over)</h3><p>面试机会来自于Boss</p>
+<h4 id="一面-2"><a href="#一面-2" class="headerlink" title="一面"></a>一面</h4><ol>
+<li>Canvas.save()跟Canvas.restore()的调用时机</li>
+<li>程序A能否接收到程序B的广播？接入微信支付的时候，微信是如何跟当前程序进行通信？</li>
+<li>对Java.nio了解多少</li>
+<li>ConcurrentHashMap是如何实现分段锁？</li>
+<li>现在需要遍历SD卡下所有的文件打印出后缀名为.txt文件名称，如何提高时间效率？</li>
+<li>为什么复写equals方法的同时需要复写hashcode方法，前者相同后者是否相同，反过来呢？为什么？</li>
+<li>Android4.0～8.0之间大的变化，如何处理？</li>
+<li>说一下Measurespec这个类</li>
+<li>ViewHolder有什么用？</li>
+<li>Gradle的Flavor能否配置sourceset？</li>
+<li>线程池核心线程数一般定义多少，为什么？</li>
+<li>Intentservice有什么用</li>
+<li>弱引用什么时候被回收</li>
+<li>Android中提供了哪些类来帮忙处理线程</li>
+<li>http的状态码，常见的请求头，http缓存协议https如何加密</li>
+<li>多进程的优缺点，多线程的优缺点</li>
+<li>热修复如何修复资源文件？</li>
+<li>有没有遇到64k问题，为什么，如何解决？</li>
+<li>httpUrlconnection跟httpClient有什么区别</li>
+</ol>
+<p><strong>掌阅整体的面试质量比较高，但是面试官给我的感觉有点过于自信，就像第5道算法题，我当时确实没有想到除了遍历之外该如何优化，然后面试官说可以开多个线程，我当时听了就觉得很无语，但是他给出的理由是O(n)的算法不能优化，只能开多线程，我说即使不能优化，也是可以在O(n)的基础上进行加快的，比如说用遍历完一遍，做个缓存，做个标记，如果该目录下没有发生变化下次可以直接读缓存之类的，开多线程这种操作我个人认为确实算不上优化，最后这个问题不了了之。而后还有一个问题就是他说在复写equals方法的时候要复写hashcode方法，但是当时我说没必要，如果是自己定义的一个类，只需要比对对象的唯一属性，比如说定义一个学生对象，我只需要判断学生的ID是否相等就行了，也就是只需要复写equals方法，没必要复写hashcode方法然后场面又很尴尬，我后来想了下可能他想表达的是在集合类中存储的对象必须要同时复写equals跟hashcode方法感应该是说地过去的，但是当时没有这个前提，我觉得在复写equals方法的时候不一定要复写hashcode方法，加上前面的那个算法题，可能自己当时情绪也不是很好，所以沟通上确实出现了一些问题。<br>我记得掌阅是在Boss上面进行投递的，当时是跟掌阅科技的移动端负责人黄剑进行沟通的，其实最开始知道黄剑是在跟包建强老师一起做一个自定义的ListView的时候，那个时候在性能优化的时候在还在同一个微信群里面请教过他问题，所以对掌阅的印象其实挺好的，但是这次面试确实体验不是很好。</strong></p>
+<p>###　马蜂窝(Over)</p>
+<p>面试机会来自于Boss</p>
+<h4 id="一面：-6"><a href="#一面：-6" class="headerlink" title="一面："></a>一面：</h4><ol>
+<li>两个非基本数据类型数组：<br>array1=[x1,x2,x3,x4,x5,x6,x7,x8,x9,x10,×11]<br>array2=[x6,x3,x10,x5]<br>计算结果：[x6,x7,x8,x9,x1,x2,x3,x4,x10,x11,x5],写出你的算法</li>
+<li>类的初始化过程</li>
+<li>点击事件穿透原则</li>
+<li>线程池使用的是哪一种，使用原则</li>
+<li>LeakedCanary原理</li>
+<li>LinerLayout跟RelativeLayout的绘制原理</li>
+<li>Android新版本的一些新特性6.0,7.0,8.0</li>
+<li>类的初始化顺序依次是（静态变量、静态代码块）&gt;（变量、代码块）&gt;构造方法</li>
+</ol>
+<p><strong>一面面试官问地都是基础，但是有些有难度，比如说那个LinearLayout跟RelativeLayout相对布局，我当时只回答了LinearLayout需要测量一次，而RelativeLayout需要测量2次，然后如果只嵌套一层首选LinearLayout，如果多层需要使用RelativeLayout，但是当具体问到RelativeLayout两次都测量什么的时候我没答上来。还有那个算法题。最后实现了，用数组实现的，但是我感觉应该是树，但是对树不熟悉，所以用的就是数组。</strong></p>
+<h4 id="二面：-6"><a href="#二面：-6" class="headerlink" title="二面："></a>二面：</h4><ol>
+<li>看了看项目提了问题如何进行优化</li>
+<li>如何实现马蜂窝中的一个动画效果</li>
+<li>软键盘顶起布局</li>
+<li>组件化通信方案</li>
+</ol>
+<p><strong>二面感觉有点没怎么发挥好，因为面试官首先问了问我GitHub上的开源项目，但是他找了几个问题，问我怎么优化，然后又在我项目里面发现了几个问题，问我怎么优化，很明显那些问题都是他是比较熟练的，而且都是自定义View相关以及性能优化方面的，最后又拿了马蜂窝APP里面的一个滑动动画问我如何实现，基本上都是在问自定义View，基本上二面就是问了这几个问题，每个问题都扩展了很多，但是都是View相关的，没有涉及到其他的知识点，可能他们的对于自定义View这块要求比较高，同时也要兼顾到性能调优，整体来说，自定义View确实不是我的强项，最后还聊到组件化，他们现在也在做组件化，我说了我的方案，貌似他不是很满意，最后也能感觉到发挥地不行，所以被Pass掉了。<br>还有一个细节就是，一面面完，当时二面面试官不在，是第二天过来复试的，第二天来了签到之后又等了将分钟，然后他们说签到机坏了，当时感觉挺不好的，不过当我二面的时候在那里等面试官的时候，马蜂窝的一个员工，年纪挺大了，然后看到我的访客牌，单独给我倒了一杯水，确实挺感动的，这个员工不是他们的接待人员，让我肃然起敬，然后他就继续上班了，整体发挥很一般，不过那儿的环境确实特别好，很有风格。</strong></p>
+<h3 id="爱奇艺-Offer"><a href="#爱奇艺-Offer" class="headerlink" title="爱奇艺(Offer)"></a>爱奇艺(Offer)</h3><p>面试机会来自于拉勾</p>
+<h4 id="一面：-7"><a href="#一面：-7" class="headerlink" title="一面："></a>一面：</h4><ol>
+<li>聊聊RecyclerView，动画，缓存，数据绑定底层是如何实现的。</li>
+<li>聊了聊我的开源项目实现原理</li>
+<li>View在屏幕中的移动底层是如何实现的</li>
+<li>Binder跟Socket之间的区别，什么时候用哪一个，Binder的底层实现</li>
+<li>Activity,Window跟View之间的关系</li>
+<li>setContentView都干了啥</li>
+<li>Activity的启动模式</li>
+<li>MVC跟MVP之间的区别</li>
+<li>算法：将一个有序数组去重得到一个新数组(空间复杂度为O(N))</li>
+</ol>
+<p><strong>爱奇艺确实要求比较高，面试题目难度特别大，让我说RV的时候，我说了很多，但是面试官感觉都不太满意，然后问地特别细，涉及到了AMS跟WMS，这些问题我回答地一般，除此之外，都答地还可以，最后面试官说可以看出我有些东西研究地比较深，但是没有抓住关键点。</strong></p>
+<h4 id="二面：-7"><a href="#二面：-7" class="headerlink" title="二面："></a>二面：</h4><ol>
+<li>LruCache底层实现</li>
+<li>Hashmap的hash算法</li>
+<li>Bitmap在decode的时候申请的内存如何复用，释放时机</li>
+<li>注解如何实现一个findViewById</li>
+<li>Android是如何学习的</li>
+<li>sycronized关键字的类锁对象锁，如何保证线程安全？</li>
+<li>重入锁跟sycronized关键字之间的区别</li>
+<li>除了notify还有什么别的方式可以唤醒线程</li>
+<li>说说你对Context的理解</li>
+</ol>
+<p><strong>二面感觉比一面要简单一些，但是也有几个问题我没答上来，当面试官说如何在Bitmap解码的时候复用申请的内存，我也是第一次知道原来这里可以复用，然后我提出了自己的疑问，说如果复用的话，那么什么时候回收，他说fresco有自己的回收机制。最后还有Context的理解，我只是看过郭霖的博客，有点影响，确实想不起来了，也是有些尴尬，包括那个用注解实现一个findviewbyid，也是有看过，但是没有完整的思路，最后支支吾吾地回答了一点，除此之外，别的还好。</strong></p>
+<h4 id="三面：-1"><a href="#三面：-1" class="headerlink" title="三面："></a>三面：</h4><ol>
+<li>Listview的adapter是什么adapter，如何复用。</li>
+<li>RV是如何布局的</li>
+<li>算法：如何从1T的无序数组(长度为n)里面找出前k大的数据，复杂度要求为O(logN)</li>
+<li>由A启动BActivity，A为栈内复用模式，B为标准模式，然后再次启动A或者杀死B，说说A，B的生命周期变化，为什么</li>
+</ol>
+<p><strong>三面面试官应该是技术总监，第一个问题就把我难到了，我凭感觉说是BaseAdapter,但是转念一想，不对，ListView还支持ArrayAdapter，<br>然后面试官笑着说让我回去看看源码，接着问了RecyclerView如何绘制的，我当时说了比较多，但是都没说到点子上去，面试官最后给我耐心地分析了下。给我印象最深的是那个算法题，面试官开始问我有没有搞过ACM我说没有，然后他就说看你不是非科班的，就出个简单点的，然后出了两道算法题，一题是实现一个链表，另外一个是写一个快排，但是我感觉面试官对非科班的有些偏见，然后我就说这个太简单了，我说你就把我当做科班的，然后说我希望能够跟科班的做一样的题目(后来想想自己有点飘)，然后面试官就出了上面那道算法题， 我一看到O(lgn)，感觉凉凉了，想着快排最多也是O(nlgn) ，所以当时想了很久，也没实现，然后面试官给了我提示，说知道快排原理么，然后我在脑子里面过了一遍快排，突然想到了解决思路，然后跟面试官说了我的想法，就是用改良的快排，他微笑着表示认可，然后最后说如何去找到标定元素，我说用随机数，他说随机数不太好，然后问了我数学怎么样，我说还行，他说可以采用正太分布，找到线性分布的那个中间点，确实是可以这样，因为没有规律的数据是可以看做正态分布的，也就是符合线性回归的。</strong></p>
+<h3 id="美团-Over"><a href="#美团-Over" class="headerlink" title="美团(Over)"></a>美团(Over)</h3><p>面试机会来自于内推</p>
+<ol>
+<li>APP启动流程</li>
+<li>Webview内存泄露</li>
+<li>组件间通信，如何传递对象</li>
+<li>Arouter原理</li>
+<li>如何取消一个网络请求</li>
+<li>两个activity之间来回切换的生命周期变化</li>
+<li>进程间如何通信，Binder机制</li>
+<li>内存泄露及优化</li>
+<li>自定义view以及事件冲突</li>
+<li>线程池参数及定义，多线程是否一定会高效</li>
+<li>电量优化</li>
+</ol>
+<p><strong>美团实际上面了三面，但是面试题跟前面的面试官很多重复的，所以就只写了上面几道题目，整体面试感觉都答上来了，但是问的有些问题确实没接触过，比如说Webview的性能优化，电量优化等，最后HR反馈的情况是基础很好，项目经验不足。</strong></p>
+<h3 id="猎豹移动-Offer"><a href="#猎豹移动-Offer" class="headerlink" title="猎豹移动(Offer)"></a>猎豹移动(Offer)</h3><p>面试机会来自于Boss</p>
+<h4 id="笔试"><a href="#笔试" class="headerlink" title="笔试"></a>笔试</h4><ol>
+<li>请例举Android中常用布局类型，并简述其用法以及排版效率</li>
+<li>区别Animation和Animator的用法，概述其原理</li>
+<li>Thread,Looper，MessageQueue，Handler，Message每个类的功能以及这些类之间的关系</li>
+<li>如何加载NDK库？如何在jni中注册native函数，有几种注册方法？</li>
+<li>操作系统中进程和线程有什么联系和区别？系统会在什么情况下会在用户态好内核态中切换。</li>
+<li>如果一个APP里面有多进程存在，请列举你所知道的全部IPC方法</li>
+<li>请画出MVC、MVP模式的差异</li>
+<li>对于Android APP闪退，可能的原因有哪些？请针对每种情况简述分析过程。</li>
+</ol>
+<p><strong>笔试题，我答地感觉一般，因为我面试的是猎豹移动的Clean Master，所以偏底层一些，不过整体还好，而且笔试题在面试过程中基本上不怎么问，只是做一个参考。</strong></p>
+<h4 id="一面：-8"><a href="#一面：-8" class="headerlink" title="一面："></a>一面：</h4><ol>
+<li>listview跟recyclerview之间的区别，然后上拉加载的时候分别应该如何处理</li>
+<li>项目中用过哪些技术</li>
+<li>同步普通方法跟static方法之间的区别</li>
+<li>不用锁如何保证int自增安全</li>
+<li>内存为什么会发生泄露</li>
+<li>做过的性能优化，原理</li>
+<li>DVK跟JVM之间的区别</li>
+<li>有没有diss过产品经理</li>
+<li>平时看什么书</li>
+<li>为什么学python</li>
+<li>项目中用到过哪些技术</li>
+<li>期望在项目中扮演什么样的角色</li>
+</ol>
+<p><strong>一面面试官主要是从宏观的角度上看待业务，产品，因为可能看了我的博客跟GitHub，对我的技术有一个大致的了解，然后问了一些基础的东西，就进入了二面。</strong></p>
+<h4 id="二面：-8"><a href="#二面：-8" class="headerlink" title="二面："></a>二面：</h4><ol>
+<li>Sycronized原理</li>
+<li>ReentrantLock原理</li>
+<li>静态内部类为什么能保证单例，JVM是如何实现的</li>
+<li>ART跟DVM做了哪些优化</li>
+<li>View是如何绘制到屏幕上的</li>
+<li>写一个快排，有时间限制</li>
+<li>二面面试官问地特别深，一上来就是各种原理</li>
+</ol>
+<p><strong>问了很多原理的原理，比如说Sycronized原理，View如何绘制到屏幕上去，这些对于我来说确实比较难，然后还问到了AQS, CAS的底层实现，答地一般般，我基本上对于JMM的了解就是类锁对象锁，指令重排序等</strong></p>
+<h4 id="三面"><a href="#三面" class="headerlink" title="三面"></a>三面</h4><ol>
+<li>GitHub上的开源项目是如何实现的</li>
+<li>未来的职业规划</li>
+<li>遇到问题如何解决</li>
+<li>为什么没有自己搭建SS</li>
+</ol>
+<p><strong>三面是猎豹移动的产品总监，没有问技术上的问题，基本上如实回答就行了，没有那么多的套路，真诚即可。</strong></p>
+<h3 id="摩拜-Offer"><a href="#摩拜-Offer" class="headerlink" title="摩拜(Offer)"></a>摩拜(Offer)</h3><p>面试机会来自于拉勾</p>
+<h4 id="笔试："><a href="#笔试：" class="headerlink" title="笔试："></a>笔试：</h4><ol>
+<li>自己带电脑，他们提供一个接口，实现一个瀑布流，需要考虑动画，内存管理等，可以上网搜，限时90分钟<br>当时我去的时候出了个以外，HR给我的WiFi我没法连GitHub，当时想着用自己封装的ImageLoader，没想着直接用第三方，在使用RecyclerView的时候依赖也没法添加，所以最开始时间都浪费了，直到一面面试官下来，给我连接了他们的员工wifi，我才能添加依赖，尴尬的一比，不过到最后时间到了还是没有实现预期的效果，面试官最后问我，我说了我的考虑，他说只是想看看我解决问题的能力，完全可以用第三方，没必要自己实现，不过对我的态度还是表示认可的，然后开始一面。</li>
+</ol>
+<h4 id="一面：-9"><a href="#一面：-9" class="headerlink" title="一面："></a>一面：</h4><ol>
+<li>深拷贝浅拷贝</li>
+<li>输出一个集合{A,B,C,D}的全部子集</li>
+<li>自定义View及注意事项</li>
+<li>如何自动化部署打包发包流程</li>
+<li>JNI是否了解过</li>
+<li>内存回收</li>
+<li>classloader</li>
+<li>对热修复以及插件化了解多少</li>
+<li>微信支付宝支付调用时上层是如何封装AIDL的</li>
+<li>如何给一个app瘦身</li>
+</ol>
+<p><strong>基本上在之前的面试都有涉及到，依然是问我会的东西，一点点深入，第9道面试题我记得在掌阅面试的时候那个面试官说微信用地是广播，但是摩拜的面试官说微信用地是start ActivityForResult，这个我决定以后自己去深入研究下，看看他们到底是如何实现的，别的问题都是比较常见的。</strong></p>
+<h4 id="二面：-9"><a href="#二面：-9" class="headerlink" title="二面："></a>二面：</h4><ol>
+<li><p>如何实现一个推送，极光推送原理</p>
+</li>
+<li><p>说说Http协议，以及Tcp/Udp</p>
+</li>
+<li><p>常见的设计模式，如何实现一个观察者模式，如果需要有序通知观察者，该如何操作</p>
+</li>
+<li><p>实现一个图片加载框架应该考虑哪些</p>
+</li>
+<li><p>线程池有哪些参数，应该如何设计</p>
+</li>
+<li><p>性能优化是如何做的</p>
+</li>
+<li><p>Java为什么要推出HashMap，它是如何解决hash冲突的</p>
+</li>
+<li><p>JVM内存分配，编码时如何注意内存泄露</p>
+</li>
+<li><p>Binder机制原理</p>
+</li>
+</ol>
+<p><strong>摩拜问地都是很常见的问题，我能感觉到面试官在问我问题的时候并不在乎我对这个问题掌握地有多好，而是更加关注我对待某个知识点的态度，更多地赋予面试题一个场景，而不是空谈理论，是我比较喜欢的面试官。</strong></p>
+<h4 id="三面：-2"><a href="#三面：-2" class="headerlink" title="三面："></a>三面：</h4><ol>
+<li>为什么重复造轮子，自己去设计一些框架的原因</li>
+<li>如何保证线上项目的稳定性</li>
+<li>自己之前做的项目的规模</li>
+<li><p>聊了聊他们目前在做的项目</p>
+<p><strong>三面面试官跟我聊了聊一些新技术，还有就是我自己为什么要重复造轮子，我说为了保证项目的稳定性同时能够更好地去定位问题，然后聊了聊他们目前在做的项目，整体感觉特别好。</strong></p>
+</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/20/Java数据类型和运算符/" rel="next" title="Java数据类型和运算符">
+                <i class="fa fa-chevron-left"></i> Java数据类型和运算符
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">yyg</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/985211yygg" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:2289201033@qq.com" target="_blank" title="QQ-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>QQ-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#技术储备"><span class="nav-number">1.</span> <span class="nav-text">技术储备</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基础"><span class="nav-number">1.1.</span> <span class="nav-text">基础</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算法"><span class="nav-number">1.2.</span> <span class="nav-text">算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚拟机"><span class="nav-number">1.3.</span> <span class="nav-text">虚拟机</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#JVM"><span class="nav-number">1.3.1.</span> <span class="nav-text">JVM</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DVM-amp-ART"><span class="nav-number">1.3.2.</span> <span class="nav-text">DVM&amp;ART</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ClassLoader"><span class="nav-number">1.3.3.</span> <span class="nav-text">ClassLoader</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JNI"><span class="nav-number">1.4.</span> <span class="nav-text">JNI</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Binder"><span class="nav-number">1.5.</span> <span class="nav-text">Binder</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#心态"><span class="nav-number">1.6.</span> <span class="nav-text">心态</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面试公司"><span class="nav-number">2.</span> <span class="nav-text">面试公司</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#火币网-Offer"><span class="nav-number">2.1.</span> <span class="nav-text">火币网(Offer)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一面："><span class="nav-number">2.1.1.</span> <span class="nav-text">一面：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#二面："><span class="nav-number">2.1.2.</span> <span class="nav-text">二面：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三面："><span class="nav-number">2.2.</span> <span class="nav-text">三面：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#蛋壳公寓-Offer"><span class="nav-number">3.</span> <span class="nav-text">蛋壳公寓(Offer)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一面：-1"><span class="nav-number">3.1.</span> <span class="nav-text">一面：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二面：-1"><span class="nav-number">3.2.</span> <span class="nav-text">二面：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GrowingIO-Over"><span class="nav-number">4.</span> <span class="nav-text">GrowingIO(Over)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一面"><span class="nav-number">4.1.</span> <span class="nav-text">一面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二面"><span class="nav-number">4.2.</span> <span class="nav-text">二面</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#昆仑智启-Offer"><span class="nav-number">5.</span> <span class="nav-text">昆仑智启(Offer)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一面：-2"><span class="nav-number">5.1.</span> <span class="nav-text">一面：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二面-1"><span class="nav-number">5.2.</span> <span class="nav-text">二面</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#京东"><span class="nav-number">6.</span> <span class="nav-text">京东</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#京东到家-电面"><span class="nav-number">6.1.</span> <span class="nav-text">京东到家(电面)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#京东商城-电面"><span class="nav-number">6.2.</span> <span class="nav-text">京东商城(电面)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#京东金融-Offer"><span class="nav-number">6.3.</span> <span class="nav-text">京东金融(Offer)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一面：-3"><span class="nav-number">6.3.1.</span> <span class="nav-text">一面：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#二面：-2"><span class="nav-number">6.3.2.</span> <span class="nav-text">二面：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#完美世界-Over"><span class="nav-number">7.</span> <span class="nav-text">完美世界(Over)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一面：-4"><span class="nav-number">7.1.</span> <span class="nav-text">一面：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二面：-3"><span class="nav-number">7.2.</span> <span class="nav-text">二面：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高德—汽车事业部-Over"><span class="nav-number">8.</span> <span class="nav-text">高德—汽车事业部(Over)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一面-1"><span class="nav-number">8.1.</span> <span class="nav-text">一面:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二面：-4"><span class="nav-number">8.2.</span> <span class="nav-text">二面：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高德—地图事业部-Over-："><span class="nav-number">9.</span> <span class="nav-text">高德—地图事业部(Over)：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一面：-5"><span class="nav-number">10.</span> <span class="nav-text">一面：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#二面：-5"><span class="nav-number">10.1.</span> <span class="nav-text">二面：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#掌阅科技-Over"><span class="nav-number">11.</span> <span class="nav-text">掌阅科技(Over)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一面-2"><span class="nav-number">11.1.</span> <span class="nav-text">一面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一面：-6"><span class="nav-number">11.2.</span> <span class="nav-text">一面：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二面：-6"><span class="nav-number">11.3.</span> <span class="nav-text">二面：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#爱奇艺-Offer"><span class="nav-number">12.</span> <span class="nav-text">爱奇艺(Offer)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一面：-7"><span class="nav-number">12.1.</span> <span class="nav-text">一面：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二面：-7"><span class="nav-number">12.2.</span> <span class="nav-text">二面：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三面：-1"><span class="nav-number">12.3.</span> <span class="nav-text">三面：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#美团-Over"><span class="nav-number">13.</span> <span class="nav-text">美团(Over)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#猎豹移动-Offer"><span class="nav-number">14.</span> <span class="nav-text">猎豹移动(Offer)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#笔试"><span class="nav-number">14.1.</span> <span class="nav-text">笔试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一面：-8"><span class="nav-number">14.2.</span> <span class="nav-text">一面：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二面：-8"><span class="nav-number">14.3.</span> <span class="nav-text">二面：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三面"><span class="nav-number">14.4.</span> <span class="nav-text">三面</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#摩拜-Offer"><span class="nav-number">15.</span> <span class="nav-text">摩拜(Offer)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#笔试："><span class="nav-number">15.1.</span> <span class="nav-text">笔试：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一面：-9"><span class="nav-number">15.2.</span> <span class="nav-text">一面：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二面：-9"><span class="nav-number">15.3.</span> <span class="nav-text">二面：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三面：-2"><span class="nav-number">15.4.</span> <span class="nav-text">三面：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yyg</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
