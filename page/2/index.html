@@ -678,7 +678,7 @@ Activity如与Service通信？可以通过bindService的方式，先在Activit
         
           
           Java谈谈对Java多态的理解？
-多态是指父类的某个方法被子类重写时，可以产生自己的功能行为，同一个操作作用于不同对象，可以有不同的解释，产生不同的执行结果。
+多态是指父类的某个方法被子类重写时，可以产生自己的功能行为，同一个操作作用于不同对象(子类)，可以有不同的解释，产生不同的执行结果。
 
 多态的三个必要条件：
 
@@ -686,7 +686,7 @@ Activity如与Service通信？可以通过bindService的方式，先在Activit
 重写父类的方法。
 父类的引用指向子类对象。
 
-静态方法与静态成员变量可以被继承吗，为什么？静态方法与
+静态方法与静态成员变量可以被继承吗，为什么？静
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1016,7 +1016,7 @@ Java 集合
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.yyglike.com/2018/03/27/app-崩溃之后自动重启/">
+    <link itemprop="mainEntityOfPage" href="http://www.yyglike.com/2018/03/27/Android系统框架/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yyg">
@@ -1035,7 +1035,7 @@ Java 集合
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/27/app-崩溃之后自动重启/" itemprop="url">APP崩溃后重启</a></h1>
+                <a class="post-title-link" href="/2018/03/27/Android系统框架/" itemprop="url">Android系统框架</a></h1>
         
 
         <div class="post-meta">
@@ -1087,12 +1087,14 @@ Java 集合
       
         
           
-          在安卓应用中，如果是偶发性bug导致APP崩溃，APP可能会直接闪退或者白屏，用户体验不太好，我们可以在application中捕获到全局异常，然后再进行处理。
-首先创建一个MainApplication（项目中已有自定义application的不需要再创建）：1public class MainA
+          1.Android系统架构Android系统架构分为五层，从上到下依次是应用层、应用框架层、系统运行库层、硬件抽象层和Linux内核层。
+
+应用层系统内置的应用程序以及非系统级的应用程序都是属于应用层。负责与用户进行直接交互，通常都是用Java进行开发的。
+应用框架层（Java Framework)
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/03/27/app-崩溃之后自动重启/#more" rel="contents">
+            <a class="btn" href="/2018/03/27/Android系统框架/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1272,7 +1274,7 @@ Java 集合
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.yyglike.com/2018/03/27/Android系统框架/">
+    <link itemprop="mainEntityOfPage" href="http://www.yyglike.com/2018/03/27/app-崩溃之后自动重启/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yyg">
@@ -1291,7 +1293,7 @@ Java 集合
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/27/Android系统框架/" itemprop="url">Android系统框架</a></h1>
+                <a class="post-title-link" href="/2018/03/27/app-崩溃之后自动重启/" itemprop="url">APP崩溃后重启</a></h1>
         
 
         <div class="post-meta">
@@ -1343,14 +1345,12 @@ Java 集合
       
         
           
-          1.Android系统架构Android系统架构分为五层，从上到下依次是应用层、应用框架层、系统运行库层、硬件抽象层和Linux内核层。
-
-应用层系统内置的应用程序以及非系统级的应用程序都是属于应用层。负责与用户进行直接交互，通常都是用Java进行开发的。
-应用框架层（Java Framework)
+          在安卓应用中，如果是偶发性bug导致APP崩溃，APP可能会直接闪退或者白屏，用户体验不太好，我们可以在application中捕获到全局异常，然后再进行处理。
+首先创建一个MainApplication（项目中已有自定义application的不需要再创建）：1public class MainA
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/03/27/Android系统框架/#more" rel="contents">
+            <a class="btn" href="/2018/03/27/app-崩溃之后自动重启/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>

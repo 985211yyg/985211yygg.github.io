@@ -94,13 +94,13 @@
 
 
 
-<meta name="description" content="Java谈谈对Java多态的理解？ 多态是指父类的某个方法被子类重写时，可以产生自己的功能行为，同一个操作作用于不同对象，可以有不同的解释，产生不同的执行结果。  多态的三个必要条件：  继承父类。 重写父类的方法。 父类的引用指向子类对象。  静态方法与静态成员变量可以被继承吗，为什么？静态方法与静态成员变量可以被继承，但是不能被重写。它对子类隐藏，因此静态方法也不能实现多态。 static与f">
+<meta name="description" content="Java谈谈对Java多态的理解？ 多态是指父类的某个方法被子类重写时，可以产生自己的功能行为，同一个操作作用于不同对象(子类)，可以有不同的解释，产生不同的执行结果。  多态的三个必要条件：  继承父类。 重写父类的方法。 父类的引用指向子类对象。  静态方法与静态成员变量可以被继承吗，为什么？静态方法与静态成员变量可以被继承，但是不能被重写。它对子类隐藏，因此静态方法也不能实现多态。 stat">
 <meta name="keywords" content="面试">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java面试题集">
 <meta property="og:url" content="http://www.yyglike.com/2018/04/03/Java面试题集/index.html">
 <meta property="og:site_name" content="yyg的小黑屋">
-<meta property="og:description" content="Java谈谈对Java多态的理解？ 多态是指父类的某个方法被子类重写时，可以产生自己的功能行为，同一个操作作用于不同对象，可以有不同的解释，产生不同的执行结果。  多态的三个必要条件：  继承父类。 重写父类的方法。 父类的引用指向子类对象。  静态方法与静态成员变量可以被继承吗，为什么？静态方法与静态成员变量可以被继承，但是不能被重写。它对子类隐藏，因此静态方法也不能实现多态。 static与f">
+<meta property="og:description" content="Java谈谈对Java多态的理解？ 多态是指父类的某个方法被子类重写时，可以产生自己的功能行为，同一个操作作用于不同对象(子类)，可以有不同的解释，产生不同的执行结果。  多态的三个必要条件：  继承父类。 重写父类的方法。 父类的引用指向子类对象。  静态方法与静态成员变量可以被继承吗，为什么？静态方法与静态成员变量可以被继承，但是不能被重写。它对子类隐藏，因此静态方法也不能实现多态。 stat">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/1/24/16127ccc0e122629?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
 <meta property="og:image" content="https://github.com/guoxiaoxing/android-open-source-project-analysis/raw/master/art/native/vm/classloader_model_structure.png">
@@ -108,10 +108,10 @@
 <meta property="og:image" content="https://github.com/guoxiaoxing/android-open-source-project-analysis/raw/master/art/native/process/java_memory_model.png">
 <meta property="og:image" content="https://github.com/guoxiaoxing/android-open-source-project-analysis/raw/master/art/native/process/volatile_thread_safe.png">
 <meta property="og:image" content="https://github.com/guoxiaoxing/android-open-source-project-analysis/raw/master/art/native/process/java_thread_state.png">
-<meta property="og:updated_time" content="2018-04-21T14:09:53.836Z">
+<meta property="og:updated_time" content="2018-05-08T12:03:25.454Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java面试题集">
-<meta name="twitter:description" content="Java谈谈对Java多态的理解？ 多态是指父类的某个方法被子类重写时，可以产生自己的功能行为，同一个操作作用于不同对象，可以有不同的解释，产生不同的执行结果。  多态的三个必要条件：  继承父类。 重写父类的方法。 父类的引用指向子类对象。  静态方法与静态成员变量可以被继承吗，为什么？静态方法与静态成员变量可以被继承，但是不能被重写。它对子类隐藏，因此静态方法也不能实现多态。 static与f">
+<meta name="twitter:description" content="Java谈谈对Java多态的理解？ 多态是指父类的某个方法被子类重写时，可以产生自己的功能行为，同一个操作作用于不同对象(子类)，可以有不同的解释，产生不同的执行结果。  多态的三个必要条件：  继承父类。 重写父类的方法。 父类的引用指向子类对象。  静态方法与静态成员变量可以被继承吗，为什么？静态方法与静态成员变量可以被继承，但是不能被重写。它对子类隐藏，因此静态方法也不能实现多态。 stat">
 <meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/1/24/16127ccc0e122629?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
 
 
@@ -375,7 +375,7 @@
 
       
         <h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><h3 id="谈谈对Java多态的理解？"><a href="#谈谈对Java多态的理解？" class="headerlink" title="谈谈对Java多态的理解？"></a>谈谈对Java多态的理解？</h3><blockquote>
-<p>多态是指父类的某个方法被子类重写时，可以产生自己的功能行为，同一个操作作用于不同对象，可以有不同的解释，产生不同的执行结果。</p>
+<p>多态是指父类的某个方法被子类重写时，可以产生自己的功能行为，同一个操作作用于不同对象(子类)，可以有不同的解释，产生不同的执行结果。</p>
 </blockquote>
 <p>多态的三个必要条件：</p>
 <ol>
@@ -456,7 +456,7 @@
 <li>卸载：卸载过程就是清楚堆里类的信息，以下情况会被卸载：① 类的所有实例都已经被回收。② 类的ClassLoader被回收。③ 类的CLass对象没有被任何地方引用，无法在任何地方通过<br>反射访问该类。</li>
 </ol>
 <h3 id="描述一下类的加载机制？"><a href="#描述一下类的加载机制？" class="headerlink" title="描述一下类的加载机制？"></a>描述一下类的加载机制？</h3><blockquote>
-<p>类的加载就是虚拟机通过一个类的全限定名来获取描述此类的二进制字节流，而完成这个加载动作的就是类加载器。</p>
+<p>虚拟机通过一个类的全限定名来获取描述此类的二进制字节流加载到内存中，对数据进行校验，准备和初始化，最终形成可以被虚拟机直接使用的java类型的过程就是类加载机制。而完成这个加载动作的就是类加载器。</p>
 </blockquote>
 <p>类和类加载器息息相关，判定两个类是否相等，只有在这两个类被同一个类加载器加载的情况下才有意义，否则即便是两个类来自同一个Class文件，被不同类加载器加载，它们也是不相等的。</p>
 <p>注：这里的相等性保函Class对象的equals()方法、isAssignableFrom()方法、isInstance()方法的返回结果以及Instance关键字对对象所属关系的判定结果等。</p>
