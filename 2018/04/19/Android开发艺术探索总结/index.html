@@ -127,7 +127,7 @@
 <meta property="og:image" content="http://www.yyglike.com/2018/04/19/Android开发艺术探索总结/LinkedHashMap.png">
 <meta property="og:image" content="https://img-blog.csdn.net/20170512155609530?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvanVzdGxvdmV5b3Vf/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://www.yyglike.com/2018/04/19/Android开发艺术探索总结/HashSet.png">
-<meta property="og:updated_time" content="2018-04-23T03:31:05.398Z">
+<meta property="og:updated_time" content="2018-05-08T15:06:23.920Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android开发艺术探索总结">
 <meta name="twitter:description" content="Activity(Fragment)的生命周期和启动模式 生命周期分析典型的生命周期 activity的生命周期    fragment的生命周期   与宿主Activity的生命周期的关系    onStar和onResum、onPause和onStop从描述看起来差不多，对于我们来说有什么实质的不同呢？ 对于这两对相似的接口，Android系统既然提供了就有其用意：onSatrt和onStop">
@@ -406,7 +406,7 @@
 </li>
 </ol>
 </li>
-<li><h5 id="Activity是如何保存和恢复View的结构？"><a href="#Activity是如何保存和恢复View的结构？" class="headerlink" title="Activity是如何保存和恢复View的结构？"></a>Activity是如何保存和恢复View的结构？</h5><p> 首先，activity被意外终止时，activity会调用onSaveInstanceState()去保存数据，然后activity会委托Window去保存数据，接着window委托它的上级容器去保存数据。顶级容器是一个ViewGroup，一般可能是是DecorView。最后顶级容器再去一一通知子元素去保存数据，对于数据的恢复也是类似的。</p>
+<li><h5 id="Activity是如何保存和恢复View的结构？"><a href="#Activity是如何保存和恢复View的结构？" class="headerlink" title="Activity是如何保存和恢复View的结构？"></a>Activity是如何保存和恢复View的结构？</h5><p> <a href="https://blog.csdn.net/u011617742/article/details/53811118" target="_blank" rel="noopener">这篇文章</a><br> 首先，activity被意外终止时，activity会调用onSaveInstanceState()去保存数据。然后activity会委托Window(实际是phoneWidow)去保存数据，window委托顶级容器去保存数据，顶级容器是一个ViewGroup，最后顶级容器再去一一通知子元素去保存数据，对于数据的恢复也是类似的。</p>
 </li>
 <li><h5 id="资源不足导致低优先级的activity被杀死"><a href="#资源不足导致低优先级的activity被杀死" class="headerlink" title="资源不足导致低优先级的activity被杀死"></a>资源不足导致低优先级的activity被杀死</h5><p> activity的优先级：<br> 1.<code>前台activity</code>——正在和用户交互的activity，优先级最高<br> 2.<code>可见但非前台activity</code>—–比如activity中弹出一个对话框，导致activity可见但是位于后台无法与直接交互。<br> 3.<code>后台activity</code>—-已经被暂停的activity，比如执行了onStop(),优先级最低</p>
 <p> 对于系统内存不足时，系统会按照优先级来杀死目标activity的进程，然后通过onSaveInstanceState()和onRestoreInstanceState()一bundle的形式存储恢复数据。但是onSaveInstanceState()这个方法只会出现在activity被异常终止时，它出现在onStop()之前，但是和onPuase()没有既定的关系，可能出现在之前也可能是之后。</p>
